@@ -13,15 +13,8 @@
 
 NAME	=	minishell
 
-SRCS	=	./src/minishell.c	\
-#			./src/key_hook.c	\
-#			./src/error_message.c\
-#			./src/actions.c	\
-#			./src/drawing.c	\
-#			./src/render_map.c	\
-#			./src/init_images.c	\
-#			./bonus/printer_ascii.c	\
-#			./bonus/action_enemy.c	\
+SRCS	=	./src/minishell.c
+
 
 OBJS	=	$(SRCS:.c=.o)
 
@@ -35,16 +28,16 @@ CC	=	gcc
 
 RM	=	rm -f
 
-#CFLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address 
+CFLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address 
 
 .c.o:
-	$(CC) $(CFLAGS) -I$(HEADER) -I$(LIBFT) $(LIB) -c $< -o $(<:.c=.o)
+	$(CC) $(CFLAGS) -I$(HEADER) -I$(LIBFT) -c $< -o $(<:.c=.o)
 
 $(NAME):	$(OBJS) $(LIBFT)
 			@make -C $(LIBFT)
 			ar rcs $(LIBFT_A) $(OBJS)
 			ranlib $(LIBFT_A)
-			$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) -o $(NAME)
+			$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) -lreadline -o $(NAME)
 
 all:	$(NAME)
 
