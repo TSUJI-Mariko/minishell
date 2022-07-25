@@ -15,9 +15,12 @@
 //void minishell(char **envp);/
 void sig_int_input();
 void sig_quit_input();
+void    signal_quit_input(int signal);
+void    signal_input(int signal);
 
 // int main(int argc, char **argv, char **envp)
-int main(int argc, char **argv, char **envp)
+
+/*int main(int argc, char **argv, char **envp)
 {
    if (argc == 1)
     {
@@ -33,8 +36,38 @@ int main(int argc, char **argv, char **envp)
         }
     }
     return (0);
-}
+}*/
 
+int main()
+{
+    char *line = NULL;
+
+    while (1)
+    {
+	   if (signal(SIGINT, signal_input) == SIG_ERR)
+	   {
+	       ft_putstr_fd(strerror(errno), STDERR);
+		   exit (1);
+	   }
+	   if (signal(SIGQUIT, signal_quit_input) == SIG_ERR)
+	   {
+	       ft_putstr_fd(strerror(errno), STDERR);
+		   exit (1);
+  	   }
+        line = readline("> ");
+        if (line == NULL || strlen(line) == 0)
+        {
+            free(line);
+            break;
+        }
+        printf("line is '%s'\n", line);
+        add_history(line);
+        free(line);
+    }
+    printf("exit\n");
+    return 0;
+}
+/*
 void minishell(char **envp)
 {
     char *prompt;
@@ -72,7 +105,7 @@ void minishell(char **envp)
         i++;
     }
 }
-/*
+
 void minishell(char **envp)
 {
   char *line;
@@ -120,3 +153,33 @@ void	sig_quit_input()
 }
 */
 
+void    signal_quit_input(int signal)
+{
+    int sig_exit;
+
+    sig_exit = 0;
+    sig_exit += signal;
+    if (sig_exit == 2)
+    {
+        printf("\n");
+    }
+    if (sig_exit == SIGQUIT)
+    {
+        printf("error----\n");
+        exit(1);
+    }
+}
+
+void    signal_input(int signal)
+{
+    int sig_exit;
+
+    sig_exit = 0;
+    sig_exit += signal;
+    if (sig_exit == 2)
+    {
+        sig_exit = 130;
+        printf("\n");
+        printf(">");
+    }
+}
