@@ -31,7 +31,7 @@
 # include <readline/history.h>
 # include "../lib/libft/libft.h"
 
-
+extern int valeur_exit; 
 
 typedef struct s_arg
 {
@@ -39,7 +39,19 @@ typedef struct s_arg
 	struct s_stack	*next;
 }		t_arg;
 
-void minishell(char **envp);
-char *parsing(char *prompt);
-#endif
+typedef struct s_token
+{
+	int				cur;
+	int 			len;
+    char            *string;
+	struct s_token	*next;
+}		t_token;
 
+
+
+void    signal_input(int signal);
+int quote_check(char *str);
+int simple_quote(char *str);
+int double_quote(char *str);
+int quoting(char *str);
+# endif

@@ -13,7 +13,8 @@
 
 NAME	=	minishell
 
-SRCS	=	./src/minishell.c
+SRCS	=	./src/minishell.c	\
+			./src/outil.c		\
 
 
 OBJS	=	$(SRCS:.c=.o)
