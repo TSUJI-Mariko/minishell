@@ -12,7 +12,7 @@
 
 #include "../inc/minishell.h"
 /*
-char *parsing(char *prompt)
+int lexer(t_command *command_line)
 {
-    read_line(prompt);
+    
 }*/
