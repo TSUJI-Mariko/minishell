@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   outil.c                                            :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/28 12:16:07 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/07/28 12:16:08 by mtsuji           ###   ########.fr       */
+/*   Created: 2021/06/09 14:17:06 by mtsuji            #+#    #+#             */
+/*   Updated: 2022/07/25 18:00:08 by msuji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
+#include "libft.h"
 
-//int valeur_exit;
-
-/*
-** signal_input : gerer l'interruprion par clavier (Ctrl + c)
-**
-*/
-void    signal_input(int signal)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-    int valeur_exit;
+	t_list	*a;
 
-    valeur_exit = 0;
-    valeur_exit += signal;
-    if (valeur_exit == 2)
-    {
-        valeur_exit = 130; //valeur de retour avec Ctrl + C
-        printf("\n");
-        printf(">team_90's ");
-    }
+	while (*lst != NULL)
+	{
+		a = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = a;
+	}
 }

@@ -1,9 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/tj/Documents/42/minishell/minishell'
-gcc -Wall -Wextra -Werror -g3 -fsanitize=address  -I./inc/ -I./lib/libft/ -c src/minishell.c -o src/minishell.o
-make -C ./lib/libft/
-ar rcs ./lib/libft/libft.a ./src/minishell.o
-ranlib ./lib/libft/libft.a
-gcc -Wall -Wextra -Werror -g3 -fsanitize=address  ./src/minishell.o ./lib/libft/libft.a -lreadline -o minishell
-make: Leaving directory '/home/tj/Documents/42/minishell/minishell'
- 

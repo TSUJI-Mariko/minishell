@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msuji <mtsuji@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/27 10:48:29 by mtsuji            #+#    #+#             */
-/*   Updated: 2021/05/31 22:14:33 by mtsuji           ###   ########.fr       */
+/*   Created: 2022/08/01 10:33:04 by msuji             #+#    #+#             */
+/*   Updated: 2022/08/01 10:33:06 by msuji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/minishell.h"
 
-int	ft_isascii(int c)
+extern int valeur_exit;
+void ft_error(void)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+    ft_putstr_fd("minishell: syntax error near unexpected token `|'\n", 1);
+    valeur_exit = 2;
 }

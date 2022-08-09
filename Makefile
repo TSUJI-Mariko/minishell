@@ -3,33 +3,41 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+         #
+#    By: msuji <mtsuji@student.42.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/09 17:01:55 by mtsuji            #+#    #+#              #
-#    Updated: 2022/07/09 17:01:56 by mtsuji           ###   ########.fr        #
+#    Created: 2022/08/01 12:35:48 by msuji             #+#    #+#              #
+#    Updated: 2022/08/01 12:35:49 by msuji            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME	=	minishell
 
-SRCS	=	./src/minishell.c	\
-			./src/outil.c		\
+SRCS	=	./parsing/minishell.c	\
+			./parsing/outil_signal.c		\
+			./parsing/error.c 				\
+			./parsing/outil_lexer.c			\
+			./parsing/quoting.c 			\
+			./parsing/lexer.c 				\
+			./parsing/get_command_line.c \
+			./parsing/split_token.c 	\
+			./parsing/outil.c			\
+	
 
 
 OBJS	=	$(SRCS:.c=.o)
 
 HEADER	=	./inc/
 
-LIBFT	=	./lib/libft/
+LIBFT	=	./libft/
 
-LIBFT_A	=	./lib/libft/libft.a
+LIBFT_A	=	./libft/libft.a
 
 CC	=	gcc
 
 RM	=	rm -f
 
-#CFLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address 
+CFLAGS	=	-Wall -Wextra -Werror -g3 #-fsanitize=leak
 
 .c.o:
 	$(CC) $(CFLAGS) -I$(HEADER) -I$(LIBFT) -c $< -o $(<:.c=.o)
