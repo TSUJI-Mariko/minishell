@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'parsing/minishell.o', needed by 'minishell'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'parsing/minishell.o', needed by 'minishell'.  
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Aug 14 11:29:49 2022
+# Make data base, printed on Sat Aug 27 08:58:42 2022
 
 # Variables
 
@@ -41,19 +39,19 @@ GDMSESSION = ubuntu
 # environment
 XMODIFIERS = @im=ibus
 # makefile
-CURDIR := /home/tj/Documents/42/minishell/my_minishell
+CURDIR := /home/tj/Documents/Minishell42
 # makefile
 SHELL = /bin/sh
-# makefile (from 'Makefile', line 38)
+# makefile (from 'Makefile', line 68)
 RM = rm -f
 # environment
-VSCODE_NLS_CONFIG = {"locale":"ja","availableLanguages":{"*":"ja"},"_languagePackId":"e6c586e25df759b7fd1d7a26b78d86d4.ja","_translationsConfigFile":"/home/tj/.config/Code/clp/e6c586e25df759b7fd1d7a26b78d86d4.ja/tcf.json","_cacheRoot":"/home/tj/.config/Code/clp/e6c586e25df759b7fd1d7a26b78d86d4.ja","_resolvedLanguagePackCoreLocation":"/home/tj/.config/Code/clp/e6c586e25df759b7fd1d7a26b78d86d4.ja/6d9b74a70ca9c7733b29f0456fd8195364076dda","_corruptedFile":"/home/tj/.config/Code/clp/e6c586e25df759b7fd1d7a26b78d86d4.ja/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"ja","availableLanguages":{"*":"ja"},"_languagePackId":"0eea3b1222777374459e015adf6fd29b.ja","_translationsConfigFile":"/home/tj/.config/Code/clp/0eea3b1222777374459e015adf6fd29b.ja/tcf.json","_cacheRoot":"/home/tj/.config/Code/clp/0eea3b1222777374459e015adf6fd29b.ja","_resolvedLanguagePackCoreLocation":"/home/tj/.config/Code/clp/0eea3b1222777374459e015adf6fd29b.ja/6d9b74a70ca9c7733b29f0456fd8195364076dda","_corruptedFile":"/home/tj/.config/Code/clp/0eea3b1222777374459e015adf6fd29b.ja/corrupted.info","_languagePackSupport":true}
 # environment
 _ = /usr/share/code/code
-# makefile (from 'Makefile', line 40)
-CFLAGS = -Wall -Wextra -Werror -g3 
+# makefile (from 'Makefile', line 70)
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address -fsanitize=leak
 # environment
-JOURNAL_STREAM = 8:52507
+JOURNAL_STREAM = 8:50414
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -70,10 +68,10 @@ MAKELEVEL := 0
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
-# makefile (from 'Makefile', line 28)
+# makefile (from 'Makefile', line 58)
 OBJS = $(SRCS:.c=.o)
 # environment
-MANAGERPID = 2030
+MANAGERPID = 1992
 # environment
 LC_NAME = fr_FR.UTF-8
 # environment
@@ -89,7 +87,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-SESSION_MANAGER = local/tj-MacBookPro:@/tmp/.ICE-unix/2250,unix/tj-MacBookPro:/tmp/.ICE-unix/2250
+SESSION_MANAGER = local/tj-MacBookPro:@/tmp/.ICE-unix/2210,unix/tj-MacBookPro:/tmp/.ICE-unix/2210
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -97,7 +95,7 @@ XDG_MENU_PREFIX = gnome-
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 76bb8f7d37544cfda87ff2f21bab292f
+INVOCATION_ID = ef3494b537fb465aacca32078e868ad3
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -107,19 +105,20 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 30022
+GIO_LAUNCHED_DESKTOP_FILE_PID = 2819
 # automatic
 %F = $(notdir $%)
 # environment
 DISPLAY = :0
 # environment
-PWD = /home/tj/Documents/42/minishell/my_minishell
+PWD = /home/tj/Documents/Minishell42
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2213
+SSH_AGENT_PID = 2173
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
+ 
 # environment
 GTK_MODULES = gail:atk-bridge
 # environment
@@ -151,12 +150,12 @@ MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = ibus
 # makefile (from 'Makefile', line 16)
-SRCS = ./parsing/minishell.c ./parsing/outil_signal.c ./parsing/error.c ./parsing/outil_lexer.c ./parsing/quoting.c ./parsing/lexer.c ./parsing/get_command_line.c ./parsing/split_token.c ./parsing/outil.c 
+SRCS = ./srcs/main/minishell.c ./srcs/main/outil_main.c ./srcs/signal/signal_init.c ./srcs/signal/signal_exec.c ./srcs/signal/signal_heredoc.c ./srcs/parsing/error.c ./srcs/parsing/outil_lexer.c ./srcs/parsing/quoting.c ./srcs/parsing/lexer.c ./srcs/parsing/get_command_line.c ./srcs/parsing/split_token.c ./srcs/parsing/outil.c ./srcs/parsing/parser.c ./srcs/parsing/outil_parser.c ./srcs/alelaval/get_env.c ./srcs/shell/create_shell.c ./srcs/shell/create_envp.c ./srcs/shell/env_add.c ./srcs/shell/del_env.c ./srcs/expansion/expansion.c ./srcs/expansion/variables.c ./srcs/expansion/outil_expension.c ./srcs/expansion/outil_variables.c ./srcs/expansion/outil_variables_2.c ./srcs/expansion/split_string.c ./srcs/expansion/outil_split.c ./srcs/expansion/remove_quote.c ./srcs/expansion/outil_remove_quote.c ./srcs/expansion/path_generator.c ./srcs/expansion/outil_path.c ./srcs/expansion/heredoc.c ./srcs/builtin/echo.c ./srcs/builtin/cd.c ./srcs/builtin/env.c ./srcs/builtin/pwd.c ./srcs/builtin/export.c ./srcs/builtin/unset.c ./test_exec.c ./srcs/exec/exec.c 
 # environment
 SHLVL = 0
-# makefile (from 'Makefile', line 32)
+# makefile (from 'Makefile', line 62)
 LIBFT = ./libft/
-# makefile (from 'Makefile', line 36)
+# makefile (from 'Makefile', line 66)
 CC = gcc
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
@@ -202,12 +201,10 @@ MAIL = tj@student.42.fr
 +D = $(patsubst %/,%,$(dir $+))
 # environment
 GDK_BACKEND = x11
-# makefile (from 'Makefile', line 34)
+# makefile (from 'Makefile', line 64)
 LIBFT_A = ./libft/libft.a
 # environment
 LC_PAPER = fr_FR.UTF-8
-# environment
-NO_AT_BRIDGE = 1
 # environment
 QT_ACCESSIBILITY = 1
 # default
@@ -222,7 +219,7 @@ LC_MEASUREMENT = fr_FR.UTF-8
 PAGER = less
 # environment
 LC_ALL = C
-# makefile (from 'Makefile', line 30)
+# makefile (from 'Makefile', line 60)
 HEADER = ./inc/
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
@@ -245,9 +242,9 @@ LC_ADDRESS = fr_FR.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 30022
+VSCODE_PID = 2819
 # variable set hash-table stats:
-# Load=117/1024=11%, Rehash=0, Collisions=19/147=13%
+# Load=116/1024=11%, Rehash=0, Collisions=19/146=13%
 
 # Pattern-specific Variable Values
 
@@ -255,9 +252,9 @@ VSCODE_PID = 30022
 
 # Directories
 
-# . (device 2050, inode 15335437): 12 files, no impossibilities.
+# . (device 2050, inode 14423165): 14 files, no impossibilities.
 
-# 12 files, no impossibilities in 1 directories.
+# 14 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -265,59 +262,162 @@ VSCODE_PID = 30022
 
 # Files
 
+# Not a target:
+srcs/signal/signal_heredoc.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:30.332155579
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/expansion/expansion.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:32.016152231
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/parsing/outil_lexer.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:30.524155198
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+test_exec.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:33.832148622
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/expansion/remove_quote.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:32.740150792
+#  File has been updated.
+#  Successfully updated.
+
 all: minishell
 #  Phony target (prerequisite of .PHONY).
 #  Command line target.
 #  Implicit rule search has not been done.
 #  File does not exist.
-#  File has not been updated.
+#  File has been updated.
+#  Successfully updated.
 
+# Not a target:
+srcs/parsing/quoting.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:30.612155023
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/expansion/outil_expension.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:32.220151827
+#  File has been updated.
+#  Successfully updated.
+
+ 
 .PHONY: all clean fclean re
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-parsing/outil.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-parsing/minishell.o:
+srcs/builtin/unset.o:
 #  Implicit rule search has been done.
-#  File does not exist.
-#  File has not been updated.
-
-# Not a target:
-libft/:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
- 
-# Not a target:
-Makefile:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-12 18:45:23.518614849
+#  Last modified 2022-08-26 23:20:33.680148923
 #  File has been updated.
 #  Successfully updated.
 
-minishell: parsing/minishell.o parsing/outil_signal.o parsing/error.o parsing/outil_lexer.o parsing/quoting.o parsing/lexer.o parsing/get_command_line.o parsing/split_token.o parsing/outil.o libft/
+# Not a target:
+libft/:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:36.668142984
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/shell/env_add.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:31.820152621
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/shell/create_envp.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:31.72015282
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/expansion/outil_variables.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:32.320151627
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/main/minishell.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:29.828156581
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 19:48:29.421446973
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/shell/del_env.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:31.91615243
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/parsing/outil.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:31.072154108
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/signal/signal_exec.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:30.220155802
+#  File has been updated.
+#  Successfully updated.
+
+minishell: srcs/main/minishell.o srcs/main/outil_main.o srcs/signal/signal_init.o srcs/signal/signal_exec.o srcs/signal/signal_heredoc.o srcs/parsing/error.o srcs/parsing/outil_lexer.o srcs/parsing/quoting.o srcs/parsing/lexer.o srcs/parsing/get_command_line.o srcs/parsing/split_token.o srcs/parsing/outil.o srcs/parsing/parser.o srcs/parsing/outil_parser.o srcs/alelaval/get_env.o srcs/shell/create_shell.o srcs/shell/create_envp.o srcs/shell/env_add.o srcs/shell/del_env.o srcs/expansion/expansion.o srcs/expansion/variables.o srcs/expansion/outil_expension.o srcs/expansion/outil_variables.o srcs/expansion/outil_variables_2.o srcs/expansion/split_string.o srcs/expansion/outil_split.o srcs/expansion/remove_quote.o srcs/expansion/outil_remove_quote.o srcs/expansion/path_generator.o srcs/expansion/outil_path.o srcs/expansion/heredoc.o srcs/builtin/echo.o srcs/builtin/cd.o srcs/builtin/env.o srcs/builtin/pwd.o srcs/builtin/export.o srcs/builtin/unset.o test_exec.o srcs/exec/exec.o libft/
 #  Implicit rule search has not been done.
-#  File does not exist.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 46):
+#  Last modified 2022-08-26 23:20:36.856142609
+#  File has been updated.
+#  Successfully updated.
+#  recipe to execute (from 'Makefile', line 76):
 			@make -C $(LIBFT)
 			ar rcs $(LIBFT_A) $(OBJS)
 			ranlib $(LIBFT_A)
-			$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) -lreadline -o $(NAME)
+			$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) -o $(NAME) -lreadline
+
+# Not a target:
+srcs/expansion/outil_split.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:32.640150991
+#  File has been updated.
+#  Successfully updated.
 
 .c.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 43):
+#  recipe to execute (from 'Makefile', line 73):
 	$(CC) $(CFLAGS) -I$(HEADER) -I$(LIBFT) -c $< -o $(<:.c=.o)
 
 fclean: clean
@@ -325,15 +425,52 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 58):
+#  recipe to execute (from 'Makefile', line 88):
 		$(MAKE) fclean -C $(LIBFT)
 		$(RM) $(NAME)
 
 # Not a target:
-parsing/error.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+srcs/expansion/split_string.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:32.548151174
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/expansion/path_generator.o:
+ 
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:32.888150499
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/parsing/parser.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:31.252153751
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/builtin/pwd.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:33.484149313
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/expansion/outil_remove_quote.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:32.77615072
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/builtin/cd.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:33.288149703
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 .DEFAULT:
@@ -342,16 +479,18 @@ parsing/error.o:
 #  File has not been updated.
 
 # Not a target:
-parsing/lexer.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+srcs/expansion/outil_variables_2.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:32.420151428
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
-parsing/get_command_line.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+srcs/expansion/heredoc.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:33.084150108
+#  File has been updated.
+#  Successfully updated.
 
 re: fclean all
 #  Phony target (prerequisite of .PHONY).
@@ -359,53 +498,135 @@ re: fclean all
 #  File does not exist.
 #  File has not been updated.
 
+# Not a target:
+srcs/builtin/echo.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:33.192149893
+#  File has been updated.
+#  Successfully updated.
+
 clean:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 54):
+#  recipe to execute (from 'Makefile', line 84):
 		$(MAKE) clean -C $(LIBFT)
 		$(RM) $(OBJS)
 
 # Not a target:
-parsing/outil_signal.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+srcs/builtin/export.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:33.592149098
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
-parsing/split_token.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+srcs/alelaval/get_env.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:31.50415325
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
-parsing/outil_lexer.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+srcs/exec/exec.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:33.92814843
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
-parsing/quoting.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+srcs/parsing/error.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:30.428155388
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/expansion/outil_path.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:32.984150307
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/parsing/lexer.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:30.708154832
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/signal/signal_init.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:30.100156042
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/parsing/get_command_line.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:30.804154641
+#  File has been updated.
+ 
+#  Successfully updated.
+
+# Not a target:
+srcs/parsing/outil_parser.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:31.384153488
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/expansion/variables.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:32.120152025
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/main/outil_main.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:29.940156359
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/parsing/split_token.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:30.924154403
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/shell/create_shell.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:31.612153035
+#  File has been updated.
+#  Successfully updated.
+
+# Not a target:
+srcs/builtin/env.o:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:20:33.376149527
+#  File has been updated.
+#  Successfully updated.
 
 # files hash-table stats:
-# Load=20/1024=2%, Rehash=0, Collisions=0/49=0%
+# Load=50/1024=5%, Rehash=0, Collisions=2/109=2%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 33 / storage = 528 B / avg = 16 B
-# current buf: size = 8162 B / used = 528 B / count = 33 / avg = 16 B
+# strcache buffers: 1 (0) / strings = 63 / storage = 1182 B / avg = 18 B
+# current buf: size = 8162 B / used = 1182 B / count = 63 / avg = 18 B
 
-# strcache performance: lookups = 53 / hit rate = 37%
+# strcache performance: lookups = 85 / hit rate = 25%
 # hash-table stats:
-# Load=33/8192=0%, Rehash=0, Collisions=1/53=2%
-# Finished Make data base on Sun Aug 14 11:29:49 2022
+# Load=63/8192=1%, Rehash=0, Collisions=1/85=1%
+# Finished Make data base on Sat Aug 27 08:58:42 2022
 
  
