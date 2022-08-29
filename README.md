@@ -1,6 +1,8 @@
 # minishell for cursus 42
 
-#1 :but o'objet
+## 1. :subject
+creation of mini-real bash prompt
+
 
 ## 2:lien utile pour comprendre:
 Bash Reference Manual : 

@@ -12,6 +12,13 @@
 
 #include "../../inc/minishell.h"
 
+/*
+ gestion pour trois cas:
+ 1: export ENV sans '=' (faut pas afficher dans env)
+ 2: export ENV=...  (afficher dans env)
+ 3: export sans argument ('export env')
+*/
+
 void    display_env_for_export(t_shell *shell)
 {
     t_env *env;
@@ -72,10 +79,3 @@ int    export(t_word *word, t_shell *shell)
     }
     return (0);
 }
-
-/*
- gestion pour trois cas:
- 1: export ENV sans '=' (faut pas afficher dans env)
- 2: export ENV=...  (afficher dans env)
- 3: export sans argument ('export env')
-*/

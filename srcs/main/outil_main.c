@@ -12,7 +12,6 @@
 
 #include "../../inc/minishell.h"
 
-
 int only_space(char *str)
 {
     int i;

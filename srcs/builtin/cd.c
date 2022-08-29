@@ -67,11 +67,6 @@ int cd(t_word *word, t_shell *shell)
         ft_putstr_fd(": No such file or directory\n", 2);
         return (1);
     }
-        //operation apres cd
-        /*ft_memset(buff, 0, PATH_MAX); //initialization for variable
-	    if (!getcwd(buff, PATH_MAX))
-		perror("pwd");
-	    ft_putendl_fd(buff, 1);*/
     after_cd(shell);
     return (0);
 }

@@ -27,7 +27,7 @@ SRCS	=	./srcs/main/minishell.c	\
 			./srcs/parsing/outil.c			\
 			./srcs/parsing/parser.c			\
 			./srcs/parsing/outil_parser.c	\
-			./srcs/alelaval/get_env.c		\
+			./srcs/shell/get_env.c		\
 			./srcs/shell/create_shell.c		\
 			./srcs/shell/create_envp.c		\
 			./srcs/shell/env_add.c			\
@@ -50,6 +50,7 @@ SRCS	=	./srcs/main/minishell.c	\
 			./srcs/builtin/pwd.c			\
 			./srcs/builtin/export.c			\
 			./srcs/builtin/unset.c			\
+			./srcs/builtin/exit.c			\
 			./test_exec.c						\
 			./srcs/exec/exec.c				\
 			#./srcs/exec/exec_pipe.c			\

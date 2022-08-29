@@ -9,11 +9,6 @@ extern int exit_status;
 
 #include "./inc/minishell.h"
 
-
-/*
-originnal alelaval's fonction
-I changed for adaptation
-*/
 void	exec_builtin(t_node *node, t_shell *shell)
 {
     t_cmd *command;
@@ -21,19 +16,19 @@ void	exec_builtin(t_node *node, t_shell *shell)
     command = node->cmds;
 
 	if (!ft_strncmp(command->word->str, "echo", ft_strlen(command->word->str)))
-		 exit_status = echo(command->word);
+		exit_status = echo(command->word);
     else if (!ft_strncmp(command->word->str, "env", ft_strlen(command->word->str)))
-		 exit_status = env(command->word, shell);
+		exit_status = env(command->word, shell);
 	else if (!ft_strncmp(command->word->str, "pwd", ft_strlen(command->word->str)))
-		 exit_status = pwd(command->word);
+		exit_status = pwd(command->word);
 	else if (!ft_strncmp(command->word->str, "cd", ft_strlen(command->word->str)))
-		 exit_status = cd(command->word, shell);
+		exit_status = cd(command->word, shell);
 	else if (!ft_strncmp(command->word->str, "export", ft_strlen(command->word->str)))
-		 exit_status = export(command->word, shell);
+		exit_status = export(command->word, shell);
 	else if (!ft_strncmp(command->word->str, "unset", ft_strlen(command->word->str)))
-		 exit_status = unset(command->word, shell);
-	//if (!ft_strncmp(shell->cmds->args[0], "pwd", ft_strlen(shell->cmds->args[0])))
-	//	pwd();
+		exit_status = unset(command->word, shell);
+	else if (!ft_strncmp(command->word->str, "exit", ft_strlen(command->word->str)))
+		builtin_exit(command->word);
     else
     {
         ft_putstr_fd("no match command\n", 2);
@@ -156,8 +151,7 @@ int	check_cmd(t_cmd *cmd)
 		return (1);
 	}
 	if (is_directory(cmd->pathname))
-	{
-		//printf("minishell: %s: is a directory\n", cmd->pathname); 
+	{ 
         ft_putstr_fd("minishell:", 2);
         ft_putstr_fd(cmd->pathname, 2);
         ft_putstr_fd(" is a directory\n", 2);
@@ -205,8 +199,6 @@ void	exec_file(t_node *node, t_shell *shell)
 
 void	exec_cmd(t_node *node, t_shell *shell)
 {
-	//if (interrupt)
-	//	return ;
 	if (!set_redir_in(node->cmds->redir_in)
 		|| !set_redir_out(node->cmds->redir_out)
 		|| node->cmds->word == NULL)

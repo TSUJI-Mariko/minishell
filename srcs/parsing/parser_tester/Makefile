@@ -1,16 +1,33 @@
 NAME	=	parsing_test
 
-SRCS	=	./../../parsing/outil_signal.c		\
-			./../../parsing/error.c 				\
-			./../../parsing/outil_lexer.c			\
-			./../../parsing/quoting.c 			\
-			./../../parsing/lexer.c 				\
-			./../../parsing/get_command_line.c \
-			./../../parsing/split_token.c 	\
-			./../../parsing/outil.c			\
-			./../../expension/expension.c		\
-			./../../parsing/outil_parser.c	\
-			./../../parsing/parser.c			\
+SRCS	=	../../../srcs/main/outil_main.c	\
+			../../../srcs/signal/signal_init.c		\
+			../../../srcs/parsing/error.c 				\
+			../../../srcs/parsing/outil_lexer.c			\
+			../../../srcs/parsing/quoting.c 			\
+			../../../srcs/parsing/lexer.c 				\
+			../../../srcs/parsing/get_command_line.c \
+			../../../srcs/parsing/split_token.c 	\
+			../../../srcs/parsing/outil.c			\
+			../../../srcs/parsing/parser.c			\
+			../../../srcs/parsing/outil_parser.c	\
+			../../../srcs/shell/get_env.c		\
+			../../../srcs/shell/create_shell.c		\
+			../../../srcs/shell/create_envp.c		\
+			../../../srcs/shell/env_add.c			\
+			../../../srcs/shell/del_env.c			\
+			../../../srcs/expansion/expansion.c		\
+			../../../srcs/expansion/variables.c		\
+			../../../srcs/expansion/outil_expension.c		\
+			../../../srcs/expansion/outil_variables.c		\
+			../../../srcs/expansion/outil_variables_2.c		\
+			../../../srcs/expansion/split_string.c		\
+			../../../srcs/expansion/outil_split.c		\
+			../../../srcs/expansion/remove_quote.c		\
+			../../../srcs/expansion/outil_remove_quote.c		\
+			../../../srcs/expansion/path_generator.c		\
+			../../../srcs/expansion/outil_path.c		\
+			../../../srcs/expansion/heredoc.c			\
 			./tester_parser_minishell.c			\
 
 

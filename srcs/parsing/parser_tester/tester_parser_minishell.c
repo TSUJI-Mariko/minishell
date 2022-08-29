@@ -1,12 +1,14 @@
 #include "../../../inc/minishell.h"
+
 void test(void);
 void debug_parser(t_node *node);
 void debug_parser_recursive(t_node *node);
-
+int exit_status;
 
 int main()
 {
     test();
+    exit_status = 0;
     return (0);
 }
 
@@ -16,7 +18,7 @@ void test(void)
     t_command *token;
     t_node *node;
 
-    char *str = "ls -l | cat << file";
+    char *str = "ls -l | cat << file | echo -n";
     token = lexer(str);
     node = parser(token->first_token);
     if (node == NULL)

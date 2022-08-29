@@ -12,9 +12,9 @@
 
 #include "../../inc/minishell.h"
 
-/*
 int builtin_exit(t_word *word)
 {
-
+    (void)word;
+    ft_putstr_fd("exit\n", 2);
+    exit (exit_status);
 }
-*/

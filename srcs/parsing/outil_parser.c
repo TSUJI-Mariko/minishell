@@ -12,19 +12,15 @@
 
 #include "../../inc/minishell.h"
 
-//int exit_status;
-
 void parser_error(char *str, long len)
 {
     char *str_tmp;
 
     str_tmp = strndup(str, len);
     ft_putstr_fd("minishell : syntax error near unexpected token `newline'", 2);
-//    ft_putstr_fd(str_tmp, 2);
     ft_putchar_fd('\n', 2);
     free(str_tmp);
     exit_status = 2;
-    //exit(1);
 }
 
 bool consume(t_token *token, t_token_kind kind, char *str) 
@@ -41,37 +37,14 @@ t_token *skip(t_token *token, t_token_kind kind, char *str)
 {
 	if (token->kind != kind)
     {
-        //parser_error(token->string, token->len);
         exit_status = 5;
     }
 	if (str != NULL && (token->len != (long)ft_strlen(str) 
         || ft_strncmp(token->string, str, token->len)))
-    {
         exit_status = 5;
-		//parser_error(token->string, token->len);
-        //return (token);
-    }
 	return token->next;
 }
 
-/*
-t_token *skip(t_token *token, t_token_kind kind, char *str) 
-{
-	if (token->kind != kind)
-    {
-        exit_status= 2;
-        return (NULL);
-    }
-	if (str != NULL && (token->len != (long)ft_strlen(str) 
-        || ft_strncmp(token->string, str, token->len)))
-    {
-		exit_status = 2;
-        return (NULL);
-    }
-    else
-	    return token->next;
-}
-*/
 void free_node(t_node *node)
 {
     if (node == NULL)
@@ -81,11 +54,6 @@ void free_node(t_node *node)
         free_node(node->lhs);
         free_node(node->rhs);
     }
-    //free_node(node->next);
-    //free_node(node->cmds);
-    //free_node(node->redir_in);
-    //free_node(node->redir_out);
-    //free(node->str);
     else
     {
         free_word(node->cmds->word);
@@ -103,7 +71,6 @@ void free_redirection(t_redir *redirection)
         return ;
     free_redirection(redirection->next);
     free(redirection->str);
-    //free_redir_in();
     free(redirection);
 }
 
@@ -149,18 +116,6 @@ t_node *new_node_command(void)
     return (node);   
 }
 
-/*
-t_node *new_node_word(t_token *token) 
-{
-    t_node *node;
-    
-    node = ft_calloc(1, sizeof(t_node));
-    node->kind = ARGUMENT;
-    node->str = malloc(sizeof(char *) * token->len + 1);
-    node->str = ft_strncpy(node->str, token->string, token->len);
-    return (node);
-}
-*/
 void word_addback(t_cmd *command, char *str, long len) 
 {
     t_word *word;
@@ -216,23 +171,6 @@ void redir_out_addback(t_cmd *command, t_redir_kind kind, char *str, int len)
         last = last->next;
     last->next = rdr;
 }
-
-/* version 08/18
-void redir_out_addback(t_node *command, t_node *rdr_out) 
-{
-    t_node *last;
-    if (command->redir_out == NULL)
-    {
-        command->redir_out = rdr_out;
-        return ;
-    }
-    last = command->redir_out;
-    while (last->next != NULL) 
-        last = last->next;
-    last->next = rdr_out;
-}
-*/
-
 
 void node_init(t_node *node)// provisoire
 {
