@@ -39,6 +39,7 @@ conditon bash posix.***
 
 #### 3 Expansion word 
 - expansion variable environement
+- split words
 - remove quotting
 - generte pathname
 
