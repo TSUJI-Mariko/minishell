@@ -11,6 +11,7 @@ https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Command-Search-
 - .1 do **make**
 - .2 execute **./minishell**
 - .3 write your command on prompt
+*ex. pwd *
 
 ***/!\ for check the real mouvement of bash, do test under the
 conditon bash posix.*** 
