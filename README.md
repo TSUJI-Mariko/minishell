@@ -14,6 +14,9 @@ https://www.gnu.org/savannah-checkouts/gnu/bash/manual/bash.html#Command-Search-
 - .2 execute **./minishell**
 - .3 write your command on prompt
 
+
+-*ex. write "pwd" om prompt, you can get the infomation of your currecnty directory *
+
 ***/!\ for check the real mouvement of bash, do test under the
 conditon bash posix.*** 
 -> write in prompt like this:
