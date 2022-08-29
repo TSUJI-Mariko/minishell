@@ -11,14 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
-/*
-**is_redirection : on check s'il y a des orepand sur le string
-**
-*/
-/*int is_redirection(t_command **command_line)
-{
-    
-}*/
+
 extern int exit_status;
 
 int first_word_is_pipe(char *str)

@@ -23,12 +23,12 @@
 
 int	is_var_name_char_1st(char c)
 {
-	return (ft_isalpha(c) || c == '_'); // alphabet,_
+	return (ft_isalpha(c) || c == '_');
 }
 
 int	is_var_name_char(char c)
 {
-	return (ft_isalnum(c) || c == '_');// 英字,数字,_
+	return (ft_isalnum(c) || c == '_');
 }
 
 char	*ft_strjoin_and_free(char *s1, int i1, char *s2, int i2)

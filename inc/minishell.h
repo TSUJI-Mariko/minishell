@@ -206,7 +206,6 @@ void    init_token(t_token *new);
 int is_redirection(char c);
 int is_separator(char c);
 int word_end(char *str, int *cur);
-int checker_builtin(char *str);
 int	put_eof(t_command *command_line, char *str, int len);
 
 //parser

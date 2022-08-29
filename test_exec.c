@@ -32,7 +32,7 @@ void	exec_builtin(t_node *node, t_shell *shell)
     else
     {
         ft_putstr_fd("no match command\n", 2);
-        exit(1);
+        exit_status = 2;
     }
 }
 
@@ -81,7 +81,7 @@ bool	set_redir_out(t_redir *redir_out)
 	else
     {
 		ft_putstr_fd("error: set_redir_out()", 2);
-        exit(1);
+		return (false);
     }
 	fd = open(redir_out->str, oflag, 0664);
 	if (fd < 0)
@@ -186,6 +186,7 @@ void	exec_file(t_node *node, t_shell *shell)
 		signal(SIGQUIT, SIG_DFL);
 		if (check_cmd(node->cmds))
 			exit(exit_status);
+			//return ;
 		cmd_argv = create_argv(node->cmds->word);
 		cmd_envp = create_envp(shell);
 		execve(node->cmds->pathname, cmd_argv, cmd_envp);

@@ -60,7 +60,6 @@ void    init_token(t_token *new)
     new->next = NULL;
 }
 
-/* version 08/12
 void token_addback(t_token **tkn, t_token *new)
 {
     t_token *a;
@@ -74,42 +73,4 @@ void token_addback(t_token **tkn, t_token *new)
 		    a = a->next;
 		a->next = new;
 	}
-}
-*/
-void token_addback(t_token **tkn, t_token *new)
-{
-    t_token *a;
-
-    a = *tkn;
-	if (a == NULL)
-		*tkn = new;
-	else
-	{
-        while (a->next)
-		    a = a->next;
-		a->next = new;
-	}
-}
-
-
-int checker_builtin(char *str)
-{
-    if (str == NULL)
-        return (0);
-    if (!ft_strcmp(str, "exit"))
-        return (1);
-    if (!ft_strcmp(str, "cd"))
-        return (1);
-    if (!ft_strcmp(str, "echo"))
-        return (1);
-    if (!ft_strcmp(str, "env"))
-        return (1);
-    if (!ft_strcmp(str, "export"))
-        return (1);
-    if (!ft_strcmp(str, "unset"))
-        return (1);
-    if (!ft_strcmp(str, "pwd"))
-        return (1);
-    else
-        return (0); 
 }
