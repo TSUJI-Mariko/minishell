@@ -36,6 +36,13 @@ conditon bash posix.***
 - what is BNF? https://fr.wikipedia.org/wiki/Forme_de_Backus-Naur 
 - good resource for study recursion from 42 student : 
   https://github.com/0xbatche/parser-bison
+  
+### step of parsing
+https://github.com/TSUJI-Mariko/minishell/issues/1#issue-1357623389
+
+### step of execution
+https://github.com/TSUJI-Mariko/minishell/issues/2#issue-1357623771
+  
 
 #### 3 Expansion word 
 - expansion variable environement
