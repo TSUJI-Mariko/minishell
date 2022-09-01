@@ -26,6 +26,7 @@
 # include <stdbool.h>
 # include <fcntl.h>
 # include <signal.h>
+# include <limits.h>
 # include <unistd.h>
 # include <sys/wait.h>
 # include <sys/types.h>
