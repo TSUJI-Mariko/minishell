@@ -39,13 +39,13 @@ conditon bash posix.***
   
 #### vilualisation of parsing
 ### parsing tree
-![parser_tree_execution](https://user-images.githubusercontent.com/80053085/187874619-af7255b2-07a6-477e-864b-f4f4cba336e6.png)
+![parser_tree_execution](https://user-images.githubusercontent.com/80053085/187880230-b1ba2821-914b-4664-8070-8b1ab14102f9.png)
 
 ### step of parsing
-![parser_tree_with_fleche](https://user-images.githubusercontent.com/80053085/187874965-c60cda58-ba8b-4489-9e27-84b0ab8ad917.png)
+![parser_tree_with_fleche](https://user-images.githubusercontent.com/80053085/187880043-8a3f8536-f07f-4f36-986f-bf906a031b6a.png)
 
 ### step of execution
-![ordre_execution drawio](https://user-images.githubusercontent.com/80053085/187874417-50acb36c-9fd9-4545-a0f7-de5c24b0e1df.png)
+![ordre_execution drawioのコピー](https://user-images.githubusercontent.com/80053085/187880338-6c26c364-35d1-400a-b3e7-9e067e5f50cd.png)
   
 
 #### 3 Expansion word 
