@@ -45,7 +45,7 @@ conditon bash posix.***
 ![parser_tree_with_fleche](https://user-images.githubusercontent.com/80053085/187880043-8a3f8536-f07f-4f36-986f-bf906a031b6a.png)
 
 ### step of execution
-![ordre_execution drawioのコピー](https://user-images.githubusercontent.com/80053085/187880338-6c26c364-35d1-400a-b3e7-9e067e5f50cd.png)
+![ordre_execution drawioのコピー (1)](https://user-images.githubusercontent.com/80053085/187881486-42d7eae8-0b2d-4bff-850d-70b611a7375a.png)
   
 
 #### 3 Expansion word 
