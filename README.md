@@ -37,14 +37,14 @@ conditon bash posix.***
 - good resource for study recursion from 42 student : 
   https://github.com/0xbatche/parser-bison
   
-#### vilualisation of parsing
-### my parsing tree
+### vilualisation of parsing
+#### my parsing tree
 ![parser_tree_execution](https://user-images.githubusercontent.com/80053085/187880230-b1ba2821-914b-4664-8070-8b1ab14102f9.png)
 
-### step of parsing
+#### step of parsing
 ![parser_tree_with_fleche](https://user-images.githubusercontent.com/80053085/187880043-8a3f8536-f07f-4f36-986f-bf906a031b6a.png)
 
-### step of execution
+#### step of execution
 ![ordre_execution drawioのコピー (1)](https://user-images.githubusercontent.com/80053085/187881486-42d7eae8-0b2d-4bff-850d-70b611a7375a.png)
   
 
