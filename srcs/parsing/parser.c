@@ -16,11 +16,6 @@
 construction de parsing:
 en utilisant la regle EBNF(Extended BNF(Backs-Naur form)) par chque token,
 apres on parse par chaque resultat de token.
-ordre d'algo : 
-1 word
-2 redir in /out
-3 command(builtin)
-4 pipe command (separateur)
 */
 
 /*

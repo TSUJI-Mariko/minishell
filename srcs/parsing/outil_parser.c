@@ -172,7 +172,7 @@ void redir_out_addback(t_cmd *command, t_redir_kind kind, char *str, int len)
     last->next = rdr;
 }
 
-void node_init(t_node *node)// provisoire
+void node_init(t_node *node)
 {
     node->lhs = NULL;
     node->rhs = NULL;

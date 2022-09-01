@@ -1,9 +1,3 @@
-/*   /!\ cette partie j'ai reference un example
-et j'ai change tous les variables pour adapter ma propore version
-
-** NB : 08/21 my echo can work!
-
-*/
 
 extern int exit_status;
 
