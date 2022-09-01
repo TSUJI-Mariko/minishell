@@ -38,10 +38,10 @@ conditon bash posix.***
   https://github.com/0xbatche/parser-bison
   
 ### step of parsing
-![parsing_tree](https://user-images.githubusercontent.com/80053085/187738133-e422acb7-a85d-43ba-8bb5-0a9f21cc0776.png)
+![parsing_tree](https://github.com/TSUJI-Mariko/minishell/issues/1#issue-1357623389)
 
 ### step of execution
-https://github.com/TSUJI-Mariko/minishell/issues/2#issue-1357623771
+![execution_tree](https://user-images.githubusercontent.com/80053085/187738133-e422acb7-a85d-43ba-8bb5-0a9f21cc0776.png)
   
 
 #### 3 Expansion word 
