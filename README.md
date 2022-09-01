@@ -38,7 +38,8 @@ conditon bash posix.***
   https://github.com/0xbatche/parser-bison
   
 ### step of parsing
-https://github.com/TSUJI-Mariko/minishell/issues/1#issue-1357623389
+(https://user-images.githubusercontent.com/80053085/187738133-e422acb7-a85d-43ba-8bb5-0a9f21cc0776.png)
+
 ### step of execution
 https://github.com/TSUJI-Mariko/minishell/issues/2#issue-1357623771
   
