@@ -38,10 +38,10 @@ conditon bash posix.***
   https://github.com/0xbatche/parser-bison
   
 #### vilualisation of parsing
-###parsing tree
+### parsing tree
 ![parser_tree_execution](https://user-images.githubusercontent.com/80053085/187874619-af7255b2-07a6-477e-864b-f4f4cba336e6.png)
 
-###step of parsing
+### step of parsing
 ![parser_tree_with_fleche](https://user-images.githubusercontent.com/80053085/187874965-c60cda58-ba8b-4489-9e27-84b0ab8ad917.png)
 
 ### step of execution
