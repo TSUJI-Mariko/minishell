@@ -26,6 +26,7 @@
 # include <stdbool.h>
 # include <fcntl.h>
 # include <signal.h>
+#include <string.h>
 # include <limits.h>
 # include <unistd.h>
 # include <sys/wait.h>
@@ -342,7 +343,7 @@ void	exec_no_pipe(t_node *pipe_node, t_shell *shell);
 void	exec_cmd(t_node *node, t_shell *shell);
 void	exec_file(t_node *node, t_shell *shell);
 void	set_exit_status(void);
-int	check_cmd(t_cmd *cmd);
+bool	check_cmd(t_cmd *cmd);
 bool	is_directory(char *pathname);
 int	fail_exec(t_node *node);
 bool	set_redir_out(t_redir *redir_out);

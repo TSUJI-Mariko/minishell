@@ -44,7 +44,9 @@ bool	set_redir_in(t_redir *redir_in)
 		{
 			ft_putstr_fd("minishell: ", 2);
             ft_putstr_fd("redir_in->str", 2); 
-            ft_putstr_fd("\n", 2);
+            ft_putstr_fd(": ", 2);
+            ft_putstr_fd(strerror(errno), 2);
+			ft_putstr_fd("\n", 2);			
 			return (false);
 		}
 	}
@@ -53,7 +55,7 @@ bool	set_redir_in(t_redir *redir_in)
 	else
     {
 		ft_putstr_fd("error: set_redir_in()", 2);
-        exit(1);
+        exit_status = 1;
     }
 	dup2(fd, 0);
 	close(fd);
@@ -75,12 +77,16 @@ bool	set_redir_out(t_redir *redir_out)
 	else
     {
 		ft_putstr_fd("error: set_redir_out()", 2);
-		return (false);
+		exit_status = 1;
     }
 	fd = open(redir_out->str, oflag, 0664);
 	if (fd < 0)
 	{
-		printf("minishell: %s: \n", redir_out->str); //+error
+			ft_putstr_fd("minishell: ", 2);
+            ft_putstr_fd("redir_out->str", 2); 
+            ft_putstr_fd(": ", 2);
+            ft_putstr_fd(strerror(errno), 2);
+			ft_putstr_fd("\n", 2);	 
 		return (false);
 	}
 	dup2(fd, 1);
@@ -93,9 +99,9 @@ int	fail_exec(t_node *node)
 	exit_status = 126;
 	if (errno == ENOENT)
 		exit_status = 127;
-	ft_putstr_fd("minishell: ", 1);
- 	ft_putstr_fd(node->cmds->pathname, 1);
-	ft_putstr_fd("\n", 1);   
+	ft_putstr_fd("minishell: ", 2);
+ 	ft_putstr_fd(node->cmds->pathname, 2);
+	ft_putstr_fd(": Permission denied\n", 2);   
 	return (exit_status);
 }
 
@@ -134,7 +140,7 @@ char	**create_argv(t_word *word)
 }
 
 
-int	check_cmd(t_cmd *cmd)
+bool	check_cmd(t_cmd *cmd)
 {
 	if (cmd->pathname == NULL)
 	{
@@ -142,7 +148,7 @@ int	check_cmd(t_cmd *cmd)
         ft_putstr_fd(cmd->word->str, 2);
         ft_putstr_fd(" command not found\n", 2);
 		exit_status = 127;
-		return (1);
+		return (false);
 	}
 	if (is_directory(cmd->pathname))
 	{ 
@@ -150,9 +156,9 @@ int	check_cmd(t_cmd *cmd)
         ft_putstr_fd(cmd->pathname, 2);
         ft_putstr_fd(" is a directory\n", 2);
 		exit_status = 126;
-		return (1);
+		return (false);
 	}
-	return (0);
+	return (true);
 }
 
 void	set_exit_status(void)
@@ -161,7 +167,9 @@ void	set_exit_status(void)
 	{
 		exit_status = 128 + WTERMSIG(exit_status);
 		if (exit_status == 128 + SIGQUIT)
-			ft_putstr_fd("Quit: 3\n", 2);
+		{
+			ft_putstr_fd("Quit (core dumped)\n", 2);
+		}
 	}
 	else
 		exit_status = WEXITSTATUS(exit_status);
@@ -172,15 +180,13 @@ void	exec_file(t_node *node, t_shell *shell)
 	int		pid;
 	char	**cmd_argv;
 	char	**cmd_envp;
-	int exit_status;
 
 	pid = fork();
 	if (pid == 0)
 	{
 		signal(SIGQUIT, SIG_DFL);
-		if (check_cmd(node->cmds))
+		if (!check_cmd(node->cmds))
 			exit(exit_status);
-			//return ;
 		cmd_argv = create_argv(node->cmds->word);
 		cmd_envp = create_envp(shell);
 		execve(node->cmds->pathname, cmd_argv, cmd_envp);
