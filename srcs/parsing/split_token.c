@@ -48,12 +48,12 @@ void init_type(t_token *new)
         if (new->string[0] == '|')
             new->kind = TOKEN_PIPE;
     }
-    if (len == 2)
+    if (len >= 2)
     {
         if (new->string[0] == '>' && new->string[1] == '>')
-            new->kind = TOKEN_OP; // il faut modifier
+            new->kind = TOKEN_OP; 
         if (new->string[0] == '<' && new->string[1] == '<')
-            new->kind = TOKEN_OP; //il faut modifier
+            new->kind = TOKEN_OP; 
     }
     if (len != 0 && new->kind == DEFAULT)
         new->kind = TOKEN_ARGUMENT;
