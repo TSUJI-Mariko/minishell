@@ -39,21 +39,23 @@ int main(int argc, char **argv, char **envp)
     char *line;
     t_shell *shell;
 
+    rl_outstream = stderr;
     if (argc)
         shell = create_shell(envp, argv);
-    while (1)
+    while (true)
     {
-        signal_init();
         line = readline(">minishell ");
+        add_history(line);
+        signal_init();
         if (line == NULL) 
             break;
         if (only_space(line) && !first_word_colon_exclamation(line))
         {
-            add_history(line);
             if (first_word_is_pipe(line) == 0)
                 start_command(line, shell);
         }
-        free(line);
+        if (line)
+            free(line);
     }
     ft_putstr_fd("exit\n", 2);
     exit_shell(shell, exit_status);

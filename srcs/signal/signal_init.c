@@ -24,8 +24,8 @@
 void    signal_init_handle(int signal)
 {
     //extern int exit_status;
-    exit_status += signal;
-
+    //exit_status += signal;
+    /*
     if (signal == 2)
     {
         exit_status = 128 + SIGINT; //valeur de retour avec Ctrl + C ( 128 + 2 = 130)
@@ -38,7 +38,14 @@ void    signal_init_handle(int signal)
     {
         write(2, "Quit (core dumped)\n", ft_strlen("Quit (core dumped)\n"));
         exit(1);
-    }
+        }
+        */
+    (void)signal;
+	ft_putstr_fd("\n", 2);
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
+	exit_status = 128 + SIGINT;
 }
 
 void    signal_init(void)

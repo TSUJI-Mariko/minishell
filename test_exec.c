@@ -182,6 +182,11 @@ void	exec_file(t_node *node, t_shell *shell)
 	char	**cmd_envp;
 
 	pid = fork();
+	if (pid == -1)
+	{
+		perror("fork");
+		exit(1);
+	}
 	if (pid == 0)
 	{
 		signal(SIGQUIT, SIG_DFL);
@@ -231,6 +236,11 @@ void	exec_multi_pipes(t_node *pipe_node, t_shell *shell)
 		return ;
 	pipe(fd);
 	pid = fork();
+	if (pid == -1)
+	{
+		perror("fork");
+		exit(1);
+	}
 	if (pid == 0)
 	{
 		if (pipe_node->lhs)
@@ -262,6 +272,11 @@ void	exec_pipe(t_node *pipe_node, t_shell *shell)
 	else
 	{
 		pid = fork();
+		if (pid == -1)
+		{
+			perror("fork");
+			exit(1);
+		}
 		if (pid == 0)
 		{
 			exec_multi_pipes(pipe_node, shell); // go testfile
