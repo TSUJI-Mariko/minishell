@@ -44,13 +44,13 @@ int main(int argc, char **argv, char **envp)
         shell = create_shell(envp, argv);
     while (true)
     {
-        line = readline(">minishell ");
-        add_history(line);
         signal_init();
+        line = readline(">minishell ");
         if (line == NULL) 
             break;
         if (only_space(line) && !first_word_colon_exclamation(line))
         {
+            add_history(line);
             if (first_word_is_pipe(line) == 0)
                 start_command(line, shell);
         }

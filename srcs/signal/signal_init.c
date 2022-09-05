@@ -24,7 +24,7 @@
 void    signal_init_handle(int signal)
 {
     //extern int exit_status;
-    //exit_status += signal;
+    exit_status += signal;
     /*
     if (signal == 2)
     {

@@ -23,7 +23,7 @@ bool	is_heredoc_eof(char *line, char *eof)
 		&& ft_strncmp(line, eof, line_len) == 0);
 }
 
-void	write_heredoc_to_fd(t_redir *redir, int fd)
+void	write_heredoc_to_fd(t_redir *redir, t_shell *shell, int fd)
 {
 	char	*line;
 
@@ -37,6 +37,8 @@ void	write_heredoc_to_fd(t_redir *redir, int fd)
 			free(line);
 			break ;
 		}
+		if (line)
+			line = expand_var_in_str(line, shell);
 		write(fd, line, ft_strlen(line));
 		write(fd, "\n", 1);		
 		free(line);
@@ -55,7 +57,7 @@ void	set_heredoc(t_redir *redir, t_shell *shell)
 	{
 		pipe(fd);
 		redir->fd = fd[0];
-		write_heredoc_to_fd(redir, fd[1]);
+		write_heredoc_to_fd(redir, shell, fd[1]);
 		dup2(shell->fdin, 0);
 		close(fd[1]);
 	}
