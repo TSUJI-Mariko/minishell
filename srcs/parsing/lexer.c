@@ -25,8 +25,9 @@ t_command *lexer(char *str)
         command_line = get_command_line(str);
         if (split_command_line(command_line) > 0)
         {
-            free(str);
-            free(command_line);
+            //free(str);
+            free_lexer(command_line);
+            return (NULL);
         }
     }
     return (command_line);

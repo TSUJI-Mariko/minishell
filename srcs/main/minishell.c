@@ -21,7 +21,10 @@ void start_command(char *str, t_shell *shell)
 
     command_line = lexer(str);
     if (command_line == NULL)
+    {
+        exit_status = 2;
         return ;
+    }
     node = parser(command_line->first_token);
     free_lexer(command_line);
     if (node)
