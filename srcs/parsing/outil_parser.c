@@ -87,7 +87,7 @@ t_node *new_node_pipe(t_node *cmd_node)
 {
     t_node *node;
     
-    if (exit_status == 5)
+    if (exit_status == 5 || exit_status == 6)
         return (NULL);
     node = ft_calloc(1, sizeof(t_node));
     node->kind = PIPE;

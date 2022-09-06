@@ -55,14 +55,15 @@ t_node *parser(t_token *token)
         return (NULL);
     }
     else if (exit_status == 6)
-    if (exit_status == 5)
     {
-        printf("minishell: syntax error near unexpected token \n");
         exit_status = 2;
         return (NULL);
     }
-    token = skip(token, TOKEN_EOF, NULL);
-    return (node);
+    else
+    {
+        token = skip(token, TOKEN_EOF, NULL);
+        return (node);
+    }
 }   
 
 
