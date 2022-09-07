@@ -32,6 +32,14 @@ bool consume(t_token *token, t_token_kind kind, char *str)
 	return (true);
 }                         
 
+bool consume_redir(t_token *token, t_token_kind kind, char *str) 
+{
+	if (token->kind != kind)
+		return (false);
+	if (str != NULL && !ft_strnstr(token->string, str, token->len))
+		return (false);
+	return (true);
+}    
 
 t_token *skip(t_token *token, t_token_kind kind, char *str) 
 {
@@ -108,7 +116,7 @@ t_node *new_node_command(void)
 {
     t_node *node;
 
-    if (exit_status == 5)
+    if (exit_status == 5 || exit_status == 6)
         return (NULL);
     node = ft_calloc(1, sizeof(t_node));
     node->cmds = ft_calloc(1, sizeof(t_cmd));

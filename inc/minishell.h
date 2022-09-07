@@ -96,7 +96,7 @@ typedef struct s_cmd
 	t_redir *redir_in;
 	t_redir *redir_out;
 	t_word *word;
-	int		is_builtin;
+	bool		is_builtin;
 	char	*pathname;
 } t_cmd;
 
@@ -219,6 +219,7 @@ t_node *command(t_token **token);
 //void redir_out(t_token **token, t_node *node);
 t_node *word(t_token **token);
 void node_init(t_node *node); // provisoire
+void syntax_error(t_node *node);
 
 //expension
 void	expander(t_node *node, t_shell *shell);
@@ -256,6 +257,7 @@ int	check_pathname(char *pathname);
 
 //util_for_parser
 bool consume(t_token *token, t_token_kind kind, char *str);
+bool consume_redir(t_token *token, t_token_kind kind, char *str);
 t_token *skip(t_token *token, t_token_kind kind, char *str);
 void parser_error(char *str, long len);
 t_node *new_node_pipe(t_node *cmd_node);
@@ -332,7 +334,7 @@ void	free_paths(t_shell *shell);
 void	free_cmds(t_shell *shell);
 void	fill_data(t_shell *shell, char **args);
 void	lst_addback(t_comm **lst, t_comm *new);
-int		isbuiltin(char *str);
+bool		isbuiltin(char *str);
 
 //heredoc
 void	expander_set_heredoc(t_node *node, t_shell *shell);

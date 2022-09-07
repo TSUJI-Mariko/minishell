@@ -28,6 +28,11 @@ char	*expand_var_in_str(char *str, t_shell *shell)
 		if (!single_quote && str[i] == '$')
 		{
 			i = at_doller_mark(str, &new, i, shell);
+			if (str[0] == '$' && ft_isdigit(str[1]))
+			{
+				new[0] = str[2];
+				i += 2;
+			}
 			continue ;
 		}
 		if (str[i] == '"' && !single_quote)

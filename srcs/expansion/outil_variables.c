@@ -25,7 +25,7 @@ long	at_doller_mark(char *str, char **new, long i, t_shell *shell)
 		*new = ft_strjoin_and_free(*new, 1, ft_itoa(exit_status), 1);
 		i++;
 	}
-	else if (!is_var_name_char(str[i])) // if it's not variable
+	else if (!is_var_name_char_1st(str[i])) // if it's not variable
 		*new = ft_strjoin_and_free(*new, 1, "$", 0);
 	else // it's variable
 	{

@@ -33,7 +33,7 @@ void pathname_generator(t_node *node, t_shell *shell)
 		if (node->cmds->word == NULL)
 			return ;
 		if (isbuiltin(node->cmds->word->str))
-			node->cmds->is_builtin = 1;
+			node->cmds->is_builtin = true;
 		else
 			node->cmds->pathname = get_pathname_str(node->cmds->word->str, shell);
 	}

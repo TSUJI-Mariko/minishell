@@ -135,7 +135,7 @@ void	fill_data(t_shell *shell, char **args)
 	return;
 }
 
-int		isbuiltin(char *str)
+bool		isbuiltin(char *str)
 {
 	int			i;
 	const char	*args[] = {"echo", "cd", "pwd", "export", "unset", "env", "exit", NULL};
@@ -144,11 +144,11 @@ int		isbuiltin(char *str)
 
 	while (args[i])
 	{
-		if (ft_strncmp(str, args[i], ft_strlen(str)) == 0)
-			return (1);
+		if (ft_strcmp(str, args[i]) == 0)
+			return (true);
 		i++;
 	}
-	return (0);
+	return (false);
 }
 
 void	lst_addback(t_comm **lst, t_comm *new)
