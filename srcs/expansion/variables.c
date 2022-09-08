@@ -12,27 +12,41 @@
 
  #include "../../inc/minishell.h"
 
+
+static int after_doller_check(char *str, char *new, int i)
+{
+	int cur;
+
+	cur = 1;
+	if(str[0] == '$' && ft_isdigit(str[1]))
+	{
+		new[0] = str[2];
+		i += 2;
+	}
+	else if (str[0] == '$' && (str[cur] == '\'' || str[cur] == '"'))
+	{
+		while (str[cur] != '\'' && str[cur] != '"')
+			cur++;
+		new[0] = str[cur];
+		i += cur;
+	}
+	return i;
+}
+
 char	*expand_var_in_str(char *str, t_shell *shell)
 {
 	char	*new;
-	long	i;
-	int	double_quote;
-	int	single_quote;
+	long	i = 0;
+	bool	double_quote = false;
+	bool	single_quote = false;
 
 	new = ft_strdup("");
-	double_quote = 0;
-	single_quote = 0;
-	i = 0;
 	while (str[i])
 	{
 		if (!single_quote && str[i] == '$')
 		{
 			i = at_doller_mark(str, &new, i, shell);
-			if (str[0] == '$' && ft_isdigit(str[1]))
-			{
-				new[0] = str[2];
-				i += 2;
-			}
+			i = after_doller_check(str, new, i);
 			continue ;
 		}
 		if (str[i] == '"' && !single_quote)
@@ -45,6 +59,8 @@ char	*expand_var_in_str(char *str, t_shell *shell)
 	free(str);
 	return (new);
 }
+
+
 
 void	expand_var_in_redir(t_redir *redir, t_shell *shell)
 {
