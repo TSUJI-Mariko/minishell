@@ -1,0 +1,64 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   outil_parser2.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msuji <mtsuji@student.42.fr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/14 14:30:17 by msuji             #+#    #+#             */
+/*   Updated: 2022/09/08 17:47:23 by mtsuji           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../inc/minishell.h"
+
+void	free_redirection(t_redir *redirection)
+{
+	if (!redirection)
+		return ;
+	free_redirection(redirection->next);
+	free(redirection->str);
+	free(redirection);
+}
+
+void	free_word(t_word *word)
+{
+	if (!word)
+		return ;
+	free_word(word->next);
+	free(word->str);
+	free(word);
+}
+
+t_node	*new_node_pipe(t_node *cmd_node)
+{
+	t_node	*node;
+
+	if (g_exit_status == 5 || g_exit_status == 6)
+		return (NULL);
+	node = ft_calloc(1, sizeof(t_node));
+	node->kind = PIPE;
+	node->rhs = cmd_node;
+	return (node);
+}
+
+t_node	*add_node_pipe(t_node *node, t_node *cmd_node)
+{
+	t_node	*new;
+
+	new = new_node_pipe(cmd_node);
+	new->lhs = node;
+	return (new);
+}
+
+t_node	*new_node_command(void)
+{
+	t_node	*node;
+
+	if (g_exit_status == 5 || g_exit_status == 6)
+		return (NULL);
+	node = ft_calloc(1, sizeof(t_node));
+	node->cmds = ft_calloc(1, sizeof(t_cmd));
+	node->kind = COMMAND;
+	return (node);
+}

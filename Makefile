@@ -6,7 +6,7 @@
 #    By: msuji <mtsuji@student.42.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 12:35:48 by msuji             #+#    #+#              #
-#    Updated: 2022/09/08 16:37:02 by mtsuji           ###   ########.fr        #
+#    Updated: 2022/09/08 17:54:22 by mtsuji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ SRCS	=	./srcs/main/minishell.c	\
 			./srcs/signal/signal_init.c		\
 			./srcs/signal/signal_exec.c			\
 			./srcs/signal/signal_heredoc.c		\
-			./srcs/parsing/error.c 				\
 			./srcs/parsing/outil_lexer.c			\
 			./srcs/parsing/quoting.c 			\
 			./srcs/parsing/lexer.c 				\
@@ -26,7 +25,9 @@ SRCS	=	./srcs/main/minishell.c	\
 			./srcs/parsing/split_token.c 	\
 			./srcs/parsing/outil.c			\
 			./srcs/parsing/parser.c			\
-			./srcs/parsing/outil_parser.c	\
+			./srcs/parsing/outil_parser.c			\
+			./srcs/parsing/outil_parser2.c			\
+			./srcs/parsing/outil_parser3.c	\
 			./srcs/shell/get_env.c		\
 			./srcs/shell/get_env2.c		\
 			./srcs/shell/create_shell.c		\

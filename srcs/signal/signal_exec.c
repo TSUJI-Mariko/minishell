@@ -6,18 +6,17 @@
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 10:51:53 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/09/08 16:39:14 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/08 16:56:01 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-extern int	exit_status;
+extern int	g_exit_status;
 
 void	signal_exec_handle(int signal)
 {
 	g_exit_status += signal;
-
 	if (signal == 2)
 	{
 		g_exit_status = 128 + SIGINT;
