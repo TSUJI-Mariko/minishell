@@ -6,7 +6,7 @@
 #    By: msuji <mtsuji@student.42.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 12:35:48 by msuji             #+#    #+#              #
-#    Updated: 2022/08/24 11:46:45 by msuji            ###   ########.fr        #
+#    Updated: 2022/09/08 16:37:02 by mtsuji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,9 @@ SRCS	=	./srcs/main/minishell.c	\
 			./srcs/parsing/parser.c			\
 			./srcs/parsing/outil_parser.c	\
 			./srcs/shell/get_env.c		\
+			./srcs/shell/get_env2.c		\
 			./srcs/shell/create_shell.c		\
+			./srcs/shell/create_shell2.c		\
 			./srcs/shell/create_envp.c		\
 			./srcs/shell/env_add.c			\
 			./srcs/shell/del_env.c			\

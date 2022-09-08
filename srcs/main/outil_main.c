@@ -6,25 +6,24 @@
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 11:37:32 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/08/21 11:37:34 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/08 15:41:41 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int only_space(char *str)
+int	only_space(char *str)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    j = 0;
-    i = 0;
-    while (str[i])
-    {
-        if (str[i] != ' ')
-            j++;
-        i++;
-    }
-    return (j); 
-
+	j = 0;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ')
+			j++;
+		i++;
+	}
+	return (j);
 }

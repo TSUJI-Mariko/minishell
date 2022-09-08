@@ -36,7 +36,7 @@
 # include <readline/history.h>
 # include "../libft/libft.h"
 
-extern int exit_status;
+extern int g_exit_status;
 
 typedef enum{
     DEFAULT, //default 0

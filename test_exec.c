@@ -1,5 +1,5 @@
 
-extern int exit_status;
+extern int	g_exit_status;
 
 #include "./inc/minishell.h"
 
@@ -10,23 +10,23 @@ void	exec_builtin(t_node *node, t_shell *shell)
     command = node->cmds;
 
 	if (!ft_strncmp(command->word->str, "echo", ft_strlen(command->word->str)))
-		exit_status = echo(command->word);
+		g_exit_status = echo(command->word);
     else if (!ft_strncmp(command->word->str, "env", ft_strlen(command->word->str)))
-		exit_status = env(command->word, shell);
+		g_exit_status = env(command->word, shell);
 	else if (!ft_strncmp(command->word->str, "pwd", ft_strlen(command->word->str)))
-		exit_status = pwd(command->word);
+		g_exit_status = pwd(command->word);
 	else if (!ft_strncmp(command->word->str, "cd", ft_strlen(command->word->str)))
-		exit_status = cd(command->word, shell);
+		g_exit_status = cd(command->word, shell);
 	else if (!ft_strncmp(command->word->str, "export", ft_strlen(command->word->str)))
-		exit_status = export(command->word, shell);
+		g_exit_status = export(command->word, shell);
 	else if (!ft_strncmp(command->word->str, "unset", ft_strlen(command->word->str)))
-		exit_status = unset(command->word, shell);
+		g_exit_status = unset(command->word, shell);
 	else if (!ft_strncmp(command->word->str, "exit", ft_strlen(command->word->str)))
 		builtin_exit(command->word);
     else
     {
         ft_putstr_fd("no match command\n", 2);
-        exit_status = 2;
+        g_exit_status = 2;
     }
 }
 
@@ -55,7 +55,7 @@ bool	set_redir_in(t_redir *redir_in)
 	else
     {
 		ft_putstr_fd("error: set_redir_in()", 2);
-        exit_status = 1;
+        g_exit_status = 1;
     }
 	dup2(fd, 0);
 	close(fd);
@@ -77,7 +77,7 @@ bool	set_redir_out(t_redir *redir_out)
 	else
     {
 		ft_putstr_fd("error: set_redir_out()", 2);
-		exit_status = 1;
+		g_exit_status = 1;
     }
 	fd = open(redir_out->str, oflag, 0664);
 	if (fd < 0)
@@ -96,13 +96,13 @@ bool	set_redir_out(t_redir *redir_out)
 
 int	fail_exec(t_node *node)
 {
-	exit_status = 126;
+	g_exit_status = 126;
 	if (errno == ENOENT)
-		exit_status = 127;
+		g_exit_status = 127;
 	ft_putstr_fd("minishell: ", 2);
  	ft_putstr_fd(node->cmds->pathname, 2);
 	ft_putstr_fd(": Permission denied\n", 2);   
-	return (exit_status);
+	return (g_exit_status);
 }
 
 bool	is_directory(char *pathname)
@@ -147,7 +147,7 @@ bool	check_cmd(t_cmd *cmd)
 		ft_putstr_fd("minishell: ", 2);
         ft_putstr_fd(cmd->word->str, 2);
         ft_putstr_fd(" command not found\n", 2);
-		exit_status = 127;
+		g_exit_status = 127;
 		return (false);
 	}
 	if (is_directory(cmd->pathname))
@@ -155,7 +155,7 @@ bool	check_cmd(t_cmd *cmd)
         ft_putstr_fd("minishell:", 2);
         ft_putstr_fd(cmd->pathname, 2);
         ft_putstr_fd(" is a directory\n", 2);
-		exit_status = 126;
+		g_exit_status = 126;
 		return (false);
 	}
 	return (true);
@@ -163,16 +163,16 @@ bool	check_cmd(t_cmd *cmd)
 
 void	set_exit_status(void)
 {
-	if (WIFSIGNALED(exit_status))
+	if (WIFSIGNALED(g_exit_status))
 	{
-		exit_status = 128 + WTERMSIG(exit_status);
-		if (exit_status == 128 + SIGQUIT)
+		g_exit_status = 128 + WTERMSIG(g_exit_status);
+		if (g_exit_status == 128 + SIGQUIT)
 		{
 			ft_putstr_fd("Quit (core dumped)\n", 2);
 		}
 	}
 	else
-		exit_status = WEXITSTATUS(exit_status);
+		g_exit_status = WEXITSTATUS(g_exit_status);
 }
 
 void	exec_file(t_node *node, t_shell *shell)
@@ -191,7 +191,7 @@ void	exec_file(t_node *node, t_shell *shell)
 	{
 		signal(SIGQUIT, SIG_DFL);
 		if (!check_cmd(node->cmds))
-			exit(exit_status);
+			exit(g_exit_status);
 		cmd_argv = create_argv(node->cmds->word);
 		cmd_envp = create_envp(shell);
 		execve(node->cmds->pathname, cmd_argv, cmd_envp);
@@ -199,7 +199,7 @@ void	exec_file(t_node *node, t_shell *shell)
 		free_envp(cmd_envp);
 		exit(fail_exec(node));
 	}
-	waitpid(pid, &(exit_status), 0);
+	waitpid(pid, &(g_exit_status), 0);
 	set_exit_status();
 }
 
@@ -211,7 +211,7 @@ void	exec_cmd(t_node *node, t_shell *shell)
 	{
 		dup2(shell->fdin, 1);
 		dup2(shell->fdout, 0);
-		exit_status = 1;
+		g_exit_status = 1;
 		return ;
 	}
 	if (node->cmds->is_builtin)
@@ -248,7 +248,7 @@ void	exec_multi_pipes(t_node *pipe_node, t_shell *shell)
 		close(fd[1]);
 		close(fd[0]);
 		    exec_cmd(pipe_node->rhs, shell);
-		exit(exit_status);
+		exit(g_exit_status);
 	}
 	else
 	{
@@ -257,8 +257,8 @@ void	exec_multi_pipes(t_node *pipe_node, t_shell *shell)
 		close(fd[0]);
 		exec_multi_pipes(pipe_node->lhs, shell);
 	}
-	waitpid(pid, &(exit_status), 0);
-	exit_status = WEXITSTATUS(exit_status);
+	waitpid(pid, &(g_exit_status), 0);
+	g_exit_status = WEXITSTATUS(g_exit_status);
 }
 
 void	exec_pipe(t_node *pipe_node, t_shell *shell)
@@ -280,10 +280,10 @@ void	exec_pipe(t_node *pipe_node, t_shell *shell)
 		if (pid == 0)
 		{
 			exec_multi_pipes(pipe_node, shell); // go testfile
-			exit(exit_status);
+			exit(g_exit_status);
 		}
 		sts = 0;
 		waitpid(pid, &sts, 0);
-		exit_status = WEXITSTATUS(sts);
+		g_exit_status = WEXITSTATUS(sts);
 	}
 }

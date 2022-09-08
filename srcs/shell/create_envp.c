@@ -6,7 +6,7 @@
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 15:53:19 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/08/21 15:53:21 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/08 16:11:18 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	**create_envp(t_shell *shell)
 			i++;
 		}
 		env = env->next;
-}
+	}
 	return (envp);
 }
 
