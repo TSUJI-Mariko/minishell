@@ -19,16 +19,15 @@
 **
 */
 
-//extern int exit_status;
+//extern int g_exit_status;
 
 void    signal_init_handle(int signal)
 {
-    //extern int exit_status;
-    exit_status += signal;
+    g_exit_status += signal;
     /*
     if (signal == 2)
     {
-        exit_status = 128 + SIGINT; //valeur de retour avec Ctrl + C ( 128 + 2 = 130)
+        g_exit_status = 128 + SIGINT; //valeur de retour avec Ctrl + C ( 128 + 2 = 130)
         ft_putstr_fd("\n", 2);
         rl_on_new_line();
         rl_replace_line("", 0);
@@ -45,7 +44,7 @@ void    signal_init_handle(int signal)
 	rl_on_new_line();
 	rl_replace_line("", 0);
 	rl_redisplay();
-	exit_status = 128 + SIGINT;
+	g_exit_status = 128 + SIGINT;
 }
 
 void    signal_init(void)

@@ -58,7 +58,7 @@ void init_type(t_token *new)
             && new->string[2] == '<') || (new->string[0] == '>' 
             && new->string[1] == '>' && new->string[2] == '>'))
         {
-            exit_status = 5;
+            g_exit_status = 5;
             ft_putstr_fd("syntax error near unexpected token\n", 2);
             return ;
         }*/
@@ -86,7 +86,7 @@ static int tokenization(int cur, int start, char *str, t_command *command_line)
     token->string = ft_strncpy(token->string, str + start, cur - start);
     token->len = cur - start;
     init_type(token);
-    if (exit_status == 5)
+    if (g_exit_status == 5)
     {
         if (token)
         {

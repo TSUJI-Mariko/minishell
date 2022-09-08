@@ -6,7 +6,7 @@
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 15:27:07 by mtsuji            #+#    #+#             */
-/*   Updated: 2021/12/04 11:11:13 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/08 15:36:02 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	conversion_checker(char *format, t_count *count)
 	else if (format[count->index] == 'd' || format[count->index] == 'i')
 		count->byte += ft_putnbr_for_printf(va_arg(count->argument, int));
 	else if (format[count->index] == 'u')
-		count->byte += ft_putnbr_for_printf(va_arg(count->argument, unsigned int));
+		count->byte += ft_putnbr_for_printf(va_arg(count->argument,
+					unsigned int));
 	else if (format[count->index] == 'x' || format[count->index] == 'X')
 		count->byte += to_hexadecimal(va_arg(count->argument, unsigned int),
 				format[count->index]);

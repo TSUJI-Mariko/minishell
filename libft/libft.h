@@ -6,7 +6,7 @@
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/26 10:14:16 by mtsuji            #+#    #+#             */
-/*   Updated: 2021/06/11 18:48:04 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/08 15:34:19 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-char *ft_strncpy(char *dest, const char *src, size_t n);
-char *ft_strcpy(char *dest, char *src);
+char	*ft_strncpy(char *dest, const char *src, size_t n);
+char	*ft_strcpy(char *dest, char *src);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **alst, t_list *new);
 int		ft_lstsize(t_list *lst);

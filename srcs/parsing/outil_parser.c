@@ -20,7 +20,7 @@ void parser_error(char *str, long len)
     ft_putstr_fd("minishell : syntax error near unexpected token `newline'", 2);
     ft_putchar_fd('\n', 2);
     free(str_tmp);
-    exit_status = 2;
+    g_exit_status = 2;
 }
 
 bool consume(t_token *token, t_token_kind kind, char *str) 
@@ -45,11 +45,11 @@ t_token *skip(t_token *token, t_token_kind kind, char *str)
 {
 	if (token->kind != kind)
     {
-        exit_status = 5;
+        g_exit_status = 5;
     }
 	if (str != NULL && (token->len != (long)ft_strlen(str) 
         || ft_strncmp(token->string, str, token->len)))
-        exit_status = 5;
+        g_exit_status = 5;
 	return token->next;
 }
 
@@ -95,7 +95,7 @@ t_node *new_node_pipe(t_node *cmd_node)
 {
     t_node *node;
     
-    if (exit_status == 5 || exit_status == 6)
+    if (g_exit_status == 5 || g_exit_status == 6)
         return (NULL);
     node = ft_calloc(1, sizeof(t_node));
     node->kind = PIPE;
@@ -116,7 +116,7 @@ t_node *new_node_command(void)
 {
     t_node *node;
 
-    if (exit_status == 5 || exit_status == 6)
+    if (g_exit_status == 5 || g_exit_status == 6)
         return (NULL);
     node = ft_calloc(1, sizeof(t_node));
     node->cmds = ft_calloc(1, sizeof(t_cmd));

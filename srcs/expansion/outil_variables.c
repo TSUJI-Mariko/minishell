@@ -12,7 +12,7 @@
 
  #include "../../inc/minishell.h"
 
-extern int exit_status;
+extern int g_exit_status;
 
 long	at_doller_mark(char *str, char **new, long i, t_shell *shell)
 {
@@ -22,7 +22,7 @@ long	at_doller_mark(char *str, char **new, long i, t_shell *shell)
 	i++;
 	if (str[i] == '?') //for "echo $?"
 	{
-		*new = ft_strjoin_and_free(*new, 1, ft_itoa(exit_status), 1);
+		*new = ft_strjoin_and_free(*new, 1, ft_itoa(g_exit_status), 1);
 		i++;
 	}
 	else if (!is_var_name_char_1st(str[i])) // if it's not variable

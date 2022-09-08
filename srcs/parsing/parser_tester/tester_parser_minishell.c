@@ -3,12 +3,12 @@
 void test(void);
 void debug_parser(t_node *node);
 void debug_parser_recursive(t_node *node);
-int exit_status;
+int g_exit_status;
 
 int main()
 {
     test();
-    exit_status = 0;
+    g_exit_status = 0;
     return (0);
 }
 
