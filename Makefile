@@ -6,7 +6,7 @@
 #    By: msuji <mtsuji@student.42.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 12:35:48 by msuji             #+#    #+#              #
-#    Updated: 2022/09/08 17:54:22 by mtsuji           ###   ########.fr        #
+#    Updated: 2022/09/09 15:02:26 by mtsuji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,10 @@ SRCS	=	./srcs/main/minishell.c	\
 			./srcs/parsing/lexer.c 				\
 			./srcs/parsing/get_command_line.c \
 			./srcs/parsing/split_token.c 	\
+			./srcs/parsing/outil_split_token.c 	\
 			./srcs/parsing/outil.c			\
+			./srcs/parsing/parser_cmd_redir.c			\
+			./srcs/parsing/parser_pipe_cmd.c			\
 			./srcs/parsing/parser.c			\
 			./srcs/parsing/outil_parser.c			\
 			./srcs/parsing/outil_parser2.c			\
@@ -37,13 +40,11 @@ SRCS	=	./srcs/main/minishell.c	\
 			./srcs/shell/del_env.c			\
 			./srcs/expansion/expansion.c		\
 			./srcs/expansion/variables.c		\
-			./srcs/expansion/outil_expension.c		\
 			./srcs/expansion/outil_variables.c		\
 			./srcs/expansion/outil_variables_2.c		\
 			./srcs/expansion/split_string.c		\
 			./srcs/expansion/outil_split.c		\
 			./srcs/expansion/remove_quote.c		\
-			./srcs/expansion/outil_remove_quote.c		\
 			./srcs/expansion/path_generator.c		\
 			./srcs/expansion/outil_path.c		\
 			./srcs/expansion/heredoc.c			\

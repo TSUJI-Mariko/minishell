@@ -6,13 +6,13 @@
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 15:30:29 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/08/20 15:30:31 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/09 13:37:54 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "../../inc/minishell.h"
+#include "../../inc/minishell.h"
 
- char	*ft_str_add_char(char *str, char c)
+char	*ft_str_add_char(char *str, char c)
 {
 	char	ch[2];
 

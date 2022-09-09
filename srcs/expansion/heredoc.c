@@ -6,7 +6,7 @@
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 18:41:43 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/08/26 18:41:58 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/09 13:33:58 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	write_heredoc_to_fd(t_redir *redir, t_shell *shell, int fd)
 		if (line)
 			line = expand_var_in_str(line, shell);
 		write(fd, line, ft_strlen(line));
-		write(fd, "\n", 1);		
+		write(fd, "\n", 1);
 		free(line);
 	}
 }
@@ -51,8 +51,6 @@ void	set_heredoc(t_redir *redir, t_shell *shell)
 
 	if (redir == NULL)
 		return ;
-	//if (shell->interrupt)
-	//	return ;
 	if (redir->kind == REDIR_HEREDOC)
 	{
 		pipe(fd);

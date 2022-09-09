@@ -6,7 +6,7 @@
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 16:55:54 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/08/20 16:55:56 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/09 14:36:58 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 char	*remove_quote_string(char *str)
 {
 	char	*new;
-	int	single_quote;
-	int	double_quote;
+	int		single_quote;
+	int		double_quote;
 	long	i;
 
 	new = ft_strdup("");
@@ -33,26 +33,23 @@ char	*remove_quote_string(char *str)
 			double_quote = 0;
 		else if (single_quote && str[i] == '\'')
 			single_quote = 0;
-		//else if ((!single_quote || !double_quote) 
-		//	&& (str[i] == '\\' && str[i + 1] != '\\'))
-		//	i++;
 		else
-            new = ft_str_add_char(new, str[i]);
+			new = ft_str_add_char(new, str[i]);
 		i++;
 	}
 	free(str);
 	return (new);
 }
 
-void remove_quote_word(t_word *word)
+void	remove_quote_word(t_word *word)
 {
-    if (word == NULL)
-        return ;
-    word->str = remove_quote_string(word->str);
+	if (word == NULL)
+		return ;
+	word->str = remove_quote_string(word->str);
 	remove_quote_word(word->next);
 }
 
-void    remove_quote_redir(t_redir *redir)
+void	remove_quote_redir(t_redir *redir)
 {
 	if (redir == NULL)
 		return ;
@@ -69,7 +66,7 @@ void	remove_quote_heredoc(t_redir *redir)
 	remove_quote_heredoc(redir->next);
 }
 
-void remove_quote(t_node *node)
+void	remove_quote(t_node *node)
 {
 	if (node == NULL)
 		return ;

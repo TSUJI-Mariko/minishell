@@ -6,47 +6,49 @@
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 15:23:11 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/08/20 15:23:15 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/09 14:30:45 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "../../inc/minishell.h"
+#include "../../inc/minishell.h"
 
-extern int g_exit_status;
+extern int	g_exit_status;
 
-long	at_doller_mark(char *str, char **new, long i, t_shell *shell)
+long	after_doller(char *str, long i, char **new, t_shell *shell)
 {
 	char	*name;
 	char	*body;
 
+	name = get_var_name(&str[i]);
+	if (name[0] != '\0')
+	{
+		body = get_env_body(name, shell);
+		if (body == NULL)
+		{
+			new = NULL;
+			i += ft_strlen(name);
+			free(name);
+			return (i);
+		}
+		*new = ft_strjoin_and_free(*new, 1, body, 0);
+		i += ft_strlen(name);
+	}
+	free(name);
+	return (i);
+}
+
+long	at_doller_mark(char *str, char **new, long i, t_shell *shell)
+{
 	i++;
-	if (str[i] == '?') //for "echo $?"
+	if (str[i] == '?')
 	{
 		*new = ft_strjoin_and_free(*new, 1, ft_itoa(g_exit_status), 1);
 		i++;
 	}
-	else if (!is_var_name_char_1st(str[i])) // if it's not variable
+	else if (!is_var_name_char_1st(str[i]))
 		*new = ft_strjoin_and_free(*new, 1, "$", 0);
-	else // it's variable
-	{
-		//if (ft_isdigit(str[i]))
-			
-		name = get_var_name(&str[i]);
-		if (name[0] != '\0')
-		{
-			body = get_env_body(name, shell);
-			if (body == NULL)
-			{
-				new = NULL;
-				i += ft_strlen(name);
-				free(name);
-				return (i);
-			}
-			*new = ft_strjoin_and_free(*new, 1, body, 0);
-			i += ft_strlen(name);
-		}
-		free(name);
-	}
+	else
+		i = after_doller(str, i, new, shell);
 	return (i);
 }
 

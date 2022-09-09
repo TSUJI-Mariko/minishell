@@ -6,7 +6,7 @@
 /*   By: msuji <mtsuji@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:10:23 by msuji             #+#    #+#             */
-/*   Updated: 2022/07/21 17:10:27 by msuji            ###   ########.fr       */
+/*   Updated: 2022/09/09 20:05:32 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,7 @@ t_node *command(t_token **token);
 t_node *word(t_token **token);
 void node_init(t_node *node); // provisoire
 void syntax_error(t_node *node);
+void	command_error_check(t_node *node);
 
 //expension
 void	expander(t_node *node, t_shell *shell);
@@ -350,7 +351,11 @@ bool	is_directory(char *pathname);
 int	fail_exec(t_node *node);
 bool	set_redir_out(t_redir *redir_out);
 bool	set_redir_in(t_redir *redir_in);
-void	exec_builtin(t_node *node, t_shell *shell); // from alelaval
+void	exec_builtin(t_node *node, t_shell *shell);
+void	no_builtin(void);
+void	redir_in_error(void);
+void	redir_out_error(void);
+
 
 // lexer version until 08/12 (double pointeur)
 /*

@@ -6,16 +6,16 @@
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 16:22:14 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/08/20 16:22:16 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/09 14:38:27 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "../../inc/minishell.h"
+#include "../../inc/minishell.h"
 
 long	get_word_len_to_space(char *str)
 {
-	int	single_quote;
-	int	double_quote;
+	int		single_quote;
+	int		double_quote;
 	long	i;
 
 	single_quote = 0;
@@ -66,11 +66,6 @@ t_word	*_split_space_in_word(t_word *word)
 
 	if (word == NULL)
 		return (NULL);
-	/*if (word->dont_expand)
-	{
-		word->next = _split_space_in_word(word->next);
-		return (word);
-	}*/
 	new_word.next = _create_splited_words(word->str);
 	last = word_last(&new_word);
 	last->next = _split_space_in_word(word->next);

@@ -6,19 +6,18 @@
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 21:20:20 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/08/19 21:20:45 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/09 15:18:57 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "../../inc/minishell.h"
+#include "../../inc/minishell.h"
 
-
-static int after_doller_check(char *str, char *new, int i)
+static long	after_doller_check(char *str, char *new, long i)
 {
-	int cur;
+	int	cur;
 
 	cur = 1;
-	if(str[0] == '$' && ft_isdigit(str[1]))
+	if (str[0] == '$' && ft_isdigit(str[1]))
 	{
 		new[0] = str[2];
 		i += 2;
@@ -30,16 +29,17 @@ static int after_doller_check(char *str, char *new, int i)
 		new[0] = str[cur];
 		i += cur;
 	}
-	return i;
+	return (i);
 }
 
 char	*expand_var_in_str(char *str, t_shell *shell)
 {
 	char	*new;
-	long	i = 0;
-	bool	double_quote = false;
-	bool	single_quote = false;
+	long	i;
+	bool	double_quote;
+	bool	single_quote;
 
+	i = 0;
 	new = ft_strdup("");
 	while (str[i])
 	{
@@ -59,8 +59,6 @@ char	*expand_var_in_str(char *str, t_shell *shell)
 	free(str);
 	return (new);
 }
-
-
 
 void	expand_var_in_redir(t_redir *redir, t_shell *shell)
 {

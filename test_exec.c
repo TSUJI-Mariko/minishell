@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_exec.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/09 19:58:10 by mtsuji            #+#    #+#             */
+/*   Updated: 2022/09/09 20:08:12 by mtsuji           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 extern int	g_exit_status;
 
@@ -5,29 +16,35 @@ extern int	g_exit_status;
 
 void	exec_builtin(t_node *node, t_shell *shell)
 {
-    t_cmd *command;
+	if (!ft_strncmp(node->cmds->word->str, "echo", \
+			ft_strlen(node->cmds->word->str)))
+		g_exit_status = echo(node->cmds->word);
+	else if (!ft_strncmp(node->cmds->word->str, "env", \
+			ft_strlen(node->cmds->word->str)))
+		g_exit_status = env(node->cmds->word, shell);
+	else if (!ft_strncmp(node->cmds->word->str, "pwd", \
+			ft_strlen(node->cmds->word->str)))
+		g_exit_status = pwd(node->cmds->word);
+	else if (!ft_strncmp(node->cmds->word->str, "cd", \
+			ft_strlen(node->cmds->word->str)))
+		g_exit_status = cd(node->cmds->word, shell);
+	else if (!ft_strncmp(node->cmds->word->str, "export", \
+			ft_strlen(node->cmds->word->str)))
+		g_exit_status = export(node->cmds->word, shell);
+	else if (!ft_strncmp(node->cmds->word->str, "unset", \
+			ft_strlen(node->cmds->word->str)))
+		g_exit_status = unset(node->cmds->word, shell);
+	else if (!ft_strncmp(node->cmds->word->str, \
+			"exit", ft_strlen(node->cmds->word->str)))
+		builtin_exit(node->cmds->word);
+	else
+		no_builtin();
+}
 
-    command = node->cmds;
-
-	if (!ft_strncmp(command->word->str, "echo", ft_strlen(command->word->str)))
-		g_exit_status = echo(command->word);
-    else if (!ft_strncmp(command->word->str, "env", ft_strlen(command->word->str)))
-		g_exit_status = env(command->word, shell);
-	else if (!ft_strncmp(command->word->str, "pwd", ft_strlen(command->word->str)))
-		g_exit_status = pwd(command->word);
-	else if (!ft_strncmp(command->word->str, "cd", ft_strlen(command->word->str)))
-		g_exit_status = cd(command->word, shell);
-	else if (!ft_strncmp(command->word->str, "export", ft_strlen(command->word->str)))
-		g_exit_status = export(command->word, shell);
-	else if (!ft_strncmp(command->word->str, "unset", ft_strlen(command->word->str)))
-		g_exit_status = unset(command->word, shell);
-	else if (!ft_strncmp(command->word->str, "exit", ft_strlen(command->word->str)))
-		builtin_exit(command->word);
-    else
-    {
-        ft_putstr_fd("no match command\n", 2);
-        g_exit_status = 2;
-    }
+void	no_builtin(void)
+{
+	ft_putstr_fd("no match command\n", 2);
+	g_exit_status = 2;
 }
 
 bool	set_redir_in(t_redir *redir_in)
@@ -42,24 +59,31 @@ bool	set_redir_in(t_redir *redir_in)
 		fd = open(redir_in->str, O_RDONLY);
 		if (fd < 0)
 		{
-			ft_putstr_fd("minishell: ", 2);
-            ft_putstr_fd("redir_in->str", 2); 
-            ft_putstr_fd(": ", 2);
-            ft_putstr_fd(strerror(errno), 2);
-			ft_putstr_fd("\n", 2);			
+			printf("minishell: %s: ", redir_in->str);
+			ft_putstr_fd(strerror(errno), 2);
+			ft_putstr_fd("\n", 2);
 			return (false);
 		}
 	}
 	else if (redir_in->kind == REDIR_HEREDOC)
 		fd = redir_in->fd;
 	else
-    {
-		ft_putstr_fd("error: set_redir_in()", 2);
-        g_exit_status = 1;
-    }
+		redir_in_error();
 	dup2(fd, 0);
 	close(fd);
 	return (set_redir_in(redir_in->next));
+}
+
+void	redir_in_error(void)
+{
+	ft_putstr_fd("error: set_redir_in()", 2);
+	g_exit_status = 1;
+}
+
+void	redir_out_error(void)
+{
+	ft_putstr_fd("error: set_redir_in()", 2);
+	g_exit_status = 1;
 }
 
 bool	set_redir_out(t_redir *redir_out)
@@ -75,18 +99,13 @@ bool	set_redir_out(t_redir *redir_out)
 	else if (redir_out->kind == REDIR_APPEND)
 		oflag = O_WRONLY | O_CREAT | O_APPEND;
 	else
-    {
-		ft_putstr_fd("error: set_redir_out()", 2);
-		g_exit_status = 1;
-    }
+		redir_out_error();
 	fd = open(redir_out->str, oflag, 0664);
 	if (fd < 0)
 	{
-			ft_putstr_fd("minishell: ", 2);
-            ft_putstr_fd("redir_out->str", 2); 
-            ft_putstr_fd(": ", 2);
-            ft_putstr_fd(strerror(errno), 2);
-			ft_putstr_fd("\n", 2);	 
+		printf("minishell: %s: ", redir_out->str);
+		ft_putstr_fd(strerror(errno), 2);
+		ft_putstr_fd("\n", 2);
 		return (false);
 	}
 	dup2(fd, 1);
@@ -100,8 +119,8 @@ int	fail_exec(t_node *node)
 	if (errno == ENOENT)
 		g_exit_status = 127;
 	ft_putstr_fd("minishell: ", 2);
- 	ft_putstr_fd(node->cmds->pathname, 2);
-	ft_putstr_fd(": Permission denied\n", 2);   
+	ft_putstr_fd(node->cmds->pathname, 2);
+	ft_putstr_fd(": Permission denied\n", 2);
 	return (g_exit_status);
 }
 
@@ -139,22 +158,21 @@ char	**create_argv(t_word *word)
 	return (argv);
 }
 
-
 bool	check_cmd(t_cmd *cmd)
 {
 	if (cmd->pathname == NULL)
 	{
 		ft_putstr_fd("minishell: ", 2);
-        ft_putstr_fd(cmd->word->str, 2);
-        ft_putstr_fd(" command not found\n", 2);
+		ft_putstr_fd(cmd->word->str, 2);
+		ft_putstr_fd(" command not found\n", 2);
 		g_exit_status = 127;
 		return (false);
 	}
 	if (is_directory(cmd->pathname))
-	{ 
-        ft_putstr_fd("minishell:", 2);
-        ft_putstr_fd(cmd->pathname, 2);
-        ft_putstr_fd(" is a directory\n", 2);
+	{
+		ft_putstr_fd("minishell:", 2);
+		ft_putstr_fd(cmd->pathname, 2);
+		ft_putstr_fd(" is a directory\n", 2);
 		g_exit_status = 126;
 		return (false);
 	}
@@ -247,7 +265,7 @@ void	exec_multi_pipes(t_node *pipe_node, t_shell *shell)
 			dup2(fd[0], 0);
 		close(fd[1]);
 		close(fd[0]);
-		    exec_cmd(pipe_node->rhs, shell);
+		exec_cmd(pipe_node->rhs, shell);
 		exit(g_exit_status);
 	}
 	else
@@ -268,7 +286,7 @@ void	exec_pipe(t_node *pipe_node, t_shell *shell)
 
 	expander(pipe_node, shell);
 	if (pipe_node->lhs == NULL)
-		exec_no_pipe(pipe_node, shell);// go testfile
+		exec_no_pipe(pipe_node, shell);
 	else
 	{
 		pid = fork();
@@ -279,7 +297,7 @@ void	exec_pipe(t_node *pipe_node, t_shell *shell)
 		}
 		if (pid == 0)
 		{
-			exec_multi_pipes(pipe_node, shell); // go testfile
+			exec_multi_pipes(pipe_node, shell);
 			exit(g_exit_status);
 		}
 		sts = 0;

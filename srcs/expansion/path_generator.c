@@ -6,11 +6,12 @@
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 13:23:47 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/08/21 13:23:49 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/09 14:33:22 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
+
 char	*get_pathname_str(char *str, t_shell *shell)
 {
 	char	*pathname;
@@ -22,7 +23,7 @@ char	*get_pathname_str(char *str, t_shell *shell)
 	return (pathname);
 }
 
-void pathname_generator(t_node *node, t_shell *shell)
+void	pathname_generator(t_node *node, t_shell *shell)
 {
 	if (node == NULL)
 		return ;
@@ -35,12 +36,12 @@ void pathname_generator(t_node *node, t_shell *shell)
 		if (isbuiltin(node->cmds->word->str))
 			node->cmds->is_builtin = true;
 		else
-			node->cmds->pathname = get_pathname_str(node->cmds->word->str, shell);
+			node->cmds->pathname = get_pathname_str(node->cmds->word->str, \
+			shell);
 	}
 	else
 	{
 		pathname_generator(node->lhs, shell);
 		pathname_generator(node->rhs, shell);
 	}
-}   
-
+}
