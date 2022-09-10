@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_pipe.c                                        :+:      :+:    :+:   */
+/*   exec_outil2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 18:02:19 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/09/09 18:47:35 by mtsuji           ###   ########.fr       */
+/*   Created: 2022/09/10 16:59:39 by mtsuji            #+#    #+#             */
+/*   Updated: 2022/09/10 17:00:16 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h" 
+#include "../../inc/minishell.h"
 
-extern int	g_exit_status;
-
-void	exec_pipe(t_node *pipe_node, t_shell *shell)
+pid_t	my_fork(void)
 {
-	int	pid;
-	int	sts;
+	pid_t	pid;
 
-	expander(pipe_node, shell);
-	if (pipe_node->lhs == NULL)
-		exec_no_pipe(pipe_node, shell);
-	else
+	pid = fork();
+	if (pid == -1)
 	{
-		pid = my_fork();
-		if (pid == 0)
-		{
-			exec_multi_pipes(pipe_node, shell);
-			exit(g_exit_status);
-		}
-		sts = 0;
-		waitpid(pid, &sts, 0);
-		g_exit_status = WEXITSTATUS(sts);
+		perror("fork");
+		exit(1);
 	}
+	return (pid);
 }

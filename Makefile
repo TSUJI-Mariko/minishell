@@ -6,7 +6,7 @@
 #    By: msuji <mtsuji@student.42.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 12:35:48 by msuji             #+#    #+#              #
-#    Updated: 2022/09/09 15:02:26 by mtsuji           ###   ########.fr        #
+#    Updated: 2022/09/10 17:04:17 by mtsuji           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,9 +55,16 @@ SRCS	=	./srcs/main/minishell.c	\
 			./srcs/builtin/export.c			\
 			./srcs/builtin/unset.c			\
 			./srcs/builtin/exit.c			\
-			./test_exec.c						\
 			./srcs/exec/exec.c				\
-			#./srcs/exec/exec_pipe.c			\
+			./srcs/exec/exec_pipe.c			\
+			./srcs/exec/exec_multi_pipe.c			\
+			./srcs/exec/exec_command.c			\
+			./srcs/exec/exec_outil.c			\
+			./srcs/exec/exec_outil2.c			\
+			./srcs/exec/exec_builtin.c			\
+			./srcs/exec/exec_redir.c			\
+			./srcs/exec/exec_file.c			\
+
 
 
 OBJS	=	$(SRCS:.c=.o)

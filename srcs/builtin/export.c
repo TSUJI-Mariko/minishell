@@ -6,7 +6,7 @@
 /*   By: msuji <mtsuji@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 11:19:08 by msuji             #+#    #+#             */
-/*   Updated: 2022/09/09 18:42:12 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/10 16:13:22 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	check_argument_for_export(char *str)
 	return (0);
 }
 
-int	export(t_word *word, t_shell *shell)
+int	builtin_export(t_word *word, t_shell *shell)
 {
 	int	res;
 

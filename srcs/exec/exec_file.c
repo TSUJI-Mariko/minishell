@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_pipe.c                                        :+:      :+:    :+:   */
+/*   exec_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 18:02:19 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/09/09 18:47:35 by mtsuji           ###   ########.fr       */
+/*   Created: 2022/09/09 19:58:10 by mtsuji            #+#    #+#             */
+/*   Updated: 2022/09/10 17:15:09 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h" 
+#include "../../inc/minishell.h"
 
 extern int	g_exit_status;
 
-void	exec_pipe(t_node *pipe_node, t_shell *shell)
+void	exec_file(t_node *node, t_shell *shell)
 {
-	int	pid;
-	int	sts;
+	int		pid;
+	char	**cmd_argv;
+	char	**cmd_envp;
 
-	expander(pipe_node, shell);
-	if (pipe_node->lhs == NULL)
-		exec_no_pipe(pipe_node, shell);
-	else
+	pid = my_fork();
+	if (pid == 0)
 	{
-		pid = my_fork();
-		if (pid == 0)
-		{
-			exec_multi_pipes(pipe_node, shell);
+		signal(SIGQUIT, SIG_DFL);
+		if (!check_cmd(node->cmds))
 			exit(g_exit_status);
-		}
-		sts = 0;
-		waitpid(pid, &sts, 0);
-		g_exit_status = WEXITSTATUS(sts);
+		cmd_argv = create_argv(node->cmds->word);
+		cmd_envp = create_envp(shell);
+		execve(node->cmds->pathname, cmd_argv, cmd_envp);
+		free(cmd_argv);
+		free_envp(cmd_envp);
+		exit(fail_exec(node));
 	}
+	waitpid(pid, &(g_exit_status), 0);
+	set_exit_status();
 }
