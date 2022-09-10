@@ -27,8 +27,7 @@ bool	set_redir_in(t_redir *redir_in)
 		if (fd < 0)
 		{
 			printf("minishell: %s: ", redir_in->str);
-			ft_putstr_fd(strerror(errno), 2);
-			ft_putstr_fd("\n", 2);
+			printf("%s\n", strerror(errno));
 			return (false);
 		}
 	}
@@ -71,8 +70,7 @@ bool	set_redir_out(t_redir *redir_out)
 	if (fd < 0)
 	{
 		printf("minishell: %s: ", redir_out->str);
-		ft_putstr_fd(strerror(errno), 2);
-		ft_putstr_fd("\n", 2);
+		printf("%s\n", strerror(errno));
 		return (false);
 	}
 	dup2(fd, 1);

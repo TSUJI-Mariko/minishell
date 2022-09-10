@@ -45,7 +45,7 @@ int	main(int argc, char **argv, char **envp)
 	rl_outstream = stderr;
 	if (argc)
 		shell = create_shell(envp, argv);
-	while (true)
+	while (1)
 	{
 		signal_init();
 		line = readline(">minishell ");

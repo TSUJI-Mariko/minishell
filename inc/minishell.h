@@ -132,6 +132,7 @@ typedef struct s_comm
 	char			**files;
 	struct s_comm	*next;
 }	t_comm;
+
 typedef struct s_shell
 {
 	int			ret;
