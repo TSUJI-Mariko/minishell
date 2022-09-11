@@ -6,7 +6,7 @@
 /*   By: msuji <mtsuji@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:10:23 by msuji             #+#    #+#             */
-/*   Updated: 2022/09/10 17:12:53 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/11 17:33:16 by msuji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,6 +290,10 @@ int			go_home(t_shell *shell);
 int			builtin_export(t_word *word, t_shell *shell);
 void		display_env_for_export(t_shell *shell);
 int			check_argument_for_export(char *str);
+int			export_option(int res, char *str);
+void		export_error(char *str);
+int			check_env(char *str);
+int			inside_checker_export(char *str);
 
 //unset
 int			unset(t_word *word, t_shell *shell);
