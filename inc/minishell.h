@@ -36,6 +36,13 @@
 
 extern int	g_exit_status;
 
+typedef enum e_quote_check
+{
+	NO,
+	SINGLE,
+	DOUBLE,
+}	t_quote_check;
+
 typedef enum e_token_kind
 {
 	DEFAULT,

@@ -6,7 +6,7 @@
 /*   By: msuji <mtsuji@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 12:15:39 by msuji             #+#    #+#             */
-/*   Updated: 2022/09/09 10:44:53 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/11 19:43:52 by msuji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,28 @@
 
 int	quote_check(char *str)
 {
-	int	cur;
-	int	s_quote;
-	int	d_quote;
+	int				i;
+	t_quote_check	quote;
 
-	cur = 0;
-	s_quote = 0;
-	d_quote = 0;
-	while (str[cur])
+	i = 0;
+	quote = NO;
+	while (str[i])
 	{
-		if (str[cur] == '\'')
-			s_quote++;
-		else if (str[cur] == '\"')
-			d_quote++;
-	cur++;
+		if (str[i] == '"')
+		{
+			if (quote == NO)
+				quote = DOUBLE;
+			else if (quote == DOUBLE)
+				quote = NO;
+		}
+		if (str[i] == '\'')
+		{
+			if (quote == NO)
+				quote = SINGLE;
+			else if (quote == SINGLE)
+				quote = NO;
+		}
+		i++;
 	}
-	if (s_quote % 2 != 0 || d_quote % 2 != 0)
-	{
-		printf("miss_quote\n");
-		return (STDERR);
-	}
-	return (0);
+	return (quote);
 }

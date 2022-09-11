@@ -6,7 +6,7 @@
 /*   By: msuji <mtsuji@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 18:25:14 by msuji             #+#    #+#             */
-/*   Updated: 2022/09/11 18:44:03 by msuji            ###   ########.fr       */
+/*   Updated: 2022/09/11 18:53:29 by msuji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_env(char *str)
 	else if (ft_strchr(&str[i], '!'))
 	{
 		printf("minishell : export: ");
-		printf("`%s' : event not found\n", ft_strchr(&str[i], '!'));
+		printf("%s : event not found\n", ft_strchr(&str[i], '!'));
 		return (1);
 	}
 	return (0);
