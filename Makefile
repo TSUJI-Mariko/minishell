@@ -50,6 +50,7 @@ SRCS	=	./srcs/main/minishell.c	\
 			./srcs/expansion/heredoc.c			\
 			./srcs/builtin/echo.c			\
 			./srcs/builtin/cd.c				\
+			./srcs/builtin/outil_cd.c				\
 			./srcs/builtin/env.c			\
 			./srcs/builtin/pwd.c			\
 			./srcs/builtin/outil_export.c			\

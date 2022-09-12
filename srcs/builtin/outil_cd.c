@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   outil_cd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 23:54:18 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/09/12 19:03:27 by mtsuji           ###   ########.fr       */
+/*   Created: 2022/09/12 17:26:06 by mtsuji            #+#    #+#             */
+/*   Updated: 2022/09/12 19:04:05 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	pwd_error(char *str)
+void	cd_error(char *str)
 {
-	printf("minishell : pwd: ");
+	printf("minishell : cd: ");
 	printf("%s : invalid option\n", str);
 }
 
-int	pwd_argument_check(char *str)
+int	cd_argument_check(char *str)
 {
 	int	i;
 
@@ -29,35 +29,18 @@ int	pwd_argument_check(char *str)
 		{
 			if (str[1] != '\0' && str[1] != '-')
 			{
-				pwd_error(str);
+				cd_error(str);
 				return (2);
 			}
 			else if (str[1] == '-' && str[2] != '\0')
 			{
-				pwd_error("--");
+				cd_error("--");
 				return (2);
 			}
+			else if (str[1] == '-' && str[2] == '\0')
+				return (3);
 		}
 		i++;
 	}
-	return (0);
-}
-
-int	pwd(t_word *word)
-{
-	char	buff[PATH_MAX];
-	int		res;
-
-	if (word->next != NULL)
-	{
-		word = word->next;
-		res = pwd_argument_check(word->str);
-		if (res != 0)
-			return (res);
-	}
-	ft_memset(buff, 0, PATH_MAX);
-	if (!getcwd(buff, PATH_MAX))
-		perror("pwd");
-	ft_putendl_fd(buff, 1);
 	return (0);
 }

@@ -12,6 +12,8 @@
 
 #include "../../inc/minishell.h"
 
+extern int	g_exit_status;
+
 int	check_env(char *str)
 {
 	int	i;

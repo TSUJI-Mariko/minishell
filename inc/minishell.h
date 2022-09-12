@@ -288,10 +288,15 @@ int			echo_option(char *str);
 int			env(t_word *word, t_shell *shell);
 //pwd
 int			pwd(t_word *word);
+int			pwd_argument_check(char *str);
+void		pwd_error(char *str);
+
 //cd
 int			cd(t_word *word, t_shell *shell);
 void		after_cd(t_shell *shell);
 int			go_home(t_shell *shell);
+int			cd_argument_check(char *str);
+void		cd_error(char *str);
 
 //export
 int			builtin_export(t_word *word, t_shell *shell);

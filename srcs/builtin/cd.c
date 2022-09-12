@@ -6,7 +6,7 @@
 /*   By: msuji <mtsuji@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 16:34:32 by msuji             #+#    #+#             */
-/*   Updated: 2022/09/09 15:35:12 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/12 19:04:33 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	go_home(t_shell *shell)
 	home = get_env_body("HOME", shell);
 	if (home == NULL)
 	{
-		ft_putstr_fd("Home not find\n", 2);
+		ft_putstr_fd("Home not set\n", 2);
 		return (1);
 	}
 	if (chdir(home) != 0)
@@ -57,13 +57,26 @@ int	go_home(t_shell *shell)
 
 int	cd(t_word *word, t_shell *shell)
 {
-	if (word->next == NULL)
+	int	res;
+
+	if (word->next != NULL && word->next->next != NULL)
+	{
+		printf("minishell: cd: too many arguments\n");
+		return (1);
+	}
+	if (word->next == NULL || !ft_strcmp(word->next->str, "$HOME"))
 		return (go_home(shell));
+	res = cd_argument_check(word->next->str);
+	if (res != 0)
+	{
+		if (res == 3)
+			return (go_home(shell));
+		return (res);
+	}
 	if (chdir(word->next->str) != 0)
 	{
-		ft_putstr_fd("minishell:  cd: ", 2);
-		ft_putstr_fd(word->next->str, 2);
-		ft_putstr_fd(": No such file or directory\n", 2);
+		printf("minishell:  cd: %s", word->next->str);
+		printf(": No such file or directory\n");
 		return (1);
 	}
 	after_cd(shell);

@@ -12,6 +12,8 @@
 
 #include "../../inc/minishell.h"
 
+extern int	g_exit_status;
+
 void	display_env_for_export(t_shell *shell)
 {
 	t_env	*env;
@@ -40,7 +42,9 @@ int	check_argument_for_export(char *str)
 	res = inside_checker_export(str);
 	if (res != 0)
 		return (res);
-	return (check_env(str));
+	if (ft_strchr(str, '='))
+		return (check_env(str));
+	return (0);
 }
 
 int	inside_checker_export(char *str)
@@ -49,7 +53,7 @@ int	inside_checker_export(char *str)
 
 	i = 0;
 	while ((str[i] && str[i] != '='
-			&& (str[i] != '+' || str[i + 1] != '=')) || str[i] == '\0')
+			&& (str[i] != '+' || str[i + 1] != '=')) || str[0] == '\0')
 	{
 		if (i == 0 && ft_isdigit(str[i]) != 0)
 		{
@@ -75,7 +79,6 @@ int	builtin_export(t_word *word, t_shell *shell)
 {
 	int	res;
 
-	res = 0;
 	if (word->next == NULL)
 	{
 		display_env_for_export(shell);
@@ -88,8 +91,9 @@ int	builtin_export(t_word *word, t_shell *shell)
 		if (res != 0)
 		{
 			if (res == 2 || res == 3)
-				return (export_option(res, word->str));
-			return (res);
+				g_exit_status = export_option(res, word->str);
+			else
+				g_exit_status = res;
 		}
 		if (ft_strnstr(word->str, "+=", ft_strlen(word->str)) != 0)
 			env_add_with_plus(word->str, shell);
@@ -97,5 +101,5 @@ int	builtin_export(t_word *word, t_shell *shell)
 			env_add(word->str, shell);
 		word = word->next;
 	}
-	return (0);
+	return (g_exit_status);
 }

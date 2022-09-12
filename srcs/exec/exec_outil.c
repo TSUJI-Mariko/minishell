@@ -19,9 +19,8 @@ int	fail_exec(t_node *node)
 	g_exit_status = 126;
 	if (errno == ENOENT)
 		g_exit_status = 127;
-	ft_putstr_fd("minishell: ", 2);
-	ft_putstr_fd(node->cmds->pathname, 2);
-	ft_putstr_fd(": Permission denied\n", 2);
+	printf("minishell: %s: ", node->cmds->pathname);
+	printf("%s\n", strerror(errno));
 	return (g_exit_status);
 }
 

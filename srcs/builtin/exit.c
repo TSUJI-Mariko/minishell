@@ -6,7 +6,7 @@
 /*   By: msuji <mtsuji@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 14:46:47 by msuji             #+#    #+#             */
-/*   Updated: 2022/09/09 15:41:55 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/12 19:04:55 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	overflow_check(char *str)
 {
-	unsigned long	res;
-	int				sign;
-	long			i;
+	long long	res;
+	long		sign;
+	long		i;
 
 	res = 0;
 	sign = 0;
@@ -30,7 +30,7 @@ int	overflow_check(char *str)
 	{
 		res = res * 10 + str[i] - '0';
 		i++;
-		if (res > 9223372036854775807)
+		if ((unsigned long)res > 9223372036854775807)
 			return (2);
 	}
 	res = res * sign;
@@ -58,10 +58,7 @@ int	check_int(char *str)
 int	builtin_exit(t_word *word)
 {
 	if (word->next == NULL)
-	{
-		ft_putstr_fd("exit\n", 2);
 		exit(g_exit_status);
-	}
 	if (check_int(word->next->str))
 	{
 		ft_putstr_fd("minishell: exit: ", 2);
