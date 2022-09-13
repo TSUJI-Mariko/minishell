@@ -14,6 +14,15 @@
 
 extern int	g_exit_status;
 
+void	printer_redir(char *str)
+{
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd(": ", 2);
+	ft_putstr_fd(strerror(errno), 2);
+	ft_putstr_fd("\n", 2);
+}
+
 bool	set_redir_in(t_redir *redir_in)
 {
 	int	fd;
@@ -26,8 +35,8 @@ bool	set_redir_in(t_redir *redir_in)
 		fd = open(redir_in->str, O_RDONLY);
 		if (fd < 0)
 		{
-			printf("minishell: %s: ", redir_in->str);
-			printf("%s\n", strerror(errno));
+			printer_redir(redir_in->str);
+			g_exit_status = 1;
 			return (false);
 		}
 	}
@@ -69,8 +78,8 @@ bool	set_redir_out(t_redir *redir_out)
 	fd = open(redir_out->str, oflag, 0664);
 	if (fd < 0)
 	{
-		printf("minishell: %s: ", redir_out->str);
-		printf("%s\n", strerror(errno));
+		printer_redir(redir_out->str);
+		g_exit_status = 1;
 		return (false);
 	}
 	dup2(fd, 1);

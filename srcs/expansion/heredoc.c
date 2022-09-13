@@ -38,7 +38,7 @@ void	write_heredoc_to_fd(t_redir *redir, t_shell *shell, int fd)
 			break ;
 		}
 		if (line)
-			line = expand_var_in_str(line, shell);
+			line = expand_var_heredoc(redir, line, shell);
 		write(fd, line, ft_strlen(line));
 		write(fd, "\n", 1);
 		free(line);
@@ -68,7 +68,7 @@ void	expander_set_heredoc(t_node *node, t_shell *shell)
 		return ;
 	if (node->kind == COMMAND)
 	{
-		remove_quote_heredoc(node->cmds->redir_in);
+		remove_quote_heredoc(node->cmds->redir_in);		
 		set_heredoc(node->cmds->redir_in, shell);
 	}
 	else

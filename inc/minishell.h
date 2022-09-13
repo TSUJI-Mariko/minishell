@@ -41,6 +41,8 @@ typedef enum e_quote_check
 	NO,
 	SINGLE,
 	DOUBLE,
+	S_CLOSE,
+	D_CLOSE,
 }	t_quote_check;
 
 typedef enum e_token_kind
@@ -74,6 +76,7 @@ typedef struct s_redir
 	char			*str;
 	int				fd;
 	int				cur;
+	bool			no_expand;
 	struct s_redir	*next;
 }	t_redir;
 
@@ -224,6 +227,7 @@ void			remove_quote_heredoc(t_redir *redir);
 void			remove_quote(t_node *node);
 void			pathname_generator(t_node *node, t_shell *shell);
 char			*get_pathname_str(char *str, t_shell *shell);
+t_quote_check	quote_heredoc(char *str, t_quote_check quote);
 
 //util for expansion
 char			*add_char(char *str, char c);
@@ -237,6 +241,7 @@ void			word_add_back_for_split(t_word *word, char *str);
 t_word			*word_last(t_word *word);
 char			*sarch_pathname(char *str, t_shell *shell);
 int				check_pathname(char *pathname);
+long			after_doller_check(char *str, char *new, long i);
 
 //util_for_parser
 bool			consume(t_token *token, t_token_kind kind, char *str);
@@ -327,6 +332,7 @@ bool			isbuiltin(char *str);
 
 //heredoc
 void			expander_set_heredoc(t_node *node, t_shell *shell);
+char	*expand_var_heredoc(t_redir *redir, char *str, t_shell *shell);
 
 //exec
 void			exec(t_node *node, t_shell *shell);

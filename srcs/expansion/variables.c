@@ -12,7 +12,7 @@
 
 #include "../../inc/minishell.h"
 
-static long	after_doller_check(char *str, char *new, long i)
+long	after_doller_check(char *str, char *new, long i)
 {
 	int	cur;
 

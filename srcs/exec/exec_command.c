@@ -16,8 +16,10 @@ extern int	g_exit_stats;
 
 void	exec_cmd(t_node *node, t_shell *shell)
 {
-	if (!set_redir_in(node->cmds->redir_in)
-		|| !set_redir_out(node->cmds->redir_out)
+	if ((!set_redir_in(node->cmds->redir_in)
+		&& node->cmds->redir_out == NULL)
+		|| (!set_redir_out(node->cmds->redir_out)
+		&& node->cmds->redir_in == NULL)
 		|| node->cmds->word == NULL)
 	{
 		dup2(shell->fdin, 1);

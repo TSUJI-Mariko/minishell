@@ -19,8 +19,10 @@ int	fail_exec(t_node *node)
 	g_exit_status = 126;
 	if (errno == ENOENT)
 		g_exit_status = 127;
-	printf("minishell: %s: ", node->cmds->pathname);
-	printf("%s\n", strerror(errno));
+	ft_putstr_fd("minishell: ", 2);
+	ft_putstr_fd(node->cmds->pathname, 2);
+	ft_putstr_fd(strerror(errno), 2);
+	ft_putstr_fd("\n", 2);
 	return (g_exit_status);
 }
 
@@ -60,6 +62,8 @@ char	**create_argv(t_word *word)
 
 bool	check_cmd(t_cmd *cmd)
 {
+	if (g_exit_status == 1)
+		return (false);
 	if (cmd->pathname == NULL)
 	{
 		ft_putstr_fd("minishell: ", 2);
