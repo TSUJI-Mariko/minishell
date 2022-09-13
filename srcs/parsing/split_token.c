@@ -31,11 +31,16 @@ int	word_end(char *str, int *cur)
 		quote = is_quote(str[*cur], quote);
 		if (is_separator(str[*cur]) == 1 && quote == NO)
 			break ;
-		else if (quote == NO && (str[*cur] == '|')
+		if (quote == NO && (str[*cur] == '|')
 			&& str[*cur + 1] != ' ' && str[*cur + 1] != '\0')
 		{
 			(*cur)++;
 			break ;
+		}
+		else if (str[*cur] && str[*cur + 1] == '|')
+		{
+			(*cur)++ ;
+			break;
 		}
 		(*cur)++ ;
 	}
