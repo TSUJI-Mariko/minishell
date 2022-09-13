@@ -19,21 +19,21 @@ int	is_redirection(char c)
 	return (0);
 }
 
-int	is_quote(char c, int quote)
+t_quote_check	is_quote(char c, t_quote_check quote)
 {
 	if (c == '\'')
 	{
-		if (quote == 0)
-			quote = 2;
-		else if (quote == 2)
-			quote = 0;
+		if (quote == NO)
+			quote = SINGLE;
+		else if (quote == DOUBLE)
+			quote = NO;
 	}
 	if (c == '\"')
 	{
-		if (quote == 0)
-			quote = 1;
-		else if (quote == 1)
-			quote = 0;
+		if (quote == NO)
+			quote = DOUBLE;
+		else if (quote == SINGLE)
+			quote = NO;
 	}
 	return (quote);
 }

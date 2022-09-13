@@ -6,7 +6,7 @@
 /*   By: msuji <mtsuji@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:10:23 by msuji             #+#    #+#             */
-/*   Updated: 2022/09/11 17:33:16 by msuji            ###   ########.fr       */
+/*   Updated: 2022/09/13 12:22:44 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,194 +156,194 @@ typedef struct s_shell
 	int			interrupt;
 }				t_shell;
 
-void		start_command(char *str, t_shell *shell);
-int			only_space(char *str);
+void			start_command(char *str, t_shell *shell);
+int				only_space(char *str);
 
 //signal
-void		signal_init_handle(int signal);
-void		signal_init(void);
-void		signal_exec_handle(int signal);
-void		signal_exec(void);
-void		signal_heredoc_handle(int signal);
-void		signal_heredoc(void);
+void			signal_init_handle(int signal);
+void			signal_init(void);
+void			signal_exec_handle(int signal);
+void			signal_exec(void);
+void			signal_heredoc_handle(int signal);
+void			signal_heredoc(void);
 
 //lexer
-t_command	*lexer(char *str);
-int			is_quote(char c, int quote);
-int			quote_check(char *str);
-int			simple_quote(char *str);
-int			double_quote(char *str);
-int			quoting(char *str);
-int			first_word_is_pipe(char *str);
-int			first_word_colon_exclamation(char *str);
-void		ft_error(char *str);
+t_command		*lexer(char *str);
+int				quote_check(char *str);
+int				simple_quote(char *str);
+int				double_quote(char *str);
+int				quoting(char *str);
+int				first_word_is_pipe(char *str);
+int				first_word_colon_exclamation(char *str);
+void			ft_error(char *str);
+t_quote_check	is_quote(char c, t_quote_check quote);
 
 //get_command_line
-t_command	*get_command_line(char *str);
-int			filling_command_line(char *str, int cur, int start, \
-			t_command **command_line);
-void		commandline_addback(t_command *line, t_command *new);
-void		check_pipe(int cur, char *str);
+t_command		*get_command_line(char *str);
+int				filling_command_line(char *str, int cur, int start, \
+				t_command **command_line);
+void			commandline_addback(t_command *line, t_command *new);
+void			check_pipe(int cur, char *str);
 
 //tokenization
-void		free_end(t_command *command_line, char *str);
-int			split_command_line(t_command *command_line);
-int			split_command_to_token(t_command *command_line);
-void		token_addback(t_token **tkn, t_token *new);
-void		init_token(t_token *new);
-int			is_redirection(char c);
-int			is_separator(char c);
-int			word_end(char *str, int *cur);
-int			put_eof(t_command *command_line, char *str, int len);
+void			free_end(t_command *command_line, char *str);
+int				split_command_line(t_command *command_line);
+int				split_command_to_token(t_command *command_line);
+void			token_addback(t_token **tkn, t_token *new);
+void			init_token(t_token *new);
+int				is_redirection(char c);
+int				is_separator(char c);
+int				word_end(char *str, int *cur);
+int				put_eof(t_command *command_line, char *str, int len);
 
 //parser
-t_node		*stmt(t_token **token);
-t_node		*parser(t_token *token);
-t_node		*pipe_cmd(t_token **token);
-t_node		*command(t_token **token);
-t_node		*word(t_token **token);
-void		syntax_error(t_node *node);
-void		command_error_check(t_node *node);
+t_node			*stmt(t_token **token);
+t_node			*parser(t_token *token);
+t_node			*pipe_cmd(t_token **token);
+t_node			*command(t_token **token);
+t_node			*word(t_token **token);
+void			syntax_error(t_node *node);
+void			command_error_check(t_node *node);
 
 //expension
-void		expander(t_node *node, t_shell *shell);
-void		expand_var(t_node *node, t_shell *shell);
-void		expand_var_in_word(t_word *word, t_shell *shell);
-void		expand_var_in_redir(t_redir *redir, t_shell *shell);
-char		*expand_var_in_str(char *str, t_shell *shell);
-long		at_doller_mark(char *str, char **new, long i, t_shell *shell);
-void		split_space(t_node *node);
-t_word		*_split_space_in_word(t_word *word);
-t_word		*_create_splited_words(char *str);
-long		get_word_len_to_space(char *str);
-t_node		expension(t_node *node);
-char		*remove_quote_string(char *str);
-void		remove_quote_word(t_word *word);
-void		remove_quote_redir(t_redir *redir);
-void		remove_quote_heredoc(t_redir *redir);
-void		remove_quote(t_node *node);
-void		pathname_generator(t_node *node, t_shell *shell);
-char		*get_pathname_str(char *str, t_shell *shell);
+void			expander(t_node *node, t_shell *shell);
+void			expand_var(t_node *node, t_shell *shell);
+void			expand_var_in_word(t_word *word, t_shell *shell);
+void			expand_var_in_redir(t_redir *redir, t_shell *shell);
+char			*expand_var_in_str(char *str, t_shell *shell);
+long			at_doller_mark(char *str, char **new, long i, t_shell *shell);
+void			split_space(t_node *node);
+t_word			*_split_space_in_word(t_word *word);
+t_word			*_create_splited_words(char *str);
+long			get_word_len_to_space(char *str);
+t_node			expension(t_node *node);
+char			*remove_quote_string(char *str);
+void			remove_quote_word(t_word *word);
+void			remove_quote_redir(t_redir *redir);
+void			remove_quote_heredoc(t_redir *redir);
+void			remove_quote(t_node *node);
+void			pathname_generator(t_node *node, t_shell *shell);
+char			*get_pathname_str(char *str, t_shell *shell);
 
 //util for expansion
-char		*add_char(char *str, char c);
-char		*ft_strjoin_and_free(char *s1, int i1, char *s2, int i2);
-char		*get_env_body(char *name, t_shell *shell);
-char		*get_var_name(char *str);
-int			is_var_name_char(char c);
-int			is_var_name_char_1st(char c);
-char		*ft_str_add_char(char *str, char c);
-void		word_add_back_for_split(t_word *word, char *str);
-t_word		*word_last(t_word *word);
-char		*sarch_pathname(char *str, t_shell *shell);
-int			check_pathname(char *pathname);
+char			*add_char(char *str, char c);
+char			*ft_strjoin_and_free(char *s1, int i1, char *s2, int i2);
+char			*get_env_body(char *name, t_shell *shell);
+char			*get_var_name(char *str);
+int				is_var_name_char(char c);
+int				is_var_name_char_1st(char c);
+char			*ft_str_add_char(char *str, char c);
+void			word_add_back_for_split(t_word *word, char *str);
+t_word			*word_last(t_word *word);
+char			*sarch_pathname(char *str, t_shell *shell);
+int				check_pathname(char *pathname);
 
 //util_for_parser
-bool		consume(t_token *token, t_token_kind kind, char *str);
-bool		consume_redir(t_token *token, t_token_kind kind, char *str);
-t_token		*skip(t_token *token, t_token_kind kind, char *str);
-void		parser_error(char *str, long len);
-t_node		*new_node_pipe(t_node *cmd_node);
-t_node		*add_node_pipe(t_node *node, t_node *cmd_node);
-t_node		*new_node_command(void);
-t_node		*new_node_word(t_token *token);
-void		word_addback(t_cmd *command, char *str, long len);
-void		redir_in_addback(t_cmd *command, t_redir_kind kind, \
-			char *str, int len);
-void		redir_out_addback(t_cmd *command, t_redir_kind kind, \
-			char *str, int len);
+bool			consume(t_token *token, t_token_kind kind, char *str);
+bool			consume_redir(t_token *token, t_token_kind kind, char *str);
+t_token			*skip(t_token *token, t_token_kind kind, char *str);
+void			parser_error(char *str, long len);
+t_node			*new_node_pipe(t_node *cmd_node);
+t_node			*add_node_pipe(t_node *node, t_node *cmd_node);
+t_node			*new_node_command(void);
+t_node			*new_node_word(t_token *token);
+void			word_addback(t_cmd *command, char *str, long len);
+void			redir_in_addback(t_cmd *command, t_redir_kind kind, \
+				char *str, int len);
+void			redir_out_addback(t_cmd *command, t_redir_kind kind, \
+				char *str, int len);
 
 //free
-int			free_lexer(t_command *command_line);
-void		free_token(t_command **command_line);
-void		free_node(t_node *node);
-void		free_word(t_word *word);
-void		free_redirection(t_redir *redir_in);
-void		free_envp(char **envp);
+int				free_lexer(t_command *command_line);
+void			free_token(t_command **command_line);
+void			free_node(t_node *node);
+void			free_word(t_word *word);
+void			free_redirection(t_redir *redir_in);
+void			free_envp(char **envp);
 
 //env | shell
-t_shell		*create_shell(char **envp, char **argv);
-t_env		*create_env(char **envp);
-t_env		*env_addback(t_env *env, char *name, char *body);
-char		*create_env_name(char *str);
-char		*create_env_name_with_plus(char *str);
-char		*create_env_body(char *str);
-char		*create_env_body_with_plus(char *str);
-void		free_env(t_shell *shell);
-long		get_env_size(t_shell *shell);
-char		**create_envp(t_shell *shell);
-char		**create_argv(t_word *word);
-void		env_add(char *str, t_shell *shell);
-void		env_add_with_plus(char *str, t_shell *shell);
-t_env		*new_env(char *name, char *body);
-void		env_rewrite(t_shell *shell, char *name, char *body);
-void		env_rewrite_with_plus(t_shell *shell, char *name, char *body);
-void		del_env(char *str, t_shell *shell);
+t_shell			*create_shell(char **envp, char **argv);
+t_env			*create_env(char **envp);
+t_env			*env_addback(t_env *env, char *name, char *body);
+char			*create_env_name(char *str);
+char			*create_env_name_with_plus(char *str);
+char			*create_env_body(char *str);
+char			*create_env_body_with_plus(char *str);
+void			free_env(t_shell *shell);
+long			get_env_size(t_shell *shell);
+char			**create_envp(t_shell *shell);
+char			**create_argv(t_word *word);
+void			env_add(char *str, t_shell *shell);
+void			env_add_with_plus(char *str, t_shell *shell);
+t_env			*new_env(char *name, char *body);
+void			env_rewrite(t_shell *shell, char *name, char *body);
+void			env_rewrite_with_plus(t_shell *shell, char *name, char *body);
+void			del_env(char *str, t_shell *shell);
 
 //echo
-int			echo(t_word *word);
-int			echo_option(char *str);
+int				echo(t_word *word);
+int				echo_option(char *str);
 
 //env
-int			env(t_word *word, t_shell *shell);
+int				env(t_word *word, t_shell *shell);
 //pwd
-int			pwd(t_word *word);
-int			pwd_argument_check(char *str);
-void		pwd_error(char *str);
+int				pwd(t_word *word);
+int				pwd_argument_check(char *str);
+void			pwd_error(char *str);
 
 //cd
-int			cd(t_word *word, t_shell *shell);
-void		after_cd(t_shell *shell);
-int			go_home(t_shell *shell);
-int			cd_argument_check(char *str);
-void		cd_error(char *str);
+int				cd(t_word *word, t_shell *shell);
+void			after_cd(t_shell *shell);
+int				go_home(t_shell *shell);
+int				cd_argument_check(char *str);
+void			cd_error(char *str);
 
 //export
-int			builtin_export(t_word *word, t_shell *shell);
-void		display_env_for_export(t_shell *shell);
-int			check_argument_for_export(char *str);
-int			export_option(int res, char *str);
-void		export_error(char *str);
-int			check_env(char *str);
-int			inside_checker_export(char *str);
+int				builtin_export(t_word *word, t_shell *shell);
+void			display_env_for_export(t_shell *shell);
+int				check_argument_for_export(char *str);
+int				export_option(int res, char *str);
+void			export_error(char *str);
+int				check_env(char *str);
+int				inside_checker_export(char *str);
 
 //unset
-int			unset(t_word *word, t_shell *shell);
+int				unset(t_word *word, t_shell *shell);
 
 //exit
-int			builtin_exit(t_word *word);
+int				builtin_exit(t_word *word);
 
 //shell
-t_shell		*init_all(void);
-char		*get_path_line(char **paths);
-char		**get_paths(t_shell *shell, char **envp);
-void		exit_shell(t_shell *shell, int code);
-void		free_all(t_shell *shell);
-void		free_paths(t_shell *shell);
-void		free_cmds(t_shell *shell);
-void		fill_data(t_shell *shell, char **args);
-void		lst_addback(t_comm **lst, t_comm *new);
-bool		isbuiltin(char *str);
+t_shell			*init_all(void);
+char			*get_path_line(char **paths);
+char			**get_paths(t_shell *shell, char **envp);
+void			exit_shell(t_shell *shell, int code);
+void			free_all(t_shell *shell);
+void			free_paths(t_shell *shell);
+void			free_cmds(t_shell *shell);
+void			fill_data(t_shell *shell, char **args);
+void			lst_addback(t_comm **lst, t_comm *new);
+bool			isbuiltin(char *str);
 
 //heredoc
-void		expander_set_heredoc(t_node *node, t_shell *shell);
+void			expander_set_heredoc(t_node *node, t_shell *shell);
 
 //exec
-void		exec(t_node *node, t_shell *shell);
-void		exec_pipe(t_node *pipe_node, t_shell *shell);
-void		exec_multi_pipes(t_node *pipe_node, t_shell *shell);
-void		exec_no_pipe(t_node *pipe_node, t_shell *shell);
-void		exec_cmd(t_node *node, t_shell *shell);
-void		exec_file(t_node *node, t_shell *shell);
-void		set_exit_status(void);
-bool		check_cmd(t_cmd *cmd);
-bool		is_directory(char *pathname);
-int			fail_exec(t_node *node);
-bool		set_redir_out(t_redir *redir_out);
-bool		set_redir_in(t_redir *redir_in);
-void		exec_builtin(t_node *node, t_shell *shell);
-void		no_builtin(void);
-void		redir_in_error(void);
-void		redir_out_error(void);
-pid_t		my_fork(void);
+void			exec(t_node *node, t_shell *shell);
+void			exec_pipe(t_node *pipe_node, t_shell *shell);
+void			exec_multi_pipes(t_node *pipe_node, t_shell *shell);
+void			exec_no_pipe(t_node *pipe_node, t_shell *shell);
+void			exec_cmd(t_node *node, t_shell *shell);
+void			exec_file(t_node *node, t_shell *shell);
+void			set_exit_status(void);
+bool			check_cmd(t_cmd *cmd);
+bool			is_directory(char *pathname);
+int				fail_exec(t_node *node);
+bool			set_redir_out(t_redir *redir_out);
+bool			set_redir_in(t_redir *redir_in);
+void			exec_builtin(t_node *node, t_shell *shell);
+void			no_builtin(void);
+void			redir_in_error(void);
+void			redir_out_error(void);
+pid_t			my_fork(void);
 #endif

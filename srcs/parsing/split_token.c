@@ -23,14 +23,20 @@ static void	redirection_end(char *str, int *cur)
 
 int	word_end(char *str, int *cur)
 {
-	static int	quote;
+	t_quote_check	quote;
 
-	quote = 0;
+	quote = NO;
 	while (str[(*cur)])
 	{
 		quote = is_quote(str[*cur], quote);
-		if (is_separator(str[*cur]) == 1 && quote == 0)
+		if (is_separator(str[*cur]) == 1 && quote == NO)
 			break ;
+		else if (quote == NO && (str[*cur] == '|')
+			&& str[*cur + 1] != ' ' && str[*cur + 1] != '\0')
+		{
+			(*cur)++;
+			break ;
+		}
 		(*cur)++ ;
 	}
 	return (0);
