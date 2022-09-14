@@ -6,7 +6,7 @@
 /*   By: msuji <mtsuji@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 11:22:59 by msuji             #+#    #+#             */
-/*   Updated: 2022/09/09 11:00:23 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/14 12:03:33 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	word_end(char *str, int *cur)
 		else if (str[*cur] && str[*cur + 1] == '|')
 		{
 			(*cur)++ ;
-			break;
+			break ;
 		}
 		(*cur)++ ;
 	}

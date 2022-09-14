@@ -6,7 +6,7 @@
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 16:55:54 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/09/09 14:36:58 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/14 12:04:43 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	remove_quote_redir(t_redir *redir)
 
 void	remove_quote_heredoc(t_redir *redir)
 {
-	t_quote_check quote;
+	t_quote_check	quote;
 
 	quote = NO;
 	if (redir == NULL)
@@ -92,4 +92,3 @@ void	remove_quote(t_node *node)
 		remove_quote(node->rhs);
 	}
 }
-

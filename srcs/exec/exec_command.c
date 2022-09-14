@@ -6,7 +6,7 @@
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:58:10 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/09/10 16:41:01 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/14 12:03:02 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ extern int	g_exit_stats;
 void	exec_cmd(t_node *node, t_shell *shell)
 {
 	if ((!set_redir_in(node->cmds->redir_in)
-		&& node->cmds->redir_out == NULL)
+			&& node->cmds->redir_out == NULL)
 		|| (!set_redir_out(node->cmds->redir_out)
-		&& node->cmds->redir_in == NULL)
+			&& node->cmds->redir_in == NULL)
 		|| node->cmds->word == NULL)
 	{
 		dup2(shell->fdin, 1);

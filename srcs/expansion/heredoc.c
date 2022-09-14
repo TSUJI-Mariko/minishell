@@ -6,7 +6,7 @@
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 18:41:43 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/09/09 13:33:58 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/14 12:05:07 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	expander_set_heredoc(t_node *node, t_shell *shell)
 		return ;
 	if (node->kind == COMMAND)
 	{
-		remove_quote_heredoc(node->cmds->redir_in);		
+		remove_quote_heredoc(node->cmds->redir_in);
 		set_heredoc(node->cmds->redir_in, shell);
 	}
 	else

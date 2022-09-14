@@ -6,7 +6,7 @@
 /*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 17:12:13 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/09/13 17:12:15 by mtsuji           ###   ########.fr       */
+/*   Updated: 2022/09/14 12:04:18 by mtsuji           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*expand_var_heredoc(t_redir *redir, char *str, t_shell *shell)
 	return (new);
 }
 
-t_quote_check quote_heredoc(char *str, t_quote_check quote)
+t_quote_check	quote_heredoc(char *str, t_quote_check quote)
 {
 	long	i;
 

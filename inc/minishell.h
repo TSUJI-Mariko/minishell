@@ -170,6 +170,24 @@ void			signal_exec(void);
 void			signal_heredoc_handle(int signal);
 void			signal_heredoc(void);
 
+//env | shell
+t_shell			*create_shell(char **envp, char **argv);
+t_env			*create_env(char **envp);
+t_env			*env_addback(t_env *env, char *name, char *body);
+char			*create_env_name(char *str);
+char			*create_env_name_with_plus(char *str);
+char			*create_env_body(char *str);
+char			*create_env_body_with_plus(char *str);
+long			get_env_size(t_shell *shell);
+char			**create_envp(t_shell *shell);
+char			**create_argv(t_word *word);
+void			env_add(char *str, t_shell *shell);
+void			env_add_with_plus(char *str, t_shell *shell);
+t_env			*new_env(char *name, char *body);
+void			env_rewrite(t_shell *shell, char *name, char *body);
+void			env_rewrite_with_plus(t_shell *shell, char *name, char *body);
+void			del_env(char *str, t_shell *shell);
+
 //lexer
 t_command		*lexer(char *str);
 int				quote_check(char *str);
@@ -179,7 +197,6 @@ int				quoting(char *str);
 int				first_word_is_pipe(char *str);
 int				first_word_colon_exclamation(char *str);
 void			ft_error(char *str);
-t_quote_check	is_quote(char c, t_quote_check quote);
 
 //get_command_line
 t_command		*get_command_line(char *str);
@@ -189,13 +206,15 @@ void			commandline_addback(t_command *line, t_command *new);
 void			check_pipe(int cur, char *str);
 
 //tokenization
-void			free_end(t_command *command_line, char *str);
+void			init_type(t_token *new);
+
 int				split_command_line(t_command *command_line);
 int				split_command_to_token(t_command *command_line);
 void			token_addback(t_token **tkn, t_token *new);
 void			init_token(t_token *new);
 int				is_redirection(char c);
 int				is_separator(char c);
+t_quote_check	is_quote(char c, t_quote_check quote);
 int				word_end(char *str, int *cur);
 int				put_eof(t_command *command_line, char *str, int len);
 
@@ -208,6 +227,23 @@ t_node			*word(t_token **token);
 void			syntax_error(t_node *node);
 void			command_error_check(t_node *node);
 
+//util_for_parser
+bool			consume(t_token *token, t_token_kind kind, char *str);
+bool			consume_redir(t_token *token, t_token_kind kind, char *str);
+t_token			*skip(t_token *token, t_token_kind kind, char *str);
+void			parser_error(char *str, long len);
+t_node			*new_node_pipe(t_node *cmd_node);
+t_node			*add_node_pipe(t_node *node, t_node *cmd_node);
+t_node			*new_node_command(void);
+t_node			*new_node_word(t_token *token);
+void			word_addback(t_cmd *command, char *str, long len);
+void			redir_in(t_token **token, t_node *node);
+void			redir_out(t_token **token, t_node *node);
+void			redir_in_addback(t_cmd *command, t_redir_kind kind, \
+				char *str, int len);
+void			redir_out_addback(t_cmd *command, t_redir_kind kind, \
+				char *str, int len);
+
 //expension
 void			expander(t_node *node, t_shell *shell);
 void			expand_var(t_node *node, t_shell *shell);
@@ -216,8 +252,8 @@ void			expand_var_in_redir(t_redir *redir, t_shell *shell);
 char			*expand_var_in_str(char *str, t_shell *shell);
 long			at_doller_mark(char *str, char **new, long i, t_shell *shell);
 void			split_space(t_node *node);
-t_word			*_split_space_in_word(t_word *word);
-t_word			*_create_splited_words(char *str);
+t_word			*split_space_in_word(t_word *word);
+t_word			*create_splited_words(char *str);
 long			get_word_len_to_space(char *str);
 t_node			expension(t_node *node);
 char			*remove_quote_string(char *str);
@@ -243,21 +279,6 @@ char			*sarch_pathname(char *str, t_shell *shell);
 int				check_pathname(char *pathname);
 long			after_doller_check(char *str, char *new, long i);
 
-//util_for_parser
-bool			consume(t_token *token, t_token_kind kind, char *str);
-bool			consume_redir(t_token *token, t_token_kind kind, char *str);
-t_token			*skip(t_token *token, t_token_kind kind, char *str);
-void			parser_error(char *str, long len);
-t_node			*new_node_pipe(t_node *cmd_node);
-t_node			*add_node_pipe(t_node *node, t_node *cmd_node);
-t_node			*new_node_command(void);
-t_node			*new_node_word(t_token *token);
-void			word_addback(t_cmd *command, char *str, long len);
-void			redir_in_addback(t_cmd *command, t_redir_kind kind, \
-				char *str, int len);
-void			redir_out_addback(t_cmd *command, t_redir_kind kind, \
-				char *str, int len);
-
 //free
 int				free_lexer(t_command *command_line);
 void			free_token(t_command **command_line);
@@ -265,25 +286,9 @@ void			free_node(t_node *node);
 void			free_word(t_word *word);
 void			free_redirection(t_redir *redir_in);
 void			free_envp(char **envp);
-
-//env | shell
-t_shell			*create_shell(char **envp, char **argv);
-t_env			*create_env(char **envp);
-t_env			*env_addback(t_env *env, char *name, char *body);
-char			*create_env_name(char *str);
-char			*create_env_name_with_plus(char *str);
-char			*create_env_body(char *str);
-char			*create_env_body_with_plus(char *str);
 void			free_env(t_shell *shell);
-long			get_env_size(t_shell *shell);
-char			**create_envp(t_shell *shell);
-char			**create_argv(t_word *word);
-void			env_add(char *str, t_shell *shell);
-void			env_add_with_plus(char *str, t_shell *shell);
-t_env			*new_env(char *name, char *body);
-void			env_rewrite(t_shell *shell, char *name, char *body);
-void			env_rewrite_with_plus(t_shell *shell, char *name, char *body);
-void			del_env(char *str, t_shell *shell);
+void			free_end(t_command *command_line, char *str);
+void			free_for_unset(t_env *env);
 
 //echo
 int				echo(t_word *word);
@@ -291,6 +296,7 @@ int				echo_option(char *str);
 
 //env
 int				env(t_word *word, t_shell *shell);
+
 //pwd
 int				pwd(t_word *word);
 int				pwd_argument_check(char *str);
@@ -314,9 +320,15 @@ int				inside_checker_export(char *str);
 
 //unset
 int				unset(t_word *word, t_shell *shell);
+void			unset_error(char *str);
+int				inside_checker_unset(char *str);
+int				unset_argument_check(char *str);
+int				unset_option(int res, char *str);
 
 //exit
 int				builtin_exit(t_word *word);
+int				overflow_check(char *str);
+int				check_int(char *str);
 
 //shell
 t_shell			*init_all(void);
@@ -325,14 +337,18 @@ char			**get_paths(t_shell *shell, char **envp);
 void			exit_shell(t_shell *shell, int code);
 void			free_all(t_shell *shell);
 void			free_paths(t_shell *shell);
+void			free_path(char **paths);
 void			free_cmds(t_shell *shell);
 void			fill_data(t_shell *shell, char **args);
 void			lst_addback(t_comm **lst, t_comm *new);
 bool			isbuiltin(char *str);
 
 //heredoc
+bool			is_heredoc_eof(char *line, char *eof);
+void			write_heredoc_to_fd(t_redir *redir, t_shell *shell, int fd);
+void			set_heredoc(t_redir *redir, t_shell *shell);
 void			expander_set_heredoc(t_node *node, t_shell *shell);
-char	*expand_var_heredoc(t_redir *redir, char *str, t_shell *shell);
+char			*expand_var_heredoc(t_redir *redir, char *str, t_shell *shell);
 
 //exec
 void			exec(t_node *node, t_shell *shell);
@@ -352,4 +368,5 @@ void			no_builtin(void);
 void			redir_in_error(void);
 void			redir_out_error(void);
 pid_t			my_fork(void);
+void			printer_redir(char *str);
 #endif

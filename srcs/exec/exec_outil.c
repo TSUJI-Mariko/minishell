@@ -91,6 +91,7 @@ void	set_exit_status(void)
 		if (g_exit_status == 128 + SIGQUIT)
 		{
 			ft_putstr_fd("Quit (core dumped)\n", 2);
+			return ;
 		}
 	}
 	else

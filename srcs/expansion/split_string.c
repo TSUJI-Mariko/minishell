@@ -38,7 +38,7 @@ long	get_word_len_to_space(char *str)
 	return (i);
 }
 
-t_word	*_create_splited_words(char *str)
+t_word	*create_splited_words(char *str)
 {
 	t_word	new_word;
 	long	i;
@@ -59,16 +59,16 @@ t_word	*_create_splited_words(char *str)
 	return (new_word.next);
 }
 
-t_word	*_split_space_in_word(t_word *word)
+t_word	*split_space_in_word(t_word *word)
 {
 	t_word	new_word;
 	t_word	*last;
 
 	if (word == NULL)
 		return (NULL);
-	new_word.next = _create_splited_words(word->str);
+	new_word.next = create_splited_words(word->str);
 	last = word_last(&new_word);
-	last->next = _split_space_in_word(word->next);
+	last->next = split_space_in_word(word->next);
 	free(word->str);
 	free(word);
 	return (new_word.next);
@@ -81,7 +81,7 @@ void	split_space(t_node *node)
 	if (node->kind == NODE_EOF)
 		return ;
 	if (node->kind == COMMAND)
-		node->cmds->word = _split_space_in_word(node->cmds->word);
+		node->cmds->word = split_space_in_word(node->cmds->word);
 	else
 	{
 		split_space(node->lhs);
