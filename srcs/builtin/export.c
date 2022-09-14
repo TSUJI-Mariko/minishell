@@ -34,7 +34,8 @@ int	check_argument_for_export(char *str)
 	int	res;
 
 	res = 0;
-	if (str[0] == '=' || (str[0] == '+' && str[1] == '='))
+	if (str[0] == '=' || str[0] == '+' ||
+		(str[0] == '+' && str[1] == '='))
 	{
 		export_error(str);
 		return (1);
@@ -95,7 +96,7 @@ int	builtin_export(t_word *word, t_shell *shell)
 			else
 				g_exit_status = res;
 		}
-		if (ft_strnstr(word->str, "+=", ft_strlen(word->str)) != 0)
+		else if (ft_strnstr(word->str, "+=", ft_strlen(word->str)) != 0)
 			env_add_with_plus(word->str, shell);
 		else
 			env_add(word->str, shell);

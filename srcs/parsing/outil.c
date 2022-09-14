@@ -26,14 +26,14 @@ t_quote_check	is_quote(char c, t_quote_check quote)
 		if (quote == NO)
 			quote = SINGLE;
 		else if (quote == SINGLE)
-			quote = NO;
+			quote = S_CLOSE;
 	}
 	if (c == '\"')
 	{
 		if (quote == NO)
 			quote = DOUBLE;
 		else if (quote == DOUBLE)
-			quote = NO;
+			quote = D_CLOSE;
 	}
 	return (quote);
 }
