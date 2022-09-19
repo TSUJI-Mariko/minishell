@@ -34,25 +34,25 @@ long	after_doller_check(char *str, char *new, long i)
 
 char	*expand_var_in_str(char *str, t_shell *shell)
 {
-	char	*new;
-	long	i;
-	bool	double_quote;
-	bool	single_quote;
+	char			*new;
+	long			i;
+	t_quote_check	quote;
 
 	i = 0;
+	quote = NO;
 	new = ft_strdup("");
 	while (str[i])
 	{
-		if (!single_quote && str[i] == '$')
+		if (quote != SINGLE && str[i] == '$')
 		{
 			i = at_doller_mark(str, &new, i, shell);
 			i = after_doller_check(str, new, i);
 			continue ;
 		}
-		if (str[i] == '"' && !single_quote)
-			double_quote = !double_quote;
-		if (str[i] == '\'' && !double_quote)
-			single_quote = !single_quote;
+		if (str[i] == '"' && quote != SINGLE)
+			quote = DOUBLE;
+		if (str[i] == '\'' && quote != DOUBLE)
+			quote = SINGLE;
 		new = ft_str_add_char(new, str[i]);
 		i++;
 	}

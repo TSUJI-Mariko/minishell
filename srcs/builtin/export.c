@@ -34,8 +34,8 @@ int	check_argument_for_export(char *str)
 	int	res;
 
 	res = 0;
-	if (str[0] == '=' || str[0] == '+' ||
-		(str[0] == '+' && str[1] == '='))
+	if (str[0] == '=' || str[0] == '+'
+		|| (str[0] == '+' && str[1] == '='))
 	{
 		export_error(str);
 		return (1);

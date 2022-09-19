@@ -29,8 +29,8 @@ int	word_end(char *str, int *cur)
 	while (str[(*cur)])
 	{
 		quote = is_quote(str[*cur], quote);
-		if (is_separator(str[*cur]) == 1 
-		&& quote != SINGLE && quote != DOUBLE)
+		if (is_separator(str[*cur]) == 1
+			&& quote != SINGLE && quote != DOUBLE)
 			break ;
 		if (quote == NO && (str[*cur] == '|')
 			&& str[*cur + 1] != ' ' && str[*cur + 1] != '\0')
