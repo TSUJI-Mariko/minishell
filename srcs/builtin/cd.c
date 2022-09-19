@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h" 
+#include "../../includes/minishell.h" 
 
 void	after_cd(t_shell *shell)
 {

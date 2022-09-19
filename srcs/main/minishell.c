@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../includes/minishell.h"
 
 int	g_exit_status;
 
@@ -29,12 +29,6 @@ void	start_command(char *str, t_shell *shell)
 	free_lexer(command_line);
 	if (node)
 	{
-		t_node *tmp = node;
-		while (tmp)
-		{
-			printf("str:{%s}\n", tmp->rhs->cmds->word->str);
-			tmp = tmp->next;
-		}
 		signal_heredoc();
 		expander_set_heredoc(node, shell);
 		signal_exec();
@@ -55,6 +49,7 @@ int	main(int argc, char **argv, char **envp)
 	{
 		signal_init();
 		line = readline(">minishell ");
+		write(1, line, strlen(line));
 		if (line == NULL)
 			break ;
 		if (only_space(line)
