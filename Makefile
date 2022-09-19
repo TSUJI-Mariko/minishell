@@ -6,7 +6,7 @@
 #    By: msuji <mtsuji@student.42.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/01 12:35:48 by msuji             #+#    #+#              #
-#    Updated: 2022/09/10 17:04:17 by mtsuji           ###   ########.fr        #
+#    Updated: 2022/09/19 17:12:59 by msuji            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ CC	=	gcc
 
 RM	=	rm -f
 
-CFLAGS	=	-Wall -Wextra -Werror -g3 -fsanitize=address -fsanitize=leak
+CFLAGS	=	-Wall -Wextra -Werror -g3 #-fsanitize=address -fsanitize=leak
 
 .c.o:
 	$(CC) $(CFLAGS) -I$(HEADER) -I$(LIBFT) -c $< -o $(<:.c=.o)
