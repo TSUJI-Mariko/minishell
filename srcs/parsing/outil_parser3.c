@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../includes/minishell.h"
 
 void	word_addback(t_cmd *command, char *str, long len)
 {

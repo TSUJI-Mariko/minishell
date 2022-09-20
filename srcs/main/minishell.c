@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../includes/minishell.h"
 
 int	g_exit_status;
 
@@ -49,6 +49,7 @@ int	main(int argc, char **argv, char **envp)
 	{
 		signal_init();
 		line = readline(">minishell ");
+		write(1, line, strlen(line));
 		if (line == NULL)
 			break ;
 		if (only_space(line)

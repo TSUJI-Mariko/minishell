@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../includes/minishell.h"
 
 char	*expand_var_heredoc(t_redir *redir, char *str, t_shell *shell)
 {
