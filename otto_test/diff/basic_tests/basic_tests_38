@@ -1,0 +1,8 @@
+diff -r bash_output/basic_tests_38/out minishell_output/basic_tests_38/out
+1d0
+< ahocine
+diff -r bash_output/basic_tests_38/status minishell_output/basic_tests_38/status
+1c1
+< 0
+---
+> 127

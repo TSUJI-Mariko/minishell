@@ -1,0 +1,18 @@
+diff -r bash_output/basic_tests_41/out minishell_output/basic_tests_41/out
+1,11d0
+< assets
+< bash_output
+< check_term_keybinds.sh
+< clean.sh
+< diff
+< errors
+< failed_tests
+< inputs
+< minishell_output
+< otto.sh
+< sub_scripts
+diff -r bash_output/basic_tests_41/status minishell_output/basic_tests_41/status
+1c1
+< 0
+---
+> 127

@@ -1,0 +1,8 @@
+diff -r bash_output/basic_tests_180/out minishell_output/basic_tests_180/out
+1d0
+< U
+diff -r bash_output/basic_tests_180/status minishell_output/basic_tests_180/status
+1c1
+< 0
+---
+> 127

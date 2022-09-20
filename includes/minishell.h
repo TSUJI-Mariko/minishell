@@ -34,6 +34,11 @@
 # include <readline/history.h>
 # include "../libft/libft.h"
 
+// Si un message d'erreur (exit code?) les commandes ne se lancent plus (ou n'affiche rien)
+// expend une commande -> ne s'execute pas
+// $SHLVL et $_ ne se mettent pas a jour
+// gerer env -i
+
 typedef struct s_exit
 {
 	int			exit_status;
