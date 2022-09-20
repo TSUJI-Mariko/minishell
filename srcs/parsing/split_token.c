@@ -12,6 +12,8 @@
 
 #include "../../includes/minishell.h"
 
+extern t_exit	g_exit;
+
 static void	redirection_end(char *str, int *cur)
 {
 	char	c;
@@ -90,7 +92,7 @@ static int	tokenization(int cur, int start, char *str, t_command *command_line)
 	token->string = ft_strncpy(token->string, str + start, cur - start);
 	token->len = cur - start;
 	init_type(token);
-	if (g_exit_status == 5)
+	if (g_exit.exit_status == 5)
 	{
 		if (token)
 			free(token);

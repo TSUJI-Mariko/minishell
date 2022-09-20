@@ -12,7 +12,7 @@
 
 #include "../../includes/minishell.h"
 
-extern int	g_exit_status;
+extern t_exit	g_exit;
 
 void	exec_file(t_node *node, t_shell *shell)
 {
@@ -25,7 +25,7 @@ void	exec_file(t_node *node, t_shell *shell)
 	{
 		signal(SIGQUIT, SIG_DFL);
 		if (!check_cmd(node->cmds))
-			exit(g_exit_status);
+			exit(g_exit.exit_status);
 		cmd_argv = create_argv(node->cmds->word);
 		cmd_envp = create_envp(shell);
 		execve(node->cmds->pathname, cmd_argv, cmd_envp);
@@ -33,6 +33,6 @@ void	exec_file(t_node *node, t_shell *shell)
 		free_envp(cmd_envp);
 		exit(fail_exec(node));
 	}
-	waitpid(pid, &(g_exit_status), 0);
+	waitpid(pid, &(g_exit.exit_status), 0);
 	set_exit_status();
 }

@@ -12,7 +12,7 @@
 
 #include "../../includes/minishell.h"
 
-extern int	g_exit_status;
+extern t_exit	g_exit;
 
 void	display_env_for_export(t_shell *shell)
 {
@@ -92,9 +92,9 @@ int	builtin_export(t_word *word, t_shell *shell)
 		if (res != 0)
 		{
 			if (res == 2 || res == 3)
-				g_exit_status = export_option(res, word->str);
+				g_exit.exit_status = export_option(res, word->str);
 			else
-				g_exit_status = res;
+				g_exit.exit_status = res;
 		}
 		else if (ft_strnstr(word->str, "+=", ft_strlen(word->str)) != 0)
 			env_add_with_plus(word->str, shell);
@@ -102,5 +102,5 @@ int	builtin_export(t_word *word, t_shell *shell)
 			env_add(word->str, shell);
 		word = word->next;
 	}
-	return (g_exit_status);
+	return (g_exit.exit_status);
 }

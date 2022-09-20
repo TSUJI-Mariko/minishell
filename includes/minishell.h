@@ -34,7 +34,13 @@
 # include <readline/history.h>
 # include "../libft/libft.h"
 
-extern int	g_exit_status;
+typedef struct s_exit
+{
+	int			exit_status;
+	bool		interrupt;
+}	t_exit;
+
+extern t_exit	g_exit;
 
 typedef enum e_quote_check
 {
@@ -161,6 +167,7 @@ typedef struct s_shell
 
 void			start_command(char *str, t_shell *shell);
 int				only_space(char *str);
+int				pipe_check(char *str);
 
 //signal
 void			signal_init_handle(int signal);
@@ -263,7 +270,7 @@ void			remove_quote_heredoc(t_redir *redir);
 void			remove_quote(t_node *node);
 void			pathname_generator(t_node *node, t_shell *shell);
 char			*get_pathname_str(char *str, t_shell *shell);
-t_quote_check	quote_heredoc(char *str, t_quote_check quote);
+t_quote_check	quote_check2(char *str, t_quote_check quote);
 
 //util for expansion
 char			*add_char(char *str, char c);

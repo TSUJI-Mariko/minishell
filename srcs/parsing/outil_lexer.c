@@ -12,9 +12,25 @@
 
 #include "../../includes/minishell.h"
 
-extern int	g_exit_status;
+extern t_exit	g_exit;
 
 int	first_word_is_pipe(char *str)
+{
+	int				res;
+	t_quote_check	quote;
+
+	quote = NO;
+	quote = quote_check2(str, quote);
+	if (quote == NO)
+	{
+		res = pipe_check(str);
+		if (res)
+			return (1);
+	}
+	return (0);
+}
+
+int	pipe_check(char *str)
 {
 	int	cur;
 	int	p;
@@ -31,7 +47,7 @@ int	first_word_is_pipe(char *str)
 			{
 				ft_putstr_fd("minishell: syntax error ", 2);
 				ft_putstr_fd("near unexpected token `|'\n", 2);
-				g_exit_status = 2;
+				g_exit.exit_status = 2;
 				return (1);
 			}
 			p = 0;
@@ -47,7 +63,7 @@ int	first_word_colon_exclamation(char *str)
 		&& str[1] == '\0')
 	{
 		if (str[0] == '!')
-			g_exit_status = 1;
+			g_exit.exit_status = 1;
 		return (1);
 	}
 	return (0);

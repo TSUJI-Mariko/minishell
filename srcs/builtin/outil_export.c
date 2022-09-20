@@ -12,7 +12,7 @@
 
 #include "../../includes/minishell.h"
 
-extern int	g_exit_status;
+extern t_exit	g_exit;
 
 int	check_env(char *str)
 {

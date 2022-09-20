@@ -12,7 +12,7 @@
 
 #include "../../includes/minishell.h"
 
-extern int	g_exit_status;
+extern t_exit	g_exit;
 
 long	after_doller(char *str, long i, char **new, t_shell *shell)
 {
@@ -42,7 +42,7 @@ long	at_doller_mark(char *s, char **new, long i[2], t_shell *shell)
 	i++;
 	if (s[i[0]] == '?')
 	{
-		*new = ft_strjoin_and_free(*new, 1, ft_itoa(g_exit_status), 1);
+		*new = ft_strjoin_and_free(*new, 1, ft_itoa(g_exit.exit_status), 1);
 		i[0]++;
 	}
 	else if (!is_valid_1st_char(s[i[0]]) && !ft_isdigit(s[i[0]]) \

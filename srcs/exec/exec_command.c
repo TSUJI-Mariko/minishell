@@ -12,10 +12,12 @@
 
 #include "../../includes/minishell.h"
 
-extern int	g_exit_stats;
+extern t_exit	g_exit;
 
 void	exec_cmd(t_node *node, t_shell *shell)
 {
+	if (g_exit.interrupt == true)
+		return ;
 	if ((!set_redir_in(node->cmds->redir_in)
 			&& node->cmds->redir_out == NULL)
 		|| (!set_redir_out(node->cmds->redir_out)
@@ -24,6 +26,7 @@ void	exec_cmd(t_node *node, t_shell *shell)
 	{
 		dup2(shell->fdin, 1);
 		dup2(shell->fdout, 0);
+		g_exit.exit_status = 1;
 		return ;
 	}
 	if (node->cmds->is_builtin)

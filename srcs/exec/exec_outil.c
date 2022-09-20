@@ -12,18 +12,18 @@
 
 #include "../../includes/minishell.h"
 
-extern int	g_exit_status;
+extern t_exit	g_exit;
 
 int	fail_exec(t_node *node)
 {
-	g_exit_status = 126;
+	g_exit.exit_status = 126;
 	if (errno == ENOENT)
-		g_exit_status = 127;
+		g_exit.exit_status = 127;
 	ft_putstr_fd("minishell: ", 2);
 	ft_putstr_fd(node->cmds->pathname, 2);
 	ft_putstr_fd(strerror(errno), 2);
 	ft_putstr_fd("\n", 2);
-	return (g_exit_status);
+	return (g_exit.exit_status);
 }
 
 bool	is_directory(char *pathname)
@@ -62,14 +62,14 @@ char	**create_argv(t_word *word)
 
 bool	check_cmd(t_cmd *cmd)
 {
-	if (g_exit_status == 1)
+	if (g_exit.exit_status == 1)
 		return (false);
 	if (cmd->pathname == NULL)
 	{
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(cmd->word->str, 2);
 		ft_putstr_fd(" command not found\n", 2);
-		g_exit_status = 127;
+		g_exit.exit_status = 127;
 		return (false);
 	}
 	if (is_directory(cmd->pathname))
@@ -77,7 +77,7 @@ bool	check_cmd(t_cmd *cmd)
 		ft_putstr_fd("minishell:", 2);
 		ft_putstr_fd(cmd->pathname, 2);
 		ft_putstr_fd(" is a directory\n", 2);
-		g_exit_status = 126;
+		g_exit.exit_status = 126;
 		return (false);
 	}
 	return (true);
@@ -85,15 +85,15 @@ bool	check_cmd(t_cmd *cmd)
 
 void	set_exit_status(void)
 {
-	if (WIFSIGNALED(g_exit_status))
+	if (WIFSIGNALED(g_exit.exit_status))
 	{
-		g_exit_status = 128 + WTERMSIG(g_exit_status);
-		if (g_exit_status == 128 + SIGQUIT)
+		g_exit.exit_status = 128 + WTERMSIG(g_exit.exit_status);
+		if (g_exit.exit_status == 128 + SIGQUIT)
 		{
 			ft_putstr_fd("Quit (core dumped)\n", 2);
 			return ;
 		}
 	}
 	else
-		g_exit_status = WEXITSTATUS(g_exit_status);
+		g_exit.exit_status = WEXITSTATUS(g_exit.exit_status);
 }

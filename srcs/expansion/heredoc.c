@@ -51,6 +51,8 @@ void	set_heredoc(t_redir *redir, t_shell *shell)
 
 	if (redir == NULL)
 		return ;
+	if (g_exit.interrupt == true)
+		return ;
 	if (redir->kind == REDIR_HEREDOC)
 	{
 		pipe(fd);

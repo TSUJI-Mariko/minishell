@@ -12,6 +12,8 @@
 
 #include "../../includes/minishell.h"
 
+extern t_exit	g_exit;
+
 void	signal_init_handle(int signal)
 {
 	(void)signal;
@@ -19,11 +21,12 @@ void	signal_init_handle(int signal)
 	rl_on_new_line();
 	rl_replace_line("", 0);
 	rl_redisplay();
-	g_exit_status = 128 + SIGINT;
+	g_exit.exit_status = 128 + SIGINT;
 }
 
 void	signal_init(void)
 {
 	signal(SIGINT, signal_init_handle);
 	signal(SIGQUIT, SIG_IGN);
+	g_exit.interrupt = false;
 }
