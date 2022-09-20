@@ -2,6 +2,7 @@
 *.d
 
 # IDE config files
+minishell_tester
 .vscode
 *.log
 *.json
