@@ -22,7 +22,7 @@ void	display_env_for_export(t_shell *shell)
 	while (env)
 	{
 		if (env->body)
-			ft_printf("export %s=%s\n", env->name, env->body);
+			ft_printf("export %s=\"%s\"\n", env->name, env->body);
 		else
 			ft_printf("export %s\n", env->name);
 		env = env->next;
