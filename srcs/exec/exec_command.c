@@ -26,6 +26,7 @@ void	exec_cmd(t_node *node, t_shell *shell)
 	{
 		dup2(shell->fdin, 1);
 		dup2(shell->fdout, 0);
+		g_exit.exit_status = 1;
 		return ;
 	}
 	if (node->cmds->is_builtin)
