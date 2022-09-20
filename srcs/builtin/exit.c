@@ -12,43 +12,37 @@
 
 #include "../../includes/minishell.h"
 
-int	overflow_check(char *str)
+int	overflow_check(char **str)
 {
 	long long	res;
-	long		sign;
 	long		i;
 
 	res = 0;
-	sign = 0;
 	i = 0;
-	if (str[i] == '-')
-	{
+	if (!strncmp(*str, "-9223372036854775808", 21))
+		return (*str[i] = '0', (*str)[i + 1] = 0, 0);
+	if ((*str)[i] == '-' || (*str)[i] == '+')
 		i++;
-		sign = -1;
-	}
-	while (str[i])
+	while ((*str)[i])
 	{
-		res = res * 10 + str[i] - '0';
+		res = res * 10 + (*str)[i] - '0';
 		i++;
-		if ((unsigned long)res > 9223372036854775807)
+		if ((unsigned long long)res > 9223372036854775807)
 			return (2);
 	}
-	res = res * sign;
-	if (res > LONG_MAX)
-		return (2);
 	return (0);
 }
 
-int	check_int(char *str)
+int	check_int(char **str)
 {
 	int	i;
 
 	i = 0;
-	if (str[i] == '-' || str[i] == '+')
+	if ((*str)[i] == '-' || (*str)[i] == '+')
 		i++;
-	while (str[i])
+	while ((*str)[i])
 	{
-		if (str[i] < '0' || str[i] > '9')
+		if ((*str)[i] < '0' || (*str)[i] > '9')
 			return (2);
 		i++;
 	}
@@ -57,9 +51,9 @@ int	check_int(char *str)
 
 int	builtin_exit(t_word *word)
 {
-	if (word->next == NULL)
+	if (word->next == NULL || word->next->str == NULL)
 		exit(g_exit_status);
-	if (check_int(word->next->str))
+	if (check_int(&(word->next->str)))
 	{
 		ft_putstr_fd("minishell: exit: ", 2);
 		ft_putstr_fd(word->next->str, 2);

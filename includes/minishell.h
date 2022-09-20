@@ -250,7 +250,7 @@ void			expand_var(t_node *node, t_shell *shell);
 void			expand_var_in_word(t_word *word, t_shell *shell);
 void			expand_var_in_redir(t_redir *redir, t_shell *shell);
 char			*expand_var_in_str(char *str, t_shell *shell);
-long			at_doller_mark(char *str, char **new, long i, t_shell *shell);
+long			at_doller_mark(char *s, char **new, long i[2], t_shell *shell);
 void			split_space(t_node *node);
 t_word			*split_space_in_word(t_word *word);
 t_word			*create_splited_words(char *str);
@@ -271,7 +271,7 @@ char			*ft_strjoin_and_free(char *s1, int i1, char *s2, int i2);
 char			*get_env_body(char *name, t_shell *shell);
 char			*get_var_name(char *str);
 int				is_var_name_char(char c);
-int				is_var_name_char_1st(char c);
+int				is_valid_1st_char(char c);
 char			*ft_str_add_char(char *str, char c);
 void			word_add_back_for_split(t_word *word, char *str);
 t_word			*word_last(t_word *word);
@@ -327,8 +327,8 @@ int				unset_option(int res, char *str);
 
 //exit
 int				builtin_exit(t_word *word);
-int				overflow_check(char *str);
-int				check_int(char *str);
+int				overflow_check(char **str);
+int				check_int(char **str);
 
 //shell
 t_shell			*init_all(void);

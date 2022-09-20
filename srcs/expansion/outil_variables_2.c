@@ -21,7 +21,7 @@ char	*ft_str_add_char(char *str, char c)
 	return (ft_strjoin_and_free(str, 1, ch, 0));
 }
 
-int	is_var_name_char_1st(char c)
+int	is_valid_1st_char(char c)
 {
 	return (ft_isalpha(c) || c == '_');
 }

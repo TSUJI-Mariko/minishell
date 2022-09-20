@@ -20,6 +20,8 @@ long	after_doller(char *str, long i, char **new, t_shell *shell)
 	char	*body;
 
 	name = get_var_name(&str[i]);
+	if (!name)
+		return (i);
 	if (name[0] != '\0')
 	{
 		body = get_env_body(name, shell);
@@ -35,19 +37,22 @@ long	after_doller(char *str, long i, char **new, t_shell *shell)
 	return (free(name), i);
 }
 
-long	at_doller_mark(char *str, char **new, long i, t_shell *shell)
+long	at_doller_mark(char *s, char **new, long i[2], t_shell *shell)
 {
 	i++;
-	if (str[i] == '?')
+	if (s[i[0]] == '?')
 	{
 		*new = ft_strjoin_and_free(*new, 1, ft_itoa(g_exit_status), 1);
-		i++;
+		i[0]++;
 	}
-	else if (!is_var_name_char_1st(str[i]))
+	else if (!is_valid_1st_char(s[i[0]]) && !ft_isdigit(s[i[0]]) \
+	&& (s[i[0]] != '"' || i[1] == (long)DOUBLE))
 		*new = ft_strjoin_and_free(*new, 1, "$", 0);
-	else
-		i = after_doller(str, i, new, shell);
-	return (i);
+	else if (ft_isdigit(s[i[0]]))
+		i[0]++;
+	else if (is_valid_1st_char(s[i[0]]))
+		i[0] = after_doller(s, i[0], new, shell);
+	return (i[0]);
 }
 
 char	*get_var_name(char *str)
@@ -65,6 +70,8 @@ char	*get_var_name(char *str)
 		len++;
 	}
 	name = ft_strndup(str, len);
+	if (!name)
+		return (NULL);
 	return (name);
 }
 
