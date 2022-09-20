@@ -22,6 +22,8 @@ void	exec_cmd(t_node *node, t_shell *shell)
 			&& (set_redir_out(node->cmds->redir_out)))
 		|| (set_redir_in(node->cmds->redir_in)
 			&& (!set_redir_out(node->cmds->redir_out)))
+		|| (!set_redir_in(node->cmds->redir_in)
+			&& (!set_redir_out(node->cmds->redir_out)))
 		|| node->cmds->word == NULL)
 	{
 		dup2(shell->fdin, 1);
