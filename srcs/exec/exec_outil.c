@@ -62,6 +62,8 @@ char	**create_argv(t_word *word)
 
 bool	check_cmd(t_cmd *cmd)
 {
+	if (g_exit.exit_status == 1)
+		return (false);
 	if (cmd->pathname == NULL)
 	{
 		ft_putstr_fd("minishell: ", 2);
