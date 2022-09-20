@@ -27,14 +27,12 @@ long	after_doller(char *str, long i, char **new, t_shell *shell)
 		{
 			new = NULL;
 			i += ft_strlen(name);
-			free(name);
-			return (i);
+			return (free(name), i);
 		}
 		*new = ft_strjoin_and_free(*new, 1, body, 0);
 		i += ft_strlen(name);
 	}
-	free(name);
-	return (i);
+	return (free(name), i);
 }
 
 long	at_doller_mark(char *str, char **new, long i, t_shell *shell)

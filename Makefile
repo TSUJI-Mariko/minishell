@@ -109,6 +109,8 @@ CURSIVE		= "\033[3m"
 #                RULES               #
 #------------------------------------#
 
+all: $(NAME)
+
 $(NAME): $(OBJS)
 	@echo $(CURSIVE)$(GREEN) "     ~ Making $(LIB_DIR)..." $(END)
 	make -C $(LIB_DIR)

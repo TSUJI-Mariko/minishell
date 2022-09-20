@@ -16,17 +16,17 @@ long	after_doller_check(char *str, char *new, long i)
 {
 	int	cur;
 
-	cur = 1;
-	if (str[0] == '$' && ft_isdigit(str[1]))
+	cur = i + 1;
+	if (str[i] == '$' && ft_isdigit(str[i + 1]))
 	{
-		new[0] = str[2];
+		new[ft_strlen(new)] = str[cur + 2];
 		i += 2;
 	}
-	else if (str[0] == '$' && (str[cur] == '\'' || str[cur] == '"'))
+	else if (str[i] == '$' && (str[cur] == '\'' || str[cur] == '"'))
 	{
 		while (str[cur] != '\'' && str[cur] != '"')
 			cur++;
-		new[0] = str[cur];
+		new[i] = str[cur];
 		i += cur;
 	}
 	return (i);

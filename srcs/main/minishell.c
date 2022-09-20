@@ -14,6 +14,26 @@
 
 int	g_exit_status;
 
+static char	*ft_readline(char **res)
+{
+	char	*path;
+	int		i;
+
+	path = getcwd(NULL, 0);
+	if (!path)
+		return (readline("\e[35mminishell$\e[0m> "));
+	i = ft_strlen(path) - 1;
+	while (path[i] && path[i] != '/')
+		i--;
+	*res = ft_calloc(sizeof(char), 60);
+	if (!*res)
+		return (free(path), readline("\e[35mminishell$\e[0m> "));
+	ft_strlcat(*res, "minishell$> \e[35m", 18);
+	ft_strlcat(*res, path + i + 1, 18 + ft_strlen(path + i + 1) + 1);
+	ft_strlcat(*res, "\e[0m> ", 25 + ft_strlen(path + i + 1) + 1);
+	return (free(path), readline(*res));
+}
+
 void	start_command(char *str, t_shell *shell)
 {
 	t_command	*command_line;
@@ -39,8 +59,9 @@ void	start_command(char *str, t_shell *shell)
 
 int	main(int argc, char **argv, char **envp)
 {
-	char	*line;
 	t_shell	*shell;
+	char	*line;
+	char	*res;
 
 	rl_outstream = stderr;
 	if (argc)
@@ -48,19 +69,17 @@ int	main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		signal_init();
-		line = readline(">minishell ");
-		write(1, line, strlen(line));
+		line = ft_readline(&res);
+		free(res);
 		if (line == NULL)
 			break ;
-		if (only_space(line)
-			&& !first_word_colon_exclamation(line))
+		if (only_space(line) && !first_word_colon_exclamation(line))
 		{
 			add_history(line);
 			if (first_word_is_pipe(line) == 0)
 				start_command(line, shell);
 		}
-		if (line)
-			free(line);
+		free(line);
 	}
 	ft_putstr_fd("exit\n", 2);
 	exit_shell(shell, g_exit_status);
