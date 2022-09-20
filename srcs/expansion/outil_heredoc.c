@@ -23,7 +23,7 @@ char	*expand_var_heredoc(t_redir *redir, char *str, t_shell *shell)
 	new = ft_strdup("");
 	while (str[i])
 	{
-		if (redir->no_expand == false && quote != SINGLE && str[i] == '$')
+		if (redir->no_expand == false && str[i] == '$')
 		{
 			i = at_doller_mark(str, &new, i, shell);
 			i = after_doller_check(str, new, i);
