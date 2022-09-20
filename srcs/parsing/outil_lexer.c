@@ -16,6 +16,22 @@ extern t_exit	g_exit;
 
 int	first_word_is_pipe(char *str)
 {
+	int				res;
+	t_quote_check	quote;
+
+	quote = NO;
+	quote = quote_check2(str, quote);
+	if (quote == NO)
+	{
+		res = pipe_check(str);
+		if (res)
+			return (1);
+	}
+	return (0);
+}
+
+int	pipe_check(char *str)
+{
 	int	cur;
 	int	p;
 

@@ -40,7 +40,7 @@ char	*expand_var_heredoc(t_redir *redir, char *str, t_shell *shell)
 	return (new);
 }
 
-t_quote_check	quote_heredoc(char *str, t_quote_check quote)
+t_quote_check	quote_check2(char *str, t_quote_check quote)
 {
 	long	i;
 

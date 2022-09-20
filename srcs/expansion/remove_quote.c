@@ -66,7 +66,7 @@ void	remove_quote_heredoc(t_redir *redir)
 		return ;
 	if (redir->kind == REDIR_HEREDOC)
 	{
-		quote = quote_heredoc(redir->str, quote);
+		quote = quote_check2(redir->str, quote);
 		redir->str = remove_quote_string(redir->str);
 		if (quote == D_CLOSE || quote == S_CLOSE)
 			redir->no_expand = true;
