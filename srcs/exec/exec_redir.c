@@ -12,7 +12,7 @@
 
 #include "../../inc/minishell.h"
 
-extern int	g_exit_status;
+extern t_exit	g_exit;
 
 void	printer_redir(char *str)
 {
@@ -36,7 +36,7 @@ bool	set_redir_in(t_redir *redir_in)
 		if (fd < 0)
 		{
 			printer_redir(redir_in->str);
-			g_exit_status = 1;
+			g_exit.exit_status = 1;
 			return (false);
 		}
 	}
@@ -52,13 +52,13 @@ bool	set_redir_in(t_redir *redir_in)
 void	redir_in_error(void)
 {
 	ft_putstr_fd("error: set_redir_in()", 2);
-	g_exit_status = 1;
+	g_exit.exit_status = 1;
 }
 
 void	redir_out_error(void)
 {
 	ft_putstr_fd("error: set_redir_in()", 2);
-	g_exit_status = 1;
+	g_exit.exit_status = 1;
 }
 
 bool	set_redir_out(t_redir *redir_out)
@@ -79,7 +79,7 @@ bool	set_redir_out(t_redir *redir_out)
 	if (fd < 0)
 	{
 		printer_redir(redir_out->str);
-		g_exit_status = 1;
+		g_exit.exit_status = 1;
 		return (false);
 	}
 	dup2(fd, 1);

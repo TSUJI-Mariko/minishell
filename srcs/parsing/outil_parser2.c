@@ -12,6 +12,8 @@
 
 #include "../../inc/minishell.h"
 
+extern t_exit	g_exit;
+
 void	free_redirection(t_redir *redirection)
 {
 	if (!redirection)
@@ -34,7 +36,7 @@ t_node	*new_node_pipe(t_node *cmd_node)
 {
 	t_node	*node;
 
-	if (g_exit_status == 5 || g_exit_status == 6)
+	if (g_exit.exit_status == 5 || g_exit.exit_status == 6)
 		return (NULL);
 	node = ft_calloc(1, sizeof(t_node));
 	node->kind = PIPE;
@@ -55,7 +57,7 @@ t_node	*new_node_command(void)
 {
 	t_node	*node;
 
-	if (g_exit_status == 5 || g_exit_status == 6)
+	if (g_exit.exit_status == 5 || g_exit.exit_status == 6)
 		return (NULL);
 	node = ft_calloc(1, sizeof(t_node));
 	node->cmds = ft_calloc(1, sizeof(t_cmd));

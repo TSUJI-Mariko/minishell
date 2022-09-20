@@ -12,11 +12,13 @@
 
 #include "../../inc/minishell.h"
 
+extern t_exit	g_exit;
+
 void	redir_in(t_token **token, t_node *node)
 {
 	if (ft_strnstr((*token)->string, "<<<", ft_strlen((*token)->string)))
 	{
-		g_exit_status = 6;
+		g_exit.exit_status = 6;
 		ft_putstr_fd("minishell: syntax error near unexpected token `<<'\n", 2);
 		return ;
 	}
@@ -37,7 +39,7 @@ void	redir_out(t_token **token, t_node *node)
 {
 	if (ft_strnstr((*token)->string, ">>>", ft_strlen((*token)->string)))
 	{
-		g_exit_status = 6;
+		g_exit.exit_status = 6;
 		ft_putstr_fd("minishell: syntax error near unexpected token `>>'\n", 2);
 		return ;
 	}
@@ -62,7 +64,7 @@ t_node	*command(t_token **token)
 	node = new_node_command();
 	while (true)
 	{
-		if (g_exit_status == 5 || g_exit_status == 6)
+		if (g_exit.exit_status == 5 || g_exit.exit_status == 6)
 		{
 			free_node(node);
 			return (node);
@@ -78,7 +80,7 @@ t_node	*command(t_token **token)
 			command_error_check(node);
 			return (node);
 		}
-		if (g_exit_status != 6)
+		if (g_exit.exit_status != 6)
 			*token = skip(*token, TOKEN_ARGUMENT, NULL);
 	}
 }

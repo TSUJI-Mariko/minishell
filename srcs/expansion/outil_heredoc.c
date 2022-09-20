@@ -14,9 +14,9 @@
 
 char	*expand_var_heredoc(t_redir *redir, char *str, t_shell *shell)
 {
-	char	*new;
-	long	i;
-	t_quote_check quote;
+	char			*new;
+	long			i;
+	t_quote_check	quote;
 
 	i = 0;
 	quote = NO;

@@ -12,6 +12,8 @@
 
 #include "../../inc/minishell.h"
 
+extern t_exit	g_exit;
+
 void	word_addback(t_cmd *command, char *str, long len)
 {
 	t_word	*word;
@@ -73,7 +75,7 @@ void	redir_out_addback(t_cmd *command, \
 void	syntax_error(t_node *node)
 {
 	ft_putstr_fd("minishell: syntax error near unexpected token", 2);
-	g_exit_status = 6;
+	g_exit.exit_status = 6;
 	free_node(node);
 }
 

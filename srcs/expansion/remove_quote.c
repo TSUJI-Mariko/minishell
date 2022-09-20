@@ -62,7 +62,6 @@ void	remove_quote_heredoc(t_redir *redir)
 	t_quote_check	quote;
 
 	quote = NO;
-
 	if (redir == NULL)
 		return ;
 	if (redir->kind == REDIR_HEREDOC)

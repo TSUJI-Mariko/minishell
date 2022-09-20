@@ -12,7 +12,7 @@
 
 #include "../../inc/minishell.h"
 
-extern int	g_exit_status;
+extern t_exit	g_exit;
 
 void	unset_error(char *str)
 {
@@ -88,7 +88,7 @@ int	unset(t_word *word, t_shell *shell)
 	int	res;
 
 	res = 0;
-	g_exit_status = 0;
+	g_exit.exit_status = 0;
 	word = word->next;
 	while (word)
 	{
@@ -96,13 +96,13 @@ int	unset(t_word *word, t_shell *shell)
 		if (res != 0)
 		{
 			if (res == 2 || res == 3)
-				g_exit_status = unset_option(res, word->str);
+				g_exit.exit_status = unset_option(res, word->str);
 			else
-				g_exit_status = res;
+				g_exit.exit_status = res;
 		}
 		if (word->str)
 			del_env(word->str, shell);
 		word = word->next;
 	}
-	return (g_exit_status);
+	return (g_exit.exit_status);
 }

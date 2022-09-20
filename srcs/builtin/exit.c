@@ -12,6 +12,8 @@
 
 #include "../../inc/minishell.h"
 
+extern t_exit	g_exit;
+
 int	overflow_check(char *str)
 {
 	long long	res;
@@ -58,7 +60,7 @@ int	check_int(char *str)
 int	builtin_exit(t_word *word)
 {
 	if (word->next == NULL)
-		exit(g_exit_status);
+		exit(g_exit.exit_status);
 	if (check_int(word->next->str))
 	{
 		ft_putstr_fd("minishell: exit: ", 2);
@@ -69,7 +71,7 @@ int	builtin_exit(t_word *word)
 	if (word->next->next != NULL)
 	{
 		ft_putstr_fd("minishell: exit: too many arguments\n", 2);
-		g_exit_status = 1;
+		g_exit.exit_status = 1;
 		return (1);
 	}
 	exit(ft_atoi(word->next->str));

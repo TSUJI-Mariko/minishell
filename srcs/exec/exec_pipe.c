@@ -12,7 +12,7 @@
 
 #include "../../inc/minishell.h" 
 
-extern int	g_exit_status;
+extern t_exit	g_exit;
 
 void	exec_pipe(t_node *pipe_node, t_shell *shell)
 {
@@ -28,10 +28,10 @@ void	exec_pipe(t_node *pipe_node, t_shell *shell)
 		if (pid == 0)
 		{
 			exec_multi_pipes(pipe_node, shell);
-			exit(g_exit_status);
+			exit(g_exit.exit_status);
 		}
 		sts = 0;
 		waitpid(pid, &sts, 0);
-		g_exit_status = WEXITSTATUS(sts);
+		g_exit.exit_status = WEXITSTATUS(sts);
 	}
 }

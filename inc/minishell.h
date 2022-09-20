@@ -34,7 +34,13 @@
 # include <readline/history.h>
 # include "../libft/libft.h"
 
-extern int	g_exit_status;
+typedef struct s_exit
+{
+	int			exit_status;
+	bool		interrupt;
+}	t_exit;
+
+extern t_exit	g_exit;
 
 typedef enum e_quote_check
 {

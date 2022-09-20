@@ -12,20 +12,22 @@
 
 #include "../../inc/minishell.h"
 
+extern t_exit	g_exit;
+
 t_node	*parser(t_token *token)
 {
 	t_node	*node;
 
 	node = pipe_cmd(&token);
-	if (g_exit_status == 5)
+	if (g_exit.exit_status == 5)
 	{
 		printf("minishell: syntax error near unexpected token `newline'\n");
-		g_exit_status = 2;
+		g_exit.exit_status = 2;
 		return (NULL);
 	}
-	else if (g_exit_status == 6)
+	else if (g_exit.exit_status == 6)
 	{
-		g_exit_status = 2;
+		g_exit.exit_status = 2;
 		return (NULL);
 	}
 	else

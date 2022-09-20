@@ -12,14 +12,15 @@
 
 #include "../../inc/minishell.h"
 
-extern int	g_exit_status;
+extern t_exit	g_exit;
 
 void	signal_exec_handle(int signal)
 {
-	g_exit_status += signal;
+	g_exit.exit_status += signal;
 	if (signal == 2)
 	{
-		g_exit_status = 128 + SIGINT;
+		g_exit.exit_status = 128 + SIGINT;
+		g_exit.interrupt = true;
 		ft_putstr_fd("\n", 2);
 		rl_replace_line("", 0);
 		rl_redisplay();

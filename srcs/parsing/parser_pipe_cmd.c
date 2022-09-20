@@ -12,14 +12,16 @@
 
 #include "../../inc/minishell.h"
 
+extern t_exit	g_exit;
+
 t_node	*pipe_cmd(t_token **token)
 {
 	t_node	*node;
 
-	if (g_exit_status != 5 && g_exit_status != 6)
+	if (g_exit.exit_status != 5 && g_exit.exit_status != 6)
 	{
 	node = new_node_pipe(command(token));
-		if (g_exit_status == 5 || g_exit_status == 6)
+		if (g_exit.exit_status == 5 || g_exit.exit_status == 6)
 			return (NULL);
 		while (consume(*token, TOKEN_PIPE, "|"))
 		{

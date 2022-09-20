@@ -15,7 +15,8 @@
 void	signal_heredoc_handle(int signal)
 {
 	(void)signal;
-	g_exit_status = 130;
+	g_exit.exit_status = 130;
+	g_exit.interrupt = true;
 	close(0);
 	ft_putstr_fd("\n", 2);
 }
