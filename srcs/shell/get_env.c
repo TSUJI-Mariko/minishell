@@ -53,6 +53,7 @@ t_shell	*init_all(void)
 	shell->envp = NULL;
 	shell->paths = NULL;
 	shell->ret = 1;
+	shell->env = NULL;
 	return (shell);
 }
 

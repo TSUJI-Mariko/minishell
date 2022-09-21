@@ -27,8 +27,8 @@ t_shell	*create_shell(char **envp, char **argv)
 		perror("fdout");
 	if (!shell->envp)
 	{
-		shell->envp = ft_init_shell();
-		if (!shell->envp)
+		envp = ft_init_shell();
+		if (!envp)
 			return (NULL);
 	}
 	fill_data(shell, argv);
