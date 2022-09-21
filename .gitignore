@@ -51,6 +51,7 @@ minishell_tester
 # Kernel Module Compile Results
 *.mod*
 *.cmd
+.nfs*
 .tmp_versions/
 modules.order
 Module.symvers
