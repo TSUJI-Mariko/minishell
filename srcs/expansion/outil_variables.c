@@ -39,7 +39,7 @@ long	after_doller(char *str, long i, char **new, t_shell *shell)
 
 long	at_doller_mark(char *s, char **new, long i[2], t_shell *shell)
 {
-	i++;
+	i[0]++;
 	if (s[i[0]] == '?')
 	{
 		*new = ft_strjoin_and_free(*new, 1, ft_itoa(g_exit.exit_status), 1);
