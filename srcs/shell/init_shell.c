@@ -12,7 +12,7 @@
 
 #include "../includes/minishell.h"
 
-char   **ft_init_shell(void)
+char	**ft_init_shell(void)
 {
 	char	**res;
 	char	*value;
