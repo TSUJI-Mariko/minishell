@@ -28,6 +28,10 @@ minishell_tester
 *.la
 *.lo
 
+# Tester
+otto_test/diff
+otto_test/errors
+
 # Shared objects (inc. Windows DLLs)
 *.dll
 *.so

@@ -46,15 +46,12 @@ char	*expand_var_in_str(char *str, t_shell *shell)
 			i[0] = after_doller_check(str, new, i[0]);
 			continue ;
 		}
-		if (str[i[0]] == '"' && i[1] != SINGLE)
-			i[1] = DOUBLE;
-		if (str[i[0]] == '\'' && i[1] != DOUBLE)
-			i[1] = SINGLE;
-		new = ft_str_add_char(new, str[i[0]]);
-		i[0]++;
+		if ((str[i[0]] == '"' && i[1] != SINGLE) || \
+		(str[i[0]] == '\'' && i[1] != DOUBLE))
+			i[1] = ft_handle_quote(i[1], str[i[0]]);
+		new = ft_str_add_char(new, str[i[0]++]);
 	}
-	free(str);
-	return (new);
+	return (free(str), new);
 }
 
 void	expand_var_in_redir(t_redir *redir, t_shell *shell)
