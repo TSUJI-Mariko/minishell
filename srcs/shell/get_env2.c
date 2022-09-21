@@ -39,8 +39,6 @@ void	free_all(t_shell *shell)
 			free_paths(shell);
 		if (shell->env)
 			free_env(shell);
-		if (shell->envp)
-			free_envp(shell->envp);
 		free(shell);
 		shell = NULL;
 	}

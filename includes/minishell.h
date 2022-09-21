@@ -34,8 +34,7 @@
 # include <readline/history.h>
 # include "../libft/libft.h"
 
-// -->	Si un message d'erreur (exit code?) les 
-// 		commandes ne se lancent plus (ou n'affiche rien)
+// -->	Gestion echo env "$"
 // ------------------------------------------------------
 // -->	expend une commande -> ne s'execute pas
 // ------------------------------------------------------
