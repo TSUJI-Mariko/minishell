@@ -74,7 +74,7 @@ void	redir_out_addback(t_cmd *command, \
 
 void	syntax_error(t_node *node)
 {
-	ft_putstr_fd("minishell: syntax error near unexpected token", 2);
+	ft_putstr_fd("\e[31mminishell:\e[0m syntax error near unexpected token", 2);
 	g_exit.exit_status = 6;
 	free_node(node);
 }

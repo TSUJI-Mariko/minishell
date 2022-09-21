@@ -81,6 +81,6 @@ int	main(int argc, char **argv, char **envp)
 		}
 		free(line);
 	}
-	ft_putstr_fd("exit\n", 2);
+	ft_putstr_fd("\e[31mexit\e[0m\n", 2);
 	exit_shell(shell, g_exit.exit_status);
 }

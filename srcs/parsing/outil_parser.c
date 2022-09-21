@@ -19,7 +19,8 @@ void	parser_error(char *str, long len)
 	char	*str_tmp;
 
 	str_tmp = strndup(str, len);
-	ft_putstr_fd("minishell : syntax error near unexpected token `newline'", 2);
+	ft_putstr_fd("\e[31mminishell :\e[0m syntax error near unexpected \
+token `newline'", 2);
 	ft_putchar_fd('\n', 2);
 	free(str_tmp);
 	g_exit.exit_status = 2;
