@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../includes/minishell.h"
 
 long	get_env_size(t_shell *shell)
 {
@@ -56,9 +56,9 @@ void	free_envp(char **envp)
 	long	i;
 
 	i = 0;
+	if (!envp)
+		return ;
 	while (envp[i])
-	{
 		free(envp[i++]);
-	}
 	free(envp);
 }

@@ -1,0 +1,10 @@
+diff -r bash_output/errors_and_exit_status_42/err minishell_output/errors_and_exit_status_42/err
+1c1
+< cat: THIS_IS_Not_AN_EXISTING_FILE: No such file or directory
+---
+> ./otto.sh: line 115: ../../../minishell: No such file or directory
+diff -r bash_output/errors_and_exit_status_42/status minishell_output/errors_and_exit_status_42/status
+1c1
+< 1
+---
+> 127

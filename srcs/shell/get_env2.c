@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../includes/minishell.h"
 
 void	free_paths(t_shell *shell)
 {
@@ -39,6 +39,8 @@ void	free_all(t_shell *shell)
 			free_paths(shell);
 		if (shell->env)
 			free_env(shell);
+		if (shell->envp)
+			free_envp(shell->envp);
 		free(shell);
 		shell = NULL;
 	}
@@ -50,9 +52,13 @@ void	fill_data(t_shell *shell, char **args)
 	t_comm	*new;
 
 	i = 0;
+	if (!args || !shell)
+		return ;
 	while (args[i + 1])
 	{
 		new = (t_comm *)malloc(sizeof(t_comm));
+		if (!new)
+			return (free_all(shell));
 		new->args = ft_split(args[i + 1], ' ');
 		new->next = NULL;
 		new->isbuiltin = isbuiltin(new->args[0]);

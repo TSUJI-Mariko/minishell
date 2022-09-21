@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h" 
+#include "../../includes/minishell.h" 
 
 int	echo_option(char *str)
 {
@@ -42,7 +42,10 @@ int	echo(t_word *word)
 	}
 	while (arg)
 	{
-		ft_putstr_fd(arg->str, 1);
+		if (ft_strlen(arg->str) == 1)
+			ft_putchar_fd(arg->str[0], 1);
+		else
+			ft_putstr_fd(arg->str, 1);
 		arg = arg->next;
 		if (arg)
 			ft_putstr_fd(" ", 1);

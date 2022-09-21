@@ -10,31 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "../../includes/minishell.h"
 
 char	*expand_var_heredoc(t_redir *redir, char *str, t_shell *shell)
 {
 	char			*new;
-	long			i;
-	t_quote_check	quote;
+	long			i[2];
 
-	i = 0;
-	quote = NO;
+	i[0] = 0;
+	i[1] = NO;
 	new = ft_strdup("");
-	while (str[i])
+	while (str[i[0]])
 	{
-		if (redir->no_expand == false && str[i] == '$')
+		if (redir->no_expand == false && i[1] != SINGLE && str[i[0]] == '$')
 		{
-			i = at_doller_mark(str, &new, i, shell);
-			i = after_doller_check(str, new, i);
+			i[0] = at_doller_mark(str, &new, i, shell);
+			i[0] = after_doller_check(str, new, i[0]);
 			continue ;
 		}
-		if (str[i] == '"' && quote != SINGLE)
-			quote = DOUBLE;
-		if (str[i] == '\'' && quote != DOUBLE)
-			quote = SINGLE;
-		new = ft_str_add_char(new, str[i]);
-		i++;
+		if (str[i[0]] == '"' && i[1] != SINGLE)
+			i[1] = DOUBLE;
+		if (str[i[0]] == '\'' && i[1] != DOUBLE)
+			i[1] = SINGLE;
+		new = ft_str_add_char(new, str[i[0]]);
+		i[0]++;
 	}
 	free(str);
 	return (new);

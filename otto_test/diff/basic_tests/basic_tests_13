@@ -1,0 +1,9 @@
+diff -r bash_output/basic_tests_13/out minishell_output/basic_tests_13/out
+1d0
+< ahocine -nn
+\ No newline at end of file
+diff -r bash_output/basic_tests_13/status minishell_output/basic_tests_13/status
+1c1
+< 0
+---
+> 127

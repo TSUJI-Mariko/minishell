@@ -1,0 +1,8 @@
+diff -r bash_output/errors_and_exit_status_24/err minishell_output/errors_and_exit_status_24/err
+0a1
+> ./otto.sh: line 115: ../../../minishell: No such file or directory
+diff -r bash_output/errors_and_exit_status_24/status minishell_output/errors_and_exit_status_24/status
+1c1
+< 129
+---
+> 127
