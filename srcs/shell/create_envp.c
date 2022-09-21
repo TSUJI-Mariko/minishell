@@ -56,9 +56,9 @@ void	free_envp(char **envp)
 	long	i;
 
 	i = 0;
+	if (!envp)
+		return ;
 	while (envp[i])
-	{
 		free(envp[i++]);
-	}
 	free(envp);
 }

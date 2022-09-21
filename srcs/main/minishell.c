@@ -66,7 +66,7 @@ int	main(int argc, char **argv, char **envp)
 	rl_outstream = stderr;
 	if (argc)
 		shell = create_shell(envp, argv);
-	while (1)
+	while (shell)
 	{
 		signal_init();
 		line = ft_readline(&res);

@@ -42,6 +42,7 @@ SRC_FILE	=	main/minishell.c				\
 				shell/create_envp.c				\
 				shell/env_add.c					\
 				shell/del_env.c					\
+				shell/init_shell.c				\
 				\
 				expansion/expansion.c			\
 				expansion/variables.c			\

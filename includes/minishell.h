@@ -34,10 +34,14 @@
 # include <readline/history.h>
 # include "../libft/libft.h"
 
-// Si un message d'erreur (exit code?) les commandes ne se lancent plus (ou n'affiche rien)
-// expend une commande -> ne s'execute pas
-// $SHLVL et $_ ne se mettent pas a jour
-// gerer env -i
+// -->	Si un message d'erreur (exit code?) les 
+// 		commandes ne se lancent plus (ou n'affiche rien)
+// ------------------------------------------------------
+// -->	expend une commande -> ne s'execute pas
+// ------------------------------------------------------
+// -->	$SHLVL et $_ ne se mettent pas a jour
+// ------------------------------------------------------
+// -->	gerer env -i
 
 typedef struct s_exit
 {
@@ -157,6 +161,7 @@ typedef struct s_comm
 typedef struct s_shell
 {
 	int			ret;
+	bool		declare;
 	int			definput;
 	int			defoutput;
 	int			fdin;
@@ -186,6 +191,7 @@ void			signal_heredoc(void);
 t_shell			*create_shell(char **envp, char **argv);
 t_env			*create_env(char **envp);
 t_env			*env_addback(t_env *env, char *name, char *body);
+char			**ft_init_shell(void);
 char			*create_env_name(char *str);
 char			*create_env_name_with_plus(char *str);
 char			*create_env_body(char *str);
