@@ -1,8 +1,0 @@
-diff -r bash_output/basic_tests_78/out minishell_output/basic_tests_78/out
-1d0
-< $USERahocine
-diff -r bash_output/basic_tests_78/status minishell_output/basic_tests_78/status
-1c1
-< 0
----
-> 127

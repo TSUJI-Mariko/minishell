@@ -1,8 +1,0 @@
-diff -r bash_output/basic_tests_262/out minishell_output/basic_tests_262/out
-1d0
-< \O
-diff -r bash_output/basic_tests_262/status minishell_output/basic_tests_262/status
-1c1
-< 0
----
-> 127

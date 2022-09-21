@@ -165,10 +165,10 @@ check_quiet()
 
 compile_minishell()
 {
-	clear
-	make -C ${MINISHELL_ROOT} fclean --silent
-	make -C ${MINISHELL_ROOT} debug --silent
-	make -C ${MINISHELL_ROOT} clean --silent
+	# clear
+	# make -C ${MINISHELL_ROOT} fclean --silent
+	# make -C ${MINISHELL_ROOT} debug --silent
+	# make -C ${MINISHELL_ROOT} clean --silent
 	clear
 }
 

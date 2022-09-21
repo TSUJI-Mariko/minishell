@@ -1,8 +1,0 @@
-diff -r bash_output/basic_tests_408/out minishell_output/basic_tests_408/out
-1d0
-< /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/otto_test
-diff -r bash_output/basic_tests_408/status minishell_output/basic_tests_408/status
-1c1
-< 0
----
-> 127
