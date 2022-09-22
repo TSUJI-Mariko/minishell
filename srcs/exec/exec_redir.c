@@ -81,7 +81,7 @@ bool	set_redir_out(t_redir *redir_out)
 	fd = open(redir_out->str, oflag, 0664);
 	if (fd < 0)
 		return (printer_redir(redir_out->str), false);
-	dup2(fd, 1);
+	dup2(fd, STDOUT_FILENO);
 	close(fd);
 	if (g_exit.redir_interrupt == false)
 		return (set_redir_out(redir_out->next));

@@ -31,7 +31,7 @@ void	exec_multi_pipes(t_node *pipe_node, t_shell *shell)
 	if (pid == 0)
 	{
 		if (pipe_node->lhs)
-			dup2(fd[0], 0);
+			dup2(fd[0], STDIN_FILENO);
 		close(fd[1]);
 		close(fd[0]);
 		exec_cmd(pipe_node->rhs, shell);
@@ -39,7 +39,7 @@ void	exec_multi_pipes(t_node *pipe_node, t_shell *shell)
 	}
 	else
 	{
-		dup2(fd[1], 1);
+		dup2(fd[1], STDOUT_FILENO);
 		close(fd[1]);
 		close(fd[0]);
 		exec_multi_pipes(pipe_node->lhs, shell);
