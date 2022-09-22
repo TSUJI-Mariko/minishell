@@ -63,9 +63,6 @@ void	exit_shell(t_shell *shell, int code)
 	{
 		close(shell->fdin);
 		close(shell->fdout);
-		close(STDIN_FILENO);
-		close(STDOUT_FILENO);
-		close(STDERR_FILENO);
 		free_all(shell);
 	}
 	(void)code;

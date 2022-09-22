@@ -67,6 +67,7 @@ void	free_node(t_node *node)
 	}
 	else
 	{
+		// free_node(node->rhs);
 		free_word(node->cmds->word);
 		free_redirection(node->cmds->redir_in);
 		free_redirection(node->cmds->redir_out);

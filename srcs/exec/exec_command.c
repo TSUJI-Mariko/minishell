@@ -26,14 +26,14 @@ void	exec_cmd(t_node *node, t_shell *shell)
 	redir_out = set_redir_out(node->cmds->redir_out);
 	if ((!redir_in || !redir_out) || node->cmds->word == NULL)
 	{
-		dup2(shell->fdin, 1);
-		dup2(shell->fdout, 0);
+		dup2(shell->fdin, STDIN_FILENO);
+		dup2(shell->fdout, STDOUT_FILENO);
 		return ;
 	}
 	if (node->cmds->is_builtin)
 		exec_builtin(node, shell);
 	else
 		exec_file(node, shell);
-	dup2(shell->fdout, 1);
-	dup2(shell->fdin, 0);
+	dup2(shell->fdin, STDIN_FILENO);
+	dup2(shell->fdout, STDOUT_FILENO);
 }

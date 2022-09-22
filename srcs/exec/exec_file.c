@@ -14,7 +14,7 @@
 
 extern t_exit	g_exit;
 
-void	exec_file(t_node *node, t_shell *shell)
+void	exec_file(t_node *node, t_shell *shel)
 {
 	int		pid;
 	char	**cmd_argv;
@@ -26,13 +26,13 @@ void	exec_file(t_node *node, t_shell *shell)
 	{
 		signal(SIGQUIT, SIG_DFL);
 		if (!check_cmd(node->cmds))
-			exit(g_exit.exit_status);
+			return (free_all(shel), free_node(node), exit(g_exit.exit_status));
 		cmd_argv = create_argv(node->cmds->word);
-		cmd_envp = create_envp(shell);
+		cmd_envp = create_envp(shel);
 		cmd = ft_strdup(node->cmds->pathname);
-		free_all(shell);
+		free_all(shel);
 		free_node(node);
-		shell= NULL;
+		shel= NULL;
 		node = NULL;
 		execve(cmd, cmd_argv, cmd_envp);
 		return (free(cmd_argv), free_envp(cmd_envp), exit(fail_exec(node)));
