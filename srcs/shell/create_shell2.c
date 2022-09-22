@@ -52,14 +52,16 @@ t_env	*create_env(char **envp)
 
 void	free_env(t_shell *shell)
 {
-	t_env	*env;
+	t_env	*next;
+	t_env	*curr;
 
-	while (shell->env)
+	next = shell->env;
+	while (next)
 	{
-		env = shell->env->next;
-		free(shell->env->name);
-		free(shell->env->body);
-		free(shell->env);
-		shell->env = env;
+		curr = next;
+		next = next->next;
+		free(curr->name);
+		free(curr->body);
+		free(curr);
 	}
 }

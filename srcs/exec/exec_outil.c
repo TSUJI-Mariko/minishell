@@ -55,8 +55,7 @@ char	**create_argv(t_word *word)
 	i = 0;
 	while (word)
 	{
-		argv[i] = word->str;
-		i++;
+		argv[i++] = strdup(word->str);
 		word = word->next;
 	}
 	return (argv);

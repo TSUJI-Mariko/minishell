@@ -60,7 +60,14 @@ t_shell	*init_all(void)
 void	exit_shell(t_shell *shell, int code)
 {
 	if (shell)
+	{
+		close(shell->fdin);
+		close(shell->fdout);
+		close(STDIN_FILENO);
+		close(STDOUT_FILENO);
+		close(STDERR_FILENO);
 		free_all(shell);
+	}
 	exit(code);
 }
 

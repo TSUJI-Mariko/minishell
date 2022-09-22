@@ -60,7 +60,6 @@ int	main(int argc, char **argv, char **envp)
 	char	*line;
 	char	*res;
 
-	rl_outstream = stderr;
 	if (argc)
 		shell = create_shell(envp, argv);
 	while (shell)
