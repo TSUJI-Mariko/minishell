@@ -19,6 +19,6 @@ void	*ft_malloc(size_t size)
 {
 	if (g_crash_every > 0 && g_test_number++ >= g_crash_every)
 		return (g_test_number = 0, \
-		ft_putstr_fd("\e[33mOut of memory\e[0m\n", 2), NULL);
+		ft_putstr_fd("Out of memory\n", 2), NULL);
 	return (malloc(size));
 }

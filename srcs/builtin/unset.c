@@ -16,7 +16,7 @@ extern t_exit	g_exit;
 
 void	unset_error(char *str)
 {
-	printf("\e[31mminishell :\e[0m unset: ");
+	printf("minishell : unset: ");
 	printf("`%s' : not a valid identifier\n", str);
 }
 
@@ -68,7 +68,7 @@ int	unset_option(int res, char *str)
 	i = 0;
 	if (res == 2)
 	{
-		printf("\e[31mminishell :\e[0m unset: ");
+		printf("minishell : unset: ");
 		printf("`%c%c' : invalid option\n", str[0], str[1]);
 		return (2);
 	}
@@ -76,7 +76,7 @@ int	unset_option(int res, char *str)
 	{
 		while (str[i] != '!')
 			i++;
-		printf("\e[31mminishell :\e[0m unset: ");
+		printf("minishell : unset: ");
 		printf("%s : event not found\n", &str[i]);
 		return (1);
 	}

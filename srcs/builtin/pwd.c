@@ -14,7 +14,7 @@
 
 void	pwd_error(char *str)
 {
-	printf("\e[31mminishell :\e[0m pwd: ");
+	printf("minishell : pwd: ");
 	printf("%s : invalid option\n", str);
 }
 

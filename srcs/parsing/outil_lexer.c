@@ -45,7 +45,7 @@ int	pipe_check(char *str)
 		{
 			if (p == 0)
 			{
-				ft_putstr_fd("\e[31mminishell:\e[0m syntax error ", 2);
+				ft_putstr_fd("minishell: syntax error ", 2);
 				ft_putstr_fd("near unexpected token `|'\n", 2);
 				g_exit.exit_status = 2;
 				return (1);

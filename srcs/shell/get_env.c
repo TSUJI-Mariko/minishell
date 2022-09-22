@@ -68,7 +68,8 @@ void	exit_shell(t_shell *shell, int code)
 		close(STDERR_FILENO);
 		free_all(shell);
 	}
-	exit(code);
+	(void)code;
+	// exit(code);
 }
 
 void	free_cmds(t_shell *shell)

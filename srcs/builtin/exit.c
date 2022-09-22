@@ -57,14 +57,14 @@ int	builtin_exit(t_word *word)
 		exit(g_exit.exit_status);
 	if (check_int(&(word->next->str)))
 	{
-		ft_putstr_fd("\e[31mminishell:\e[0m exit: ", 2);
+		ft_putstr_fd("minishell: exit: ", 2);
 		ft_putstr_fd(word->next->str, 2);
 		ft_putstr_fd(": numeric argument required\n", 2);
 		exit(2);
 	}
 	if (word->next->next != NULL)
 	{
-		ft_putstr_fd("\e[31mminishell:\e[0m exit: too many arguments\n", 2);
+		ft_putstr_fd("minishell: exit: too many arguments\n", 2);
 		g_exit.exit_status = 1;
 		return (1);
 	}

@@ -19,7 +19,7 @@ int	fail_exec(t_node *node)
 	g_exit.exit_status = 126;
 	if (errno == ENOENT)
 		g_exit.exit_status = 127;
-	ft_putstr_fd("\e[31mminishell:\e[0m ", 2);
+	ft_putstr_fd("minishell: ", 2);
 	ft_putstr_fd(node->cmds->pathname, 2);
 	ft_putstr_fd(strerror(errno), 2);
 	ft_putstr_fd("\n", 2);
@@ -65,15 +65,15 @@ bool	check_cmd(t_cmd *cmd)
 {
 	if (cmd->pathname == NULL)
 	{
-		ft_putstr_fd("\e[31mminishell:\e[0m ", 2);
+		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(cmd->word->str, 2);
-		ft_putstr_fd(" command not found\n", 2);
+		ft_putstr_fd(": command not found\n", 2);
 		g_exit.exit_status = 127;
 		return (false);
 	}
 	if (is_directory(cmd->pathname))
 	{
-		ft_putstr_fd("\e[31mminishell:\e[0m", 2);
+		ft_putstr_fd("minishell:", 2);
 		ft_putstr_fd(cmd->pathname, 2);
 		ft_putstr_fd(" is a directory\n", 2);
 		g_exit.exit_status = 126;
