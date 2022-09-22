@@ -20,10 +20,12 @@ char	*remove_quote_string(char *str)
 	long	i;
 
 	new = ft_strdup("");
+	if (!new)
+		return (NULL);
 	single_quote = 0;
 	double_quote = 0;
-	i = 0;
-	while (str[i])
+	i = -1;
+	while (str[++i])
 	{
 		if (!single_quote && !double_quote && str[i] == '"')
 			double_quote = 1;
@@ -35,10 +37,8 @@ char	*remove_quote_string(char *str)
 			single_quote = 0;
 		else
 			new = ft_str_add_char(new, str[i]);
-		i++;
 	}
-	free(str);
-	return (new);
+	return (free(str), new);
 }
 
 void	remove_quote_word(t_word *word)

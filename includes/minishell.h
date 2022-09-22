@@ -361,7 +361,6 @@ void			expander_set_heredoc(t_node *node, t_shell *shell);
 char			*expand_var_heredoc(t_redir *redir, char *str, t_shell *shell);
 
 //exec
-void			exec(t_node *node, t_shell *shell);
 void			exec_pipe(t_node *pipe_node, t_shell *shell);
 void			exec_multi_pipes(t_node *pipe_node, t_shell *shell);
 void			exec_no_pipe(t_node *pipe_node, t_shell *shell);

@@ -66,7 +66,6 @@ SRC_FILE	=	main/minishell.c				\
 				builtin/unset.c					\
 				builtin/exit.c					\
 				\
-				exec/exec.c						\
 				exec/exec_pipe.c				\
 				exec/exec_multi_pipe.c			\
 				exec/exec_command.c				\

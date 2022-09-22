@@ -49,7 +49,7 @@ void	start_command(char *str, t_shell *shell)
 		signal_heredoc();
 		expander_set_heredoc(node, shell);
 		signal_exec();
-		exec(node, shell);
+		exec_pipe(node, shell);
 		free_node(node);
 	}
 }
