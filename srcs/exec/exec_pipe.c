@@ -21,17 +21,14 @@ void	exec_pipe(t_node *pipe_node, t_shell *shell)
 
 	expander(pipe_node, shell);
 	if (pipe_node->lhs == NULL)
-		exec_no_pipe(pipe_node, shell);
-	else
+		return (exec_no_pipe(pipe_node, shell));
+	pid = my_fork();
+	if (pid == 0)
 	{
-		pid = my_fork();
-		if (pid == 0)
-		{
-			exec_multi_pipes(pipe_node, shell);
-			exit(g_exit.exit_status);
-		}
-		sts = 0;
-		waitpid(pid, &sts, 0);
-		g_exit.exit_status = WEXITSTATUS(sts);
+		exec_multi_pipes(pipe_node, shell);
+		exit(g_exit.exit_status);
 	}
+	sts = 0;
+	waitpid(pid, &sts, 0);
+	g_exit.exit_status = WEXITSTATUS(sts);
 }

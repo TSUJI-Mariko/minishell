@@ -32,10 +32,10 @@ void	exec_file(t_node *node, t_shell *shell)
 		cmd = ft_strdup(node->cmds->pathname);
 		free_all(shell);
 		free_node(node);
+		shell= NULL;
+		node = NULL;
 		execve(cmd, cmd_argv, cmd_envp);
-		free(cmd_argv);
-		free_envp(cmd_envp);
-		exit(fail_exec(node));
+		return (free(cmd_argv), free_envp(cmd_envp), exit(fail_exec(node)));
 	}
 	waitpid(pid, &(g_exit.exit_status), 0);
 	set_exit_status();
