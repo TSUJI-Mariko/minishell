@@ -54,23 +54,24 @@ void	init_type(t_token *new)
 {
 	int	len;
 
-	if (new->string)
+	len = 0;
+	if (new && new->string)
 		len = ft_strlen(new->string);
-	if (len == 1)
+	if (new && len == 1)
 	{
 		if (new->string[0] == '>' || new->string[0] == '<')
 			new->kind = TOKEN_OP;
 		if (new->string[0] == '|')
 			new->kind = TOKEN_PIPE;
 	}
-	if (len >= 2)
+	if (new && len >= 2)
 	{
 		if (new->string[0] == '>' && new->string[1] == '>')
 			new->kind = TOKEN_OP;
 		if (new->string[0] == '<' && new->string[1] == '<')
 			new->kind = TOKEN_OP;
 	}
-	if (len != 0 && new->kind == DEFAULT)
+	if (new && len != 0 && new->kind == DEFAULT)
 		new->kind = TOKEN_ARGUMENT;
 }
 

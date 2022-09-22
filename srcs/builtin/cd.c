@@ -46,7 +46,7 @@ int	go_home(t_shell *shell)
 	}
 	if (chdir(home) != 0)
 	{
-		ft_putstr_fd("\e[31mminishell:\e[0m  cd: ", 2);
+		ft_putstr_fd("minishell:  cd: ", 2);
 		ft_putstr_fd(home, 2);
 		ft_putstr_fd(": No such file or directory\n", 2);
 		return (1);
@@ -61,7 +61,7 @@ int	cd(t_word *word, t_shell *shell)
 
 	if (word->next != NULL && word->next->next != NULL)
 	{
-		printf("\e[31mminishell:\e[0m cd: too many arguments\n");
+		ft_putstr_fd("minishell: cd: too many arguments\n", 2);
 		return (1);
 	}
 	if (word->next == NULL || !ft_strcmp(word->next->str, "$HOME"))
@@ -75,8 +75,9 @@ int	cd(t_word *word, t_shell *shell)
 	}
 	if (chdir(word->next->str) != 0)
 	{
-		printf("\e[31mminishell:\e[0m  cd: %s", word->next->str);
-		printf(": No such file or directory\n");
+		ft_putstr_fd("minishell:  cd: ", 2);
+		ft_putstr_fd(word->next->str, 2);
+		ft_putstr_fd(": No such file or directory\n", 2);
 		return (1);
 	}
 	after_cd(shell);

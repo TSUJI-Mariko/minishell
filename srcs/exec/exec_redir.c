@@ -16,7 +16,7 @@ extern t_exit	g_exit;
 
 void	printer_redir(char *str)
 {
-	ft_putstr_fd("\e[31mminishell:\e[0m ", 2);
+	ft_putstr_fd("minishell: ", 2);
 	ft_putstr_fd(str, 2);
 	ft_putstr_fd(": ", 2);
 	ft_putstr_fd(strerror(errno), 2);
@@ -81,7 +81,7 @@ bool	set_redir_out(t_redir *redir_out)
 	fd = open(redir_out->str, oflag, 0664);
 	if (fd < 0)
 		return (printer_redir(redir_out->str), false);
-	dup2(fd, 1);
+	dup2(fd, STDOUT_FILENO);
 	close(fd);
 	if (g_exit.redir_interrupt == false)
 		return (set_redir_out(redir_out->next));

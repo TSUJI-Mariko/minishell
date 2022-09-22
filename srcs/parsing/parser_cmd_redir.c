@@ -19,7 +19,7 @@ void	redir_in(t_token **token, t_node *node)
 	if (ft_strnstr((*token)->string, "<<<", ft_strlen((*token)->string)))
 	{
 		g_exit.exit_status = 6;
-		ft_putstr_fd("\e[31mminishell:\e[0m syntax error near unexpected \
+		ft_putstr_fd("minishell: syntax error near unexpected \
 token `<<'\n", 2);
 		return ;
 	}
@@ -41,7 +41,7 @@ void	redir_out(t_token **token, t_node *node)
 	if (ft_strnstr((*token)->string, ">>>", ft_strlen((*token)->string)))
 	{
 		g_exit.exit_status = 6;
-		ft_putstr_fd("\e[31mminishell:\e[0m syntax error near unexpected \
+		ft_putstr_fd("minishell: syntax error near unexpected \
 token `>>'\n", 2);
 		return ;
 	}

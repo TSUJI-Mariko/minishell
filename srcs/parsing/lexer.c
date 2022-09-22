@@ -19,7 +19,7 @@ t_command	*lexer(char *str)
 
 	res = quote_check(str);
 	if (res > 0)
-		return (printf("miss_quote\n"), NULL);
+		return (ft_putstr_fd("miss_quote\n", 2), NULL);
 	command_line = get_command_line(str);
 	if (!command_line)
 		return (NULL);
