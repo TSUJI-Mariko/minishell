@@ -42,7 +42,7 @@ bool	set_redir_in(t_redir *redir_in)
 		fd = redir_in->fd;
 	else
 		return (redir_in_error(), false);
-	dup2(fd, 0);
+	dup2(fd, STDIN_FILENO);
 	close(fd);
 	if (g_exit.redir_interrupt == false)
 		return (set_redir_in(redir_in->next));
