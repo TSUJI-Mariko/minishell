@@ -34,6 +34,8 @@
 # include <readline/history.h>
 # include "../libft/libft.h"
 
+// exit cree des leaks
+
 typedef struct s_exit
 {
 	int			exit_status;
@@ -337,7 +339,7 @@ int				unset_argument_check(char *str);
 int				unset_option(int res, char *str);
 
 //exit
-int				builtin_exit(t_word *word);
+int				builtin_exit(t_word *word, t_shell *shell);
 int				overflow_check(char **str);
 int				check_int(char **str);
 

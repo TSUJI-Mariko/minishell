@@ -36,7 +36,7 @@ void	exec_builtin(t_node *node, t_shell *shell)
 		g_exit.exit_status = unset(node->cmds->word, shell);
 	else if (!ft_strncmp(node->cmds->word->str, \
 			"exit", ft_strlen(node->cmds->word->str)))
-		builtin_exit(node->cmds->word);
+		builtin_exit(node->cmds->word, shell);
 	else
 		no_builtin();
 }

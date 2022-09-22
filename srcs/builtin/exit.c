@@ -51,7 +51,7 @@ int	check_int(char **str)
 	return (overflow_check(str));
 }
 
-int	builtin_exit(t_word *word)
+int	builtin_exit(t_word *word, t_shell *shell)
 {
 	if (word->next == NULL || word->next->str == NULL)
 		exit(g_exit.exit_status);
@@ -65,9 +65,7 @@ int	builtin_exit(t_word *word)
 	if (word->next->next != NULL)
 	{
 		ft_putstr_fd("\e[31mminishell:\e[0m exit: too many arguments\n", 2);
-		g_exit.exit_status = 1;
-		return (1);
+		return (g_exit.exit_status = 1, 1);
 	}
-	exit(ft_atoi(word->next->str));
-	return (0);
+	return (free_all(shell), exit(ft_atoi(word->next->str)), 0);
 }
