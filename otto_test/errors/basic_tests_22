@@ -1,2 +1,0 @@
-minishell$> [35motto_test[0m> env | grep USER
-minishell$> [35motto_test[0m> exit

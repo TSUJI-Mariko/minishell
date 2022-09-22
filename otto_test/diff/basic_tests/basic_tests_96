@@ -1,5 +1,0 @@
-diff -r bash_output/basic_tests_96/out minishell_output/basic_tests_96/out
-1c1
-< halloUSER
----
-> hallo$USER

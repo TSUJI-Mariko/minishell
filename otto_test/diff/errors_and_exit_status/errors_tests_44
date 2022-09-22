@@ -1,7 +1,0 @@
-diff -r bash_output/errors_and_exit_status_44/err minishell_output/errors_and_exit_status_44/err
-1c1,3
-< bash: line 1: THIS_CMD_DOES_NOT_EXIST: command not found
----
-> minishell$> [35merrors_and_exit_status_44[0m> THIS_CMD_DOES_NOT_EXIST
-> minishell: THIS_CMD_DOES_NOT_EXIST command not found
-> minishell$> [35merrors_and_exit_status_44[0m> exit

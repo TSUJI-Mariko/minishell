@@ -1,6 +1,0 @@
-diff -r bash_output/errors_and_exit_status_30/err minishell_output/errors_and_exit_status_30/err
-1c1,2
-< bash: line 1: export: `test2[=2': not a valid identifier
----
-> minishell$> [35merrors_and_exit_status_30[0m> export test1=1 test2[=2 test3=3
-> minishell$> [35merrors_and_exit_status_30[0m> exit

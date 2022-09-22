@@ -1,2 +1,0 @@
-minishell$> [35motto_test[0m> /usr/bin/who | cut -d " " -f1
-minishell$> [35motto_test[0m> exit

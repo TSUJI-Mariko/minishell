@@ -42,3 +42,18 @@ char	*ft_strjoin_and_free(char *s1, int i1, char *s2, int i2)
 		free(s2);
 	return (str);
 }
+
+t_quote_check	ft_handle_quote(t_quote_check state, char actual)
+{
+	if (actual == '"' && state != SINGLE)
+	{
+		if (state == DOUBLE)
+			return (NO);
+		else
+			return (DOUBLE);
+	}
+	if (state == SINGLE)
+		return (NO);
+	else
+		return (SINGLE);
+}

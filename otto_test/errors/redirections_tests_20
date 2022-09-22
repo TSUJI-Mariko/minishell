@@ -1,2 +1,0 @@
-minishell$> [35mredirection_20[0m> echo pwd > test1
-minishell$> [35mredirection_20[0m> exit

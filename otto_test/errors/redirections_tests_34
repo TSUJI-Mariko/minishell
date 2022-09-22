@@ -1,2 +1,0 @@
-minishell$> [35mredirection_34[0m> echo $USER >> test1 | echo $MAIL >> test1
-minishell$> [35mredirection_34[0m> exit

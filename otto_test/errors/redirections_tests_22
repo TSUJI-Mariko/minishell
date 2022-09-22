@@ -1,2 +1,0 @@
-minishell$> [35mredirection_22[0m> env | grep $USER > test1
-minishell$> [35mredirection_22[0m> exit

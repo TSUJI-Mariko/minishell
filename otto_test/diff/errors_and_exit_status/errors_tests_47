@@ -1,7 +1,0 @@
-diff -r bash_output/errors_and_exit_status_47/err minishell_output/errors_and_exit_status_47/err
-1c1,3
-< bash: line 1: test--9=ahocine: command not found
----
-> minishell$> [35merrors_and_exit_status_47[0m> test--9=$USER
-> minishell: test--9=ahocine command not found
-> minishell$> [35merrors_and_exit_status_47[0m> exit

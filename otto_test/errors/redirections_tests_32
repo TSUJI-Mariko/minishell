@@ -1,2 +1,0 @@
-minishell$> [35mredirection_32[0m> echo hello>>test1 | echo hello>> test1
-minishell$> [35mredirection_32[0m> exit

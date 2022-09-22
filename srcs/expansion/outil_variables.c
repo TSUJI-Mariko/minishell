@@ -46,7 +46,7 @@ long	at_doller_mark(char *s, char **new, long i[2], t_shell *shell)
 		i[0]++;
 	}
 	else if (!is_valid_1st_char(s[i[0]]) && !ft_isdigit(s[i[0]]) \
-	&& (s[i[0]] != '"' || i[1] == (long)DOUBLE))
+	&& ((s[i[0]] != '"' && s[i[0]] != '\'') || i[1] == (long)DOUBLE))
 		*new = ft_strjoin_and_free(*new, 1, "$", 0);
 	else if (ft_isdigit(s[i[0]]))
 		i[0]++;

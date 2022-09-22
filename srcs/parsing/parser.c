@@ -21,7 +21,8 @@ t_node	*parser(t_token *token)
 	node = pipe_cmd(&token);
 	if (g_exit.exit_status == 5)
 	{
-		printf("minishell: syntax error near unexpected token `newline'\n");
+		printf("\e[31mminishell:\e[0m syntax error near unexpected \
+token `newline'\n");
 		g_exit.exit_status = 2;
 		return (NULL);
 	}

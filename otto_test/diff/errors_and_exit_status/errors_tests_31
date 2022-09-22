@@ -1,6 +1,0 @@
-diff -r bash_output/errors_and_exit_status_31/err minishell_output/errors_and_exit_status_31/err
-1c1,2
-< bash: line 1: unset: `test1=1': not a valid identifier
----
-> minishell$> [35merrors_and_exit_status_31[0m> unset test1=1
-> minishell$> [35merrors_and_exit_status_31[0m> exit

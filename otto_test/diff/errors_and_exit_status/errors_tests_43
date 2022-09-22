@@ -1,7 +1,0 @@
-diff -r bash_output/errors_and_exit_status_43/err minishell_output/errors_and_exit_status_43/err
-1c1,3
-< bash: line 1: ../../inputs/this_is_a_file: Permission denied
----
-> minishell$> [35merrors_and_exit_status_43[0m> ../../inputs/this_is_a_file
-> minishell: ../../inputs/this_is_a_filePermission denied
-> minishell$> [35merrors_and_exit_status_43[0m> exit

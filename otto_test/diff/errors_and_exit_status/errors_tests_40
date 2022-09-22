@@ -1,6 +1,0 @@
-diff -r bash_output/errors_and_exit_status_40/err minishell_output/errors_and_exit_status_40/err
-1c1,2
-< bash: line 1: cd: too many arguments
----
-> minishell$> [35merrors_and_exit_status_40[0m> cd ../../inputs/this_is_a_dir/ ../../otto.sh
-> minishell$> [35merrors_and_exit_status_40[0m> exit

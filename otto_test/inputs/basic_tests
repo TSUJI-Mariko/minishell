@@ -23,7 +23,6 @@ env | grep USER
 unset
 unset lol xd
 unset USER | env | grep USER
-export | grep USER
 cd ..
 cd ../.. | pwd
 cd . | pwd
@@ -84,9 +83,8 @@ echo 123"hallo$"456
 echo $_1234
 echo hallo
 echo hallo | echo hoi
-echo hallo | echo hoi | cat
+echo hallo | echo hoi | cat lol
 echo $USERhallo
-echo $2$*
 echo $hallo"poep"
 echo /$"123$USER"
 echo $a5aap
@@ -399,7 +397,7 @@ echo '\|'
 echo '\}'
 echo '\~'
 echo -nn -nnnnnnn -n -nnnn -nnnh
-__42=lol
+echo __42=lol
 echo test tout
 echo test      tout
 echo -n test tout

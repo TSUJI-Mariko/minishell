@@ -1,2 +1,0 @@
-minishell$> [35mredirection_25[0m> echo $USER >test1
-minishell$> [35mredirection_25[0m> exit

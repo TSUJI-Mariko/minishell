@@ -1,8 +1,0 @@
-diff -r bash_output/errors_and_exit_status_17/err minishell_output/errors_and_exit_status_17/err
-1,2c1,3
-< bash: line 1: syntax error near unexpected token `|'
-< bash: line 1: `echo hello | echo lol | |'
----
-> minishell$> [35merrors_and_exit_status_17[0m> echo hello | echo lol | |
-> minishell: syntax error near unexpected token `|'
-> minishell$> [35merrors_and_exit_status_17[0m> exit

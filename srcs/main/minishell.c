@@ -28,9 +28,9 @@ static char	*ft_readline(char **res)
 	*res = ft_calloc(sizeof(char), 60);
 	if (!*res)
 		return (free(path), readline("\e[35mminishell$\e[0m> "));
-	ft_strlcat(*res, "minishell$> \e[35m", 18);
-	ft_strlcat(*res, path + i + 1, 18 + ft_strlen(path + i + 1) + 1);
-	ft_strlcat(*res, "\e[0m> ", 25 + ft_strlen(path + i + 1) + 1);
+	ft_strlcat(*res, "\e[33mminishell$>\e[0m \e[35m", 27 + 1);
+	ft_strlcat(*res, path + i + 1, 27 + ft_strlen(path + i + 1) + 1);
+	ft_strlcat(*res, "\e[0m> ", 34 + ft_strlen(path + i + 1) + 1);
 	return (free(path), readline(*res));
 }
 
@@ -81,6 +81,6 @@ int	main(int argc, char **argv, char **envp)
 		}
 		free(line);
 	}
-	ft_putstr_fd("exit\n", 2);
+	ft_putstr_fd("\e[31mexit\e[0m\n", 2);
 	exit_shell(shell, g_exit.exit_status);
 }

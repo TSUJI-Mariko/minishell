@@ -1,3 +1,0 @@
-minishell$> [35motto_test[0m> cat working.txt | grep stuff | echo tim
-cat: working.txt: No such file or directory
-minishell$> [35motto_test[0m> exit

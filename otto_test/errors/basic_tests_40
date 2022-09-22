@@ -1,5 +1,0 @@
-minishell$> [35motto_test[0m> /bin/logname | /bin/logname | logname
-logname: no login name
-/bin/logname: no login name
-/bin/logname: no login name
-minishell$> [35motto_test[0m> exit

@@ -12,7 +12,7 @@
 
 #include "../includes/minishell.h"
 
-char   **ft_init_shell(void)
+char	**ft_init_shell(void)
 {
 	char	**res;
 	char	*value;
@@ -35,9 +35,6 @@ char   **ft_init_shell(void)
 	if (!value)
 		return (free(res[1]), free(str), free(res), NULL);
 	res[2] = value;
-	int	i = 0;
-	while (i < 3)
-		printf("%s\n", res[i++]);
 	return (res);
 }
 

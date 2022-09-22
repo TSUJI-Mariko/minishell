@@ -1,3 +1,0 @@
-minishell$> [35mredirection_37[0m> echo "Hell_o\n " > test1 | cat < test1 >> test2 | echo $USER >> test2
-minishell: test1: No such file or directory
-minishell$> [35mredirection_37[0m> exit

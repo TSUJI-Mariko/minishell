@@ -1,2 +1,0 @@
-minishell$> [35mredirection_28[0m> echo hello > echo ' world' > cat echo > test1
-minishell$> [35mredirection_28[0m> exit

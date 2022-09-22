@@ -1,2 +1,0 @@
-minishell$> [35mredirection_23[0m> export | grep $USER > test1
-minishell$> [35mredirection_23[0m> exit

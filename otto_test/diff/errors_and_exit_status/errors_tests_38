@@ -1,6 +1,0 @@
-diff -r bash_output/errors_and_exit_status_38/err minishell_output/errors_and_exit_status_38/err
-1c1,2
-< bash: line 1: cd: too many arguments
----
-> minishell$> [35merrors_and_exit_status_38[0m> cd THIS_DIreCtory_D_OES_NOT_EXIST ../../inputs/this_is_a_dir/
-> minishell$> [35merrors_and_exit_status_38[0m> exit

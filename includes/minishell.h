@@ -34,14 +34,6 @@
 # include <readline/history.h>
 # include "../libft/libft.h"
 
-// -->	Gestion echo env "$"
-// ------------------------------------------------------
-// -->	expend une commande -> ne s'execute pas
-// ------------------------------------------------------
-// -->	$SHLVL et $_ ne se mettent pas a jour
-// ------------------------------------------------------
-// -->	gerer env -i
-
 typedef struct s_exit
 {
 	int			exit_status;
@@ -281,6 +273,7 @@ void			remove_quote(t_node *node);
 void			pathname_generator(t_node *node, t_shell *shell);
 char			*get_pathname_str(char *str, t_shell *shell);
 t_quote_check	quote_check2(char *str, t_quote_check quote);
+t_quote_check	ft_handle_quote(t_quote_check state, char actual);
 
 //util for expansion
 char			*add_char(char *str, char c);

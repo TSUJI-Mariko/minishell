@@ -1,6 +1,0 @@
-diff -r bash_output/errors_and_exit_status_39/err minishell_output/errors_and_exit_status_39/err
-1c1,2
-< bash: line 1: cd: ../../otto.sh: Not a directory
----
-> minishell$> [35merrors_and_exit_status_39[0m> cd ../../otto.sh
-> minishell$> [35merrors_and_exit_status_39[0m> exit

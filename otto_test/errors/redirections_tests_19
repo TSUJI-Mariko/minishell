@@ -1,2 +1,0 @@
-minishell$> [35mredirection_19[0m> cat< ../../inputs/basic_tests > test1
-minishell$> [35mredirection_19[0m> exit

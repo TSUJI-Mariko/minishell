@@ -1,5 +1,0 @@
-diff -r bash_output/errors_and_exit_status_41/err minishell_output/errors_and_exit_status_41/err
-0a1
-> minishell$> [35merrors_and_exit_status_41[0m> cat ../../inputs/cannot_access_file
-1a3
-> minishell$> [35merrors_and_exit_status_41[0m> exit

@@ -29,7 +29,7 @@ int	check_env(char *str)
 		return (0);
 	else if (ft_strchr(&str[i], '!'))
 	{
-		printf("minishell : export: ");
+		printf("\e[31mminishell :\e[0m export: ");
 		printf("%s : event not found\n", ft_strchr(&str[i], '!'));
 		return (1);
 	}
@@ -43,7 +43,7 @@ int	export_option(int res, char *str)
 	i = 0;
 	if (res == 2)
 	{
-		printf("minishell : export: ");
+		printf("\e[31mminishell :\e[0m export: ");
 		printf("`%c%c' : invalid option\n", str[0], str[1]);
 		return (2);
 	}
@@ -51,7 +51,7 @@ int	export_option(int res, char *str)
 	{
 		while (str[i] != '!')
 			i++;
-		printf("minishell : export: ");
+		printf("\e[31mminishell :\e[0m export: ");
 		printf("%s : event not found\n", &str[i]);
 		return (0);
 	}
@@ -60,6 +60,6 @@ int	export_option(int res, char *str)
 
 void	export_error(char *str)
 {
-	printf("minishell : export: ");
+	printf("\e[31mminishell :\e[0m export: ");
 	printf("`%s' : not a valid identifier\n", str);
 }
