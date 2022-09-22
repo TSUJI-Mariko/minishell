@@ -38,6 +38,7 @@ typedef struct s_exit
 {
 	int			exit_status;
 	bool		interrupt;
+	bool		redir_interrupt;
 }	t_exit;
 
 extern t_exit	g_exit;

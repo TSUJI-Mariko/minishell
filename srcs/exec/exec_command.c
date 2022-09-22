@@ -16,15 +16,15 @@ extern t_exit	g_exit;
 
 void	exec_cmd(t_node *node, t_shell *shell)
 {
+	bool	redir_in;
+	bool	redir_out;
+
+	g_exit.redir_interrupt = false;
 	if (g_exit.interrupt == true)
 		return ;
-	if ((!set_redir_in(node->cmds->redir_in)
-			&& (set_redir_out(node->cmds->redir_out)))
-		|| (set_redir_in(node->cmds->redir_in)
-			&& (!set_redir_out(node->cmds->redir_out)))
-		|| (!set_redir_in(node->cmds->redir_in)
-			&& (!set_redir_out(node->cmds->redir_out)))
-		|| node->cmds->word == NULL)
+	redir_in = set_redir_in(node->cmds->redir_in);
+	redir_out = set_redir_out(node->cmds->redir_out);
+	if ((!redir_in || !redir_out) || node->cmds->word == NULL)
 	{
 		dup2(shell->fdin, 1);
 		dup2(shell->fdout, 0);
