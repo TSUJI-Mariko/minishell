@@ -20,6 +20,8 @@ void	word_addback(t_cmd *command, char *str, long len)
 	t_word	*last;
 
 	word = ft_calloc(1, sizeof(t_word));
+	if (word == NULL)
+		return ;
 	word->str = ft_strndup(str, len);
 	if (command->word == NULL)
 	{
@@ -39,6 +41,8 @@ void	redir_in_addback(t_cmd *command, \
 	t_redir	*last;
 
 	rdr = ft_calloc(1, sizeof(t_redir));
+	if (rdr == NULL)
+		return ;
 	rdr->kind = kind;
 	rdr->str = ft_strndup(str, len);
 	if (command->redir_in == NULL)
@@ -59,6 +63,8 @@ void	redir_out_addback(t_cmd *command, \
 	t_redir	*last;
 
 	rdr = ft_calloc(1, sizeof(t_redir));
+	if (rdr == NULL)
+		return ;
 	rdr->kind = kind;
 	rdr->str = ft_strndup(str, len);
 	if (command->redir_out == NULL)
@@ -85,6 +91,8 @@ void	add_redir_in(t_node *node, t_redir_kind kind, char *str, long len)
 	t_redir	*now;
 
 	redir = ft_calloc(1, sizeof(t_redir));
+	if (redir == NULL)
+		return ;
 	redir->fd = -1;
 	redir->str = ft_strndup(str, len);
 	redir->kind = kind;

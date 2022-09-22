@@ -35,7 +35,9 @@ char	**create_envp(t_shell *shell)
 	long		i;
 	const long	size = get_env_size(shell);
 
-	envp = ft_calloc(size + 1, sizeof(char *));
+	envp = (char **)ft_calloc(size + 1, sizeof(char *));
+	if (envp == NULL)
+		return (NULL);
 	env = shell->env;
 	i = 0;
 	while (env)
@@ -43,6 +45,8 @@ char	**create_envp(t_shell *shell)
 		if (env->body)
 		{
 			envp[i] = ft_strjoin(env->name, "=");
+			if (!envp[i])
+				return (free_envp(envp), NULL);
 			envp[i] = ft_strjoin_and_free(envp[i], 1, env->body, 0);
 			i++;
 		}

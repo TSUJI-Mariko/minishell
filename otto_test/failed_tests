@@ -1,0 +1,34 @@
+echo echo $2$4
+echo export -e
+echo export -ep
+echo exit -p
+echo unset -e
+echo unset -ep
+echo cd -x
+echo pwd -w
+echo echo hello ; ;
+echo echo hello | |
+echo echo hello | echo lol | |
+echo exit hello
+echo exit hello 1
+echo exit 1 2 3 
+echo exit 1 2
+echo exit 1 2.2
+echo exit 9999999999999999999998
+echo exit 9999999999999999999999
+echo export test1%=1
+echo export test1=1 test2[=2 test3=3
+echo unset test1=1
+echo unset test1 test2= test3
+echo unset test1 test2- test3
+echo cd THIS_DIreCtory_D_OES_NOT_EXIST
+echo cd ../../inputs/cannot_access_dir/
+echo cd ../../inputs/this_is_a_dir/ hello
+echo cd THIS_DIreCtory_D_OES_NOT_EXIST ../../inputs/this_is_a_dir/
+echo cd ../../otto.sh
+echo cd ../../inputs/this_is_a_dir/ ../../otto.sh
+echo ../../inputs/this_is_a_file
+echo THIS_CMD_DOES_NOT_EXIST
+echo test--9=/this/dir/does/not/exist/lol
+echo test--9=$USER
+echo 42=lol

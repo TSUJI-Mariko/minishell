@@ -39,6 +39,8 @@ t_node	*new_node_pipe(t_node *cmd_node)
 	if (g_exit.exit_status == 5 || g_exit.exit_status == 6)
 		return (NULL);
 	node = ft_calloc(1, sizeof(t_node));
+	if (node == NULL)
+		return (NULL);
 	node->kind = PIPE;
 	node->rhs = cmd_node;
 	return (node);
@@ -60,7 +62,11 @@ t_node	*new_node_command(void)
 	if (g_exit.exit_status == 5 || g_exit.exit_status == 6)
 		return (NULL);
 	node = ft_calloc(1, sizeof(t_node));
+	if (node == NULL)
+		return (NULL);
 	node->cmds = ft_calloc(1, sizeof(t_cmd));
+	if (node->cmds == NULL)
+		return (free(node), NULL);
 	node->kind = COMMAND;
 	return (node);
 }

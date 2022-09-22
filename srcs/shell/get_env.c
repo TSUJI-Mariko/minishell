@@ -59,7 +59,8 @@ t_shell	*init_all(void)
 
 void	exit_shell(t_shell *shell, int code)
 {
-	free_all(shell);
+	if (shell)
+		free_all(shell);
 	exit(code);
 }
 

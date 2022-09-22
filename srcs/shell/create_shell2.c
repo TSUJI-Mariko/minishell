@@ -18,6 +18,8 @@ t_env	*env_addback(t_env *env, char *name, char *body)
 	t_env	*new;
 
 	new = ft_calloc(1, sizeof(t_env));
+	if (new == NULL)
+		return (NULL);
 	new->name = name;
 	new->body = body;
 	if (env == NULL)

@@ -32,6 +32,7 @@ t_command	*get_command_line(char *str)
 	{
 		if (new)
 			free(new);
+		return (NULL);
 	}
 	new->whole_str = ft_strcpy(new->whole_str, str);
 	return (new);

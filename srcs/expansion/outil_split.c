@@ -20,6 +20,8 @@ void	word_add_back_for_split(t_word *word, char *str)
 	if (str == NULL)
 		return ;
 	new = ft_calloc(1, sizeof(t_word));
+	if (!new)
+		return ;
 	new->str = str;
 	while (word->next)
 		word = word->next;

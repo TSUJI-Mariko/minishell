@@ -19,19 +19,12 @@ t_command	*lexer(char *str)
 
 	res = quote_check(str);
 	if (res > 0)
-	{
-		printf("miss_quote\n");
+		return (printf("miss_quote\n"), NULL);
+	command_line = get_command_line(str);
+	if (!command_line)
 		return (NULL);
-	}
-	else
-	{
-		command_line = get_command_line(str);
-		if (split_command_line(command_line) > 0)
-		{
-			free_lexer(command_line);
-			return (NULL);
-		}
-	}
+	if (split_command_line(command_line) > 0)
+		return (free_lexer(command_line), NULL);
 	return (command_line);
 }
 

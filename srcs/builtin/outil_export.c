@@ -45,6 +45,7 @@ int	export_option(int res, char *str)
 	{
 		printf("\e[31mminishell :\e[0m export: ");
 		printf("`%c%c' : invalid option\n", str[0], str[1]);
+		printf("export: usage: export [name[=value]\n");
 		return (2);
 	}
 	else if (res == 3)

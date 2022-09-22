@@ -43,8 +43,10 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		start;
 	int		i;
 
-	if (s1 == NULL || set == NULL)
+	if (s1 == NULL)
 		return (NULL);
+	if (set == NULL)
+		return ((char *)s1);
 	len = ft_strlen_trim(s1, set);
 	dest = malloc(sizeof(char) * (len + 1));
 	if (dest == NULL)

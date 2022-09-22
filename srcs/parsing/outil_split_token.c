@@ -20,11 +20,7 @@ int	put_eof(t_command *command_line, char *str, int len)
 	end = NULL;
 	token = (t_token *)ft_calloc(1, sizeof(t_token));
 	if (token == NULL)
-	{
-		free(token);
-		printf("malloc error\n");
-		return (1);
-	}
+		return (printf("malloc error\n"), 1);
 	token->kind = TOKEN_EOF;
 	token->string = str;
 	token->len = len;

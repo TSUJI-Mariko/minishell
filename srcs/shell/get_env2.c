@@ -31,17 +31,14 @@ void	free_paths(t_shell *shell)
 
 void	free_all(t_shell *shell)
 {
-	if (shell)
-	{
-		if (shell->cmds)
-			free_cmds(shell);
-		if (shell->paths)
-			free_paths(shell);
-		if (shell->env)
-			free_env(shell);
-		free(shell);
-		shell = NULL;
-	}
+	if (shell->cmds)
+		free_cmds(shell);
+	if (shell->paths)
+		free_paths(shell);
+	if (shell->env)
+		free_env(shell);
+	free(shell);
+	shell = NULL;
 }
 
 void	fill_data(t_shell *shell, char **args)

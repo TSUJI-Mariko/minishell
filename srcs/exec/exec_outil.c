@@ -50,6 +50,8 @@ char	**create_argv(t_word *word)
 		now = now->next;
 	}
 	argv = ft_calloc(len + 1, sizeof(char *));
+	if (!argv)
+		return (NULL);
 	i = 0;
 	while (word)
 	{
