@@ -47,7 +47,7 @@ execute_basic_tests()
 	done
 	TESTS_TOTAL=$((TESTS_TOTAL + TEST_NO - 1))
 }
-
+make
 execute_redirections_tests()
 {
 	MINISHELL="../../$MINISHELL_PATH"
@@ -166,10 +166,10 @@ check_quiet()
 compile_minishell()
 {
 	clear
-	make -C ${MINISHELL_ROOT} fclean --silent
-	make -C ${MINISHELL_ROOT} debug --silent
-	make -C ${MINISHELL_ROOT} clean --silent
-	clear
+	# make -C ${MINISHELL_ROOT} fclean --silent
+	# make -C ${MINISHELL_ROOT} debug --silent
+	# make -C ${MINISHELL_ROOT} clean --silent
+	# clear
 }
 
 MINISHELL_ROOT="../"

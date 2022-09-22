@@ -1,1 +1,5 @@
-Only in bash_output/redirection_34/: test1
+diff -r bash_output/redirection_34/test1 minishell_output/redirection_34/test1
+1d0
+< ahocine
+2a2
+> ahocine

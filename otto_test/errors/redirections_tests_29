@@ -1,1 +1,2 @@
-./otto.sh: line 70: ../../../minishell: No such file or directory
+minishell$> [35mredirection_29[0m> > test1 echo hello > echo ' world'
+minishell$> [35mredirection_29[0m> exit

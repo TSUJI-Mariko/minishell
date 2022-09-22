@@ -1,1 +1,2 @@
-./otto.sh: line 27: ../minishell: No such file or directory
+minishell$> [35motto_test[0m> echo $DOESNOTEXIST_YEAH_REALLY_DOES_NOT_OR_SHOULD_NOT_AT_LEAST
+minishell$> [35motto_test[0m> exit

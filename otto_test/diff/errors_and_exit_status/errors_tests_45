@@ -1,8 +1,4 @@
 diff -r bash_output/errors_and_exit_status_45/err minishell_output/errors_and_exit_status_45/err
-0a1
-> ./otto.sh: line 115: ../../../minishell: No such file or directory
-diff -r bash_output/errors_and_exit_status_45/status minishell_output/errors_and_exit_status_45/status
-1c1
-< 0
----
-> 127
+0a1,2
+> minishell$> [35merrors_and_exit_status_45[0m> $THIS_VAR_DOES_NOT_EXIST_BUT_BASH_DOES_NOT_CARE_LOL
+> minishell$> [35merrors_and_exit_status_45[0m> exit

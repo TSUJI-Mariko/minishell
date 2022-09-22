@@ -1,11 +1,7 @@
 diff -r bash_output/errors_and_exit_status_11/err minishell_output/errors_and_exit_status_11/err
-1,2c1
+1,2c1,2
 < bash: line 1: unset: -e: invalid option
 < unset: usage: unset [-f] [-v] [-n] [name ...]
 ---
-> ./otto.sh: line 115: ../../../minishell: No such file or directory
-diff -r bash_output/errors_and_exit_status_11/status minishell_output/errors_and_exit_status_11/status
-1c1
-< 2
----
-> 127
+> minishell$> [35merrors_and_exit_status_11[0m> unset -e
+> minishell$> [35merrors_and_exit_status_11[0m> exit

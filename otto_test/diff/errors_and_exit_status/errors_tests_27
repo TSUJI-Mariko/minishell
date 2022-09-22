@@ -1,10 +1,6 @@
 diff -r bash_output/errors_and_exit_status_27/err minishell_output/errors_and_exit_status_27/err
-1c1
+1c1,2
 < bash: line 1: exit: 9999999999999999999999: numeric argument required
 ---
-> ./otto.sh: line 115: ../../../minishell: No such file or directory
-diff -r bash_output/errors_and_exit_status_27/status minishell_output/errors_and_exit_status_27/status
-1c1
-< 2
----
-> 127
+> minishell$> [35merrors_and_exit_status_27[0m> exit 9999999999999999999999
+> minishell: exit: 9999999999999999999999: numeric argument required

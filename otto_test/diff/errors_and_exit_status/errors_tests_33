@@ -1,10 +1,6 @@
 diff -r bash_output/errors_and_exit_status_33/err minishell_output/errors_and_exit_status_33/err
-1c1
+1c1,2
 < bash: line 1: unset: `test2-': not a valid identifier
 ---
-> ./otto.sh: line 115: ../../../minishell: No such file or directory
-diff -r bash_output/errors_and_exit_status_33/status minishell_output/errors_and_exit_status_33/status
-1c1
-< 1
----
-> 127
+> minishell$> [35merrors_and_exit_status_33[0m> unset test1 test2- test3
+> minishell$> [35merrors_and_exit_status_33[0m> exit

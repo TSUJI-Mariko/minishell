@@ -1,8 +1,5 @@
 diff -r bash_output/basic_tests_26/out minishell_output/basic_tests_26/out
-1d0
-< declare -x USER="ahocine"
-diff -r bash_output/basic_tests_26/status minishell_output/basic_tests_26/status
 1c1
-< 0
+< declare -x USER="ahocine"
 ---
-> 127
+> export USER="ahocine"

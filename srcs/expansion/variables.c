@@ -47,9 +47,19 @@ char	*expand_var_in_str(char *str, t_shell *shell)
 			continue ;
 		}
 		if (str[i[0]] == '"' && i[1] != SINGLE)
-			i[1] = DOUBLE;
+		{
+			if (i[1] == DOUBLE)
+				i[1] = NO;
+			else
+				i[1] = DOUBLE;
+		}
 		if (str[i[0]] == '\'' && i[1] != DOUBLE)
-			i[1] = SINGLE;
+		{
+			if (i[1] == SINGLE)
+				i[1] = NO;
+			else
+				i[1] = SINGLE;
+		}
 		new = ft_str_add_char(new, str[i[0]]);
 		i[0]++;
 	}

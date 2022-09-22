@@ -1,1 +1,2 @@
-./otto.sh: line 70: ../../../minishell: No such file or directory
+minishell$> [35mredirection_38[0m> echo "Hell_o\n " | cat >> "$USER"_2 | echo $USER >> "$USER"_2
+minishell$> [35mredirection_38[0m> exit

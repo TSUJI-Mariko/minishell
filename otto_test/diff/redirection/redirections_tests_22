@@ -1,1 +1,9 @@
-Only in bash_output/redirection_22/: test1
+diff -r bash_output/redirection_22/test1 minishell_output/redirection_22/test1
+1c1
+< PWD=/home/ahocine/42/09.minishell/new/otto_test/bash_output/redirection_22
+---
+> PWD=/home/ahocine/42/09.minishell/new/otto_test/minishell_output/redirection_22
+9d8
+< NVM_BIN=/home/ahocine/.nvm/versions/node/v18.6.0/bin
+10a10
+> NVM_BIN=/home/ahocine/.nvm/versions/node/v18.6.0/bin

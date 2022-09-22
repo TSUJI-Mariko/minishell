@@ -1,1 +1,2 @@
-./otto.sh: line 27: ../minishell: No such file or directory
+minishell$> [35motto_test[0m> $THIS_VAR_DOES_NOT_EXIST_BUT_BASH_DOES_NOT_CARE_LOL
+minishell$> [35motto_test[0m> exit
