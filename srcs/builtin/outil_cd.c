@@ -14,8 +14,9 @@
 
 void	cd_error(char *str)
 {
-	printf("minishell : cd: ");
-	printf("%s : invalid option\n", str);
+	ft_putstr_fd("minishell: cd: ", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd(": invalid option\n", 2);
 }
 
 int	cd_argument_check(char *str)
