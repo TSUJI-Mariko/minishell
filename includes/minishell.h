@@ -339,7 +339,7 @@ int				unset_argument_check(char *str);
 int				unset_option(int res, char *str);
 
 //exit
-int				builtin_exit(t_word *word, t_shell *shell);
+int				builtin_exit(t_word *word, t_shell *shell, t_node *node);
 int				overflow_check(char **str);
 int				check_int(char **str);
 
