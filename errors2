@@ -1,0 +1,560 @@
+==302274== Memcheck, a memory error detector
+==302274== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==302274== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==302274== Command: ./minishell
+==302274== Parent PID: 272610
+==302274== 
+==302285== 
+==302285== HEAP SUMMARY:
+==302285==     in use at exit: 208,362 bytes in 232 blocks
+==302285==   total heap usage: 805 allocs, 573 frees, 282,798 bytes allocated
+==302285== 
+==302285== LEAK SUMMARY:
+==302285==    definitely lost: 0 bytes in 0 blocks
+==302285==    indirectly lost: 0 bytes in 0 blocks
+==302285==      possibly lost: 0 bytes in 0 blocks
+==302285==    still reachable: 0 bytes in 0 blocks
+==302285==         suppressed: 208,362 bytes in 232 blocks
+==302285== 
+==302285== For lists of detected and suppressed errors, rerun with: -s
+==302285== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==302345== 
+==302345== HEAP SUMMARY:
+==302345==     in use at exit: 215,115 bytes in 488 blocks
+==302345==   total heap usage: 1,411 allocs, 923 frees, 335,000 bytes allocated
+==302345== 
+==302345== 3 bytes in 1 blocks are still reachable in loss record 1 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x11031C: ft_strjoin (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10CBD1: ft_strjoin_and_free (outil_variables_2.c:38)
+==302345==    by 0x10CB26: ft_str_add_char (outil_variables_2.c:21)
+==302345==    by 0x10D0C7: remove_quote_string (remove_quote.c:39)
+==302345==    by 0x10D11F: remove_quote_word (remove_quote.c:48)
+==302345==    by 0x10D242: remove_quote (remove_quote.c:85)
+==302345==    by 0x10D28B: remove_quote (remove_quote.c:92)
+==302345==    by 0x10C341: expander (expansion.c:19)
+==302345==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302345==    by 0x109699: start_command (minishell.c:52)
+==302345==    by 0x10976A: main (minishell.c:76)
+==302345== 
+==302345== 3 bytes in 1 blocks are still reachable in loss record 2 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x11031C: ft_strjoin (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10CBD1: ft_strjoin_and_free (outil_variables_2.c:38)
+==302345==    by 0x10CB26: ft_str_add_char (outil_variables_2.c:21)
+==302345==    by 0x10D0C7: remove_quote_string (remove_quote.c:39)
+==302345==    by 0x10D11F: remove_quote_word (remove_quote.c:48)
+==302345==    by 0x10D136: remove_quote_word (remove_quote.c:49)
+==302345==    by 0x10D242: remove_quote (remove_quote.c:85)
+==302345==    by 0x10D28B: remove_quote (remove_quote.c:92)
+==302345==    by 0x10C341: expander (expansion.c:19)
+==302345==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302345==    by 0x109699: start_command (minishell.c:52)
+==302345== 
+==302345== 3 bytes in 1 blocks are still reachable in loss record 3 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x11031C: ft_strjoin (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10CBD1: ft_strjoin_and_free (outil_variables_2.c:38)
+==302345==    by 0x10CB26: ft_str_add_char (outil_variables_2.c:21)
+==302345==    by 0x10D0C7: remove_quote_string (remove_quote.c:39)
+==302345==    by 0x10D11F: remove_quote_word (remove_quote.c:48)
+==302345==    by 0x10D242: remove_quote (remove_quote.c:85)
+==302345==    by 0x10D28B: remove_quote (remove_quote.c:92)
+==302345==    by 0x10D27B: remove_quote (remove_quote.c:91)
+==302345==    by 0x10C341: expander (expansion.c:19)
+==302345==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302345==    by 0x109699: start_command (minishell.c:52)
+==302345== 
+==302345== 3 bytes in 1 blocks are still reachable in loss record 4 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x11031C: ft_strjoin (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10CBD1: ft_strjoin_and_free (outil_variables_2.c:38)
+==302345==    by 0x10CB26: ft_str_add_char (outil_variables_2.c:21)
+==302345==    by 0x10D0C7: remove_quote_string (remove_quote.c:39)
+==302345==    by 0x10D11F: remove_quote_word (remove_quote.c:48)
+==302345==    by 0x10D136: remove_quote_word (remove_quote.c:49)
+==302345==    by 0x10D242: remove_quote (remove_quote.c:85)
+==302345==    by 0x10D28B: remove_quote (remove_quote.c:92)
+==302345==    by 0x10D27B: remove_quote (remove_quote.c:91)
+==302345==    by 0x10C341: expander (expansion.c:19)
+==302345==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302345== 
+==302345== 12 bytes in 1 blocks are still reachable in loss record 7 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x11031C: ft_strjoin (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10CBD1: ft_strjoin_and_free (outil_variables_2.c:38)
+==302345==    by 0x10D56F: sarch_pathname (outil_path.c:54)
+==302345==    by 0x10D2E2: get_pathname_str (path_generator.c:22)
+==302345==    by 0x10D38C: pathname_generator (path_generator.c:39)
+==302345==    by 0x10D3C0: pathname_generator (path_generator.c:45)
+==302345==    by 0x10C354: expander (expansion.c:20)
+==302345==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302345==    by 0x109699: start_command (minishell.c:52)
+==302345==    by 0x10976A: main (minishell.c:76)
+==302345== 
+==302345== 12 bytes in 1 blocks are still reachable in loss record 8 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x11031C: ft_strjoin (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10CBD1: ft_strjoin_and_free (outil_variables_2.c:38)
+==302345==    by 0x10D56F: sarch_pathname (outil_path.c:54)
+==302345==    by 0x10D2E2: get_pathname_str (path_generator.c:22)
+==302345==    by 0x10D38C: pathname_generator (path_generator.c:39)
+==302345==    by 0x10D3C0: pathname_generator (path_generator.c:45)
+==302345==    by 0x10D3A9: pathname_generator (path_generator.c:44)
+==302345==    by 0x10C354: expander (expansion.c:20)
+==302345==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302345==    by 0x109699: start_command (minishell.c:52)
+==302345==    by 0x10976A: main (minishell.c:76)
+==302345== 
+==302345== 16 bytes in 1 blocks are still reachable in loss record 14 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10CF53: word_add_back_for_split (outil_split.c:22)
+==302345==    by 0x10CDD5: create_splited_words (split_string.c:56)
+==302345==    by 0x10CE4D: split_space_in_word (split_string.c:69)
+==302345==    by 0x10CEF7: split_space (split_string.c:84)
+==302345==    by 0x10CF1D: split_space (split_string.c:88)
+==302345==    by 0x10C335: expander (expansion.c:18)
+==302345==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302345==    by 0x109699: start_command (minishell.c:52)
+==302345==    by 0x10976A: main (minishell.c:76)
+==302345== 
+==302345== 16 bytes in 1 blocks are still reachable in loss record 15 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10CF53: word_add_back_for_split (outil_split.c:22)
+==302345==    by 0x10CDD5: create_splited_words (split_string.c:56)
+==302345==    by 0x10CE4D: split_space_in_word (split_string.c:69)
+==302345==    by 0x10CE70: split_space_in_word (split_string.c:71)
+==302345==    by 0x10CEF7: split_space (split_string.c:84)
+==302345==    by 0x10CF1D: split_space (split_string.c:88)
+==302345==    by 0x10C335: expander (expansion.c:18)
+==302345==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302345==    by 0x109699: start_command (minishell.c:52)
+==302345==    by 0x10976A: main (minishell.c:76)
+==302345== 
+==302345== 16 bytes in 1 blocks are still reachable in loss record 16 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10CF53: word_add_back_for_split (outil_split.c:22)
+==302345==    by 0x10CDD5: create_splited_words (split_string.c:56)
+==302345==    by 0x10CE4D: split_space_in_word (split_string.c:69)
+==302345==    by 0x10CEF7: split_space (split_string.c:84)
+==302345==    by 0x10CF1D: split_space (split_string.c:88)
+==302345==    by 0x10CF0D: split_space (split_string.c:87)
+==302345==    by 0x10C335: expander (expansion.c:18)
+==302345==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302345==    by 0x109699: start_command (minishell.c:52)
+==302345==    by 0x10976A: main (minishell.c:76)
+==302345== 
+==302345== 16 bytes in 1 blocks are still reachable in loss record 17 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10CF53: word_add_back_for_split (outil_split.c:22)
+==302345==    by 0x10CDD5: create_splited_words (split_string.c:56)
+==302345==    by 0x10CE4D: split_space_in_word (split_string.c:69)
+==302345==    by 0x10CE70: split_space_in_word (split_string.c:71)
+==302345==    by 0x10CEF7: split_space (split_string.c:84)
+==302345==    by 0x10CF1D: split_space (split_string.c:88)
+==302345==    by 0x10CF0D: split_space (split_string.c:87)
+==302345==    by 0x10C335: expander (expansion.c:18)
+==302345==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302345==    by 0x109699: start_command (minishell.c:52)
+==302345== 
+==302345== 40 bytes in 1 blocks are still reachable in loss record 24 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10AF1D: new_node_command (outil_parser2.c:67)
+==302345==    by 0x10A81F: command (parser_cmd_redir.c:66)
+==302345==    by 0x10A9D3: pipe_cmd (parser_pipe_cmd.c:23)
+==302345==    by 0x10AA81: parser (parser.c:21)
+==302345==    by 0x109652: start_command (minishell.c:45)
+==302345==    by 0x10976A: main (minishell.c:76)
+==302345== 
+==302345== 40 bytes in 1 blocks are still reachable in loss record 25 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10AF1D: new_node_command (outil_parser2.c:67)
+==302345==    by 0x10A81F: command (parser_cmd_redir.c:66)
+==302345==    by 0x10AA2A: pipe_cmd (parser_pipe_cmd.c:29)
+==302345==    by 0x10AA81: parser (parser.c:21)
+==302345==    by 0x109652: start_command (minishell.c:45)
+==302345==    by 0x10976A: main (minishell.c:76)
+==302345== 
+==302345== 64 bytes in 1 blocks are still reachable in loss record 29 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10AEFC: new_node_command (outil_parser2.c:64)
+==302345==    by 0x10A81F: command (parser_cmd_redir.c:66)
+==302345==    by 0x10A9D3: pipe_cmd (parser_pipe_cmd.c:23)
+==302345==    by 0x10AA81: parser (parser.c:21)
+==302345==    by 0x109652: start_command (minishell.c:45)
+==302345==    by 0x10976A: main (minishell.c:76)
+==302345== 
+==302345== 64 bytes in 1 blocks are still reachable in loss record 30 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10AE60: new_node_pipe (outil_parser2.c:41)
+==302345==    by 0x10A9DB: pipe_cmd (parser_pipe_cmd.c:23)
+==302345==    by 0x10AA81: parser (parser.c:21)
+==302345==    by 0x109652: start_command (minishell.c:45)
+==302345==    by 0x10976A: main (minishell.c:76)
+==302345== 
+==302345== 64 bytes in 1 blocks are still reachable in loss record 31 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10AEFC: new_node_command (outil_parser2.c:64)
+==302345==    by 0x10A81F: command (parser_cmd_redir.c:66)
+==302345==    by 0x10AA2A: pipe_cmd (parser_pipe_cmd.c:29)
+==302345==    by 0x10AA81: parser (parser.c:21)
+==302345==    by 0x109652: start_command (minishell.c:45)
+==302345==    by 0x10976A: main (minishell.c:76)
+==302345== 
+==302345== 64 bytes in 1 blocks are still reachable in loss record 32 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10AE60: new_node_pipe (outil_parser2.c:41)
+==302345==    by 0x10AEAE: add_node_pipe (outil_parser2.c:53)
+==302345==    by 0x10AA3C: pipe_cmd (parser_pipe_cmd.c:29)
+==302345==    by 0x10AA81: parser (parser.c:21)
+==302345==    by 0x109652: start_command (minishell.c:45)
+==302345==    by 0x10976A: main (minishell.c:76)
+==302345== 
+==302345== 80 bytes in 1 blocks are still reachable in loss record 35 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x10B28C: init_all (get_env.c:48)
+==302345==    by 0x10B7C3: create_shell (create_shell.c:20)
+==302345==    by 0x1096EA: main (minishell.c:64)
+==302345== 
+==302345== 88 bytes in 1 blocks are still reachable in loss record 36 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x110542: ft_split (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10B252: get_paths (get_env.c:37)
+==302345==    by 0x10B7DA: create_shell (create_shell.c:21)
+==302345==    by 0x1096EA: main (minishell.c:64)
+==302345== 
+==302345== 126 bytes in 10 blocks are still reachable in loss record 40 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x110B54: ft_substr (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x1105D3: ft_split (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10B252: get_paths (get_env.c:37)
+==302345==    by 0x10B7DA: create_shell (create_shell.c:21)
+==302345==    by 0x1096EA: main (minishell.c:64)
+==302345== 
+==302345== 895 bytes in 66 blocks are still reachable in loss record 49 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x110283: ft_strndup (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10B8DD: create_env_name (create_shell.c:48)
+==302345==    by 0x10BAF9: create_env (create_shell2.c:46)
+==302345==    by 0x10B877: create_shell (create_shell.c:35)
+==302345==    by 0x1096EA: main (minishell.c:64)
+==302345== 
+==302345== 1,584 bytes in 66 blocks are still reachable in loss record 60 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10BA2C: env_addback (create_shell2.c:20)
+==302345==    by 0x10BB0E: create_env (create_shell2.c:46)
+==302345==    by 0x10B877: create_shell (create_shell.c:35)
+==302345==    by 0x1096EA: main (minishell.c:64)
+==302345== 
+==302345== 3,120 bytes in 66 blocks are still reachable in loss record 64 of 89
+==302345==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302345==    by 0x1101F2: ft_strdup (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302345==    by 0x10B92A: create_env_body (create_shell.c:60)
+==302345==    by 0x10BAD8: create_env (create_shell2.c:46)
+==302345==    by 0x10B877: create_shell (create_shell.c:35)
+==302345==    by 0x1096EA: main (minishell.c:64)
+==302345== 
+==302345== LEAK SUMMARY:
+==302345==    definitely lost: 0 bytes in 0 blocks
+==302345==    indirectly lost: 0 bytes in 0 blocks
+==302345==      possibly lost: 0 bytes in 0 blocks
+==302345==    still reachable: 6,329 bytes in 226 blocks
+==302345==         suppressed: 208,786 bytes in 262 blocks
+==302345== 
+==302345== For lists of detected and suppressed errors, rerun with: -s
+==302345== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==302344== 
+==302344== HEAP SUMMARY:
+==302344==     in use at exit: 215,115 bytes in 488 blocks
+==302344==   total heap usage: 1,411 allocs, 923 frees, 335,000 bytes allocated
+==302344== 
+==302344== 3 bytes in 1 blocks are still reachable in loss record 1 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x11031C: ft_strjoin (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10CBD1: ft_strjoin_and_free (outil_variables_2.c:38)
+==302344==    by 0x10CB26: ft_str_add_char (outil_variables_2.c:21)
+==302344==    by 0x10D0C7: remove_quote_string (remove_quote.c:39)
+==302344==    by 0x10D11F: remove_quote_word (remove_quote.c:48)
+==302344==    by 0x10D242: remove_quote (remove_quote.c:85)
+==302344==    by 0x10D28B: remove_quote (remove_quote.c:92)
+==302344==    by 0x10C341: expander (expansion.c:19)
+==302344==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302344==    by 0x109699: start_command (minishell.c:52)
+==302344==    by 0x10976A: main (minishell.c:76)
+==302344== 
+==302344== 3 bytes in 1 blocks are still reachable in loss record 2 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x11031C: ft_strjoin (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10CBD1: ft_strjoin_and_free (outil_variables_2.c:38)
+==302344==    by 0x10CB26: ft_str_add_char (outil_variables_2.c:21)
+==302344==    by 0x10D0C7: remove_quote_string (remove_quote.c:39)
+==302344==    by 0x10D11F: remove_quote_word (remove_quote.c:48)
+==302344==    by 0x10D136: remove_quote_word (remove_quote.c:49)
+==302344==    by 0x10D242: remove_quote (remove_quote.c:85)
+==302344==    by 0x10D28B: remove_quote (remove_quote.c:92)
+==302344==    by 0x10C341: expander (expansion.c:19)
+==302344==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302344==    by 0x109699: start_command (minishell.c:52)
+==302344== 
+==302344== 3 bytes in 1 blocks are still reachable in loss record 3 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x11031C: ft_strjoin (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10CBD1: ft_strjoin_and_free (outil_variables_2.c:38)
+==302344==    by 0x10CB26: ft_str_add_char (outil_variables_2.c:21)
+==302344==    by 0x10D0C7: remove_quote_string (remove_quote.c:39)
+==302344==    by 0x10D11F: remove_quote_word (remove_quote.c:48)
+==302344==    by 0x10D242: remove_quote (remove_quote.c:85)
+==302344==    by 0x10D28B: remove_quote (remove_quote.c:92)
+==302344==    by 0x10D27B: remove_quote (remove_quote.c:91)
+==302344==    by 0x10C341: expander (expansion.c:19)
+==302344==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302344==    by 0x109699: start_command (minishell.c:52)
+==302344== 
+==302344== 3 bytes in 1 blocks are still reachable in loss record 4 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x11031C: ft_strjoin (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10CBD1: ft_strjoin_and_free (outil_variables_2.c:38)
+==302344==    by 0x10CB26: ft_str_add_char (outil_variables_2.c:21)
+==302344==    by 0x10D0C7: remove_quote_string (remove_quote.c:39)
+==302344==    by 0x10D11F: remove_quote_word (remove_quote.c:48)
+==302344==    by 0x10D136: remove_quote_word (remove_quote.c:49)
+==302344==    by 0x10D242: remove_quote (remove_quote.c:85)
+==302344==    by 0x10D28B: remove_quote (remove_quote.c:92)
+==302344==    by 0x10D27B: remove_quote (remove_quote.c:91)
+==302344==    by 0x10C341: expander (expansion.c:19)
+==302344==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302344== 
+==302344== 12 bytes in 1 blocks are still reachable in loss record 7 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x11031C: ft_strjoin (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10CBD1: ft_strjoin_and_free (outil_variables_2.c:38)
+==302344==    by 0x10D56F: sarch_pathname (outil_path.c:54)
+==302344==    by 0x10D2E2: get_pathname_str (path_generator.c:22)
+==302344==    by 0x10D38C: pathname_generator (path_generator.c:39)
+==302344==    by 0x10D3C0: pathname_generator (path_generator.c:45)
+==302344==    by 0x10C354: expander (expansion.c:20)
+==302344==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302344==    by 0x109699: start_command (minishell.c:52)
+==302344==    by 0x10976A: main (minishell.c:76)
+==302344== 
+==302344== 12 bytes in 1 blocks are still reachable in loss record 8 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x11031C: ft_strjoin (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10CBD1: ft_strjoin_and_free (outil_variables_2.c:38)
+==302344==    by 0x10D56F: sarch_pathname (outil_path.c:54)
+==302344==    by 0x10D2E2: get_pathname_str (path_generator.c:22)
+==302344==    by 0x10D38C: pathname_generator (path_generator.c:39)
+==302344==    by 0x10D3C0: pathname_generator (path_generator.c:45)
+==302344==    by 0x10D3A9: pathname_generator (path_generator.c:44)
+==302344==    by 0x10C354: expander (expansion.c:20)
+==302344==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302344==    by 0x109699: start_command (minishell.c:52)
+==302344==    by 0x10976A: main (minishell.c:76)
+==302344== 
+==302344== 16 bytes in 1 blocks are still reachable in loss record 14 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10CF53: word_add_back_for_split (outil_split.c:22)
+==302344==    by 0x10CDD5: create_splited_words (split_string.c:56)
+==302344==    by 0x10CE4D: split_space_in_word (split_string.c:69)
+==302344==    by 0x10CEF7: split_space (split_string.c:84)
+==302344==    by 0x10CF1D: split_space (split_string.c:88)
+==302344==    by 0x10C335: expander (expansion.c:18)
+==302344==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302344==    by 0x109699: start_command (minishell.c:52)
+==302344==    by 0x10976A: main (minishell.c:76)
+==302344== 
+==302344== 16 bytes in 1 blocks are still reachable in loss record 15 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10CF53: word_add_back_for_split (outil_split.c:22)
+==302344==    by 0x10CDD5: create_splited_words (split_string.c:56)
+==302344==    by 0x10CE4D: split_space_in_word (split_string.c:69)
+==302344==    by 0x10CE70: split_space_in_word (split_string.c:71)
+==302344==    by 0x10CEF7: split_space (split_string.c:84)
+==302344==    by 0x10CF1D: split_space (split_string.c:88)
+==302344==    by 0x10C335: expander (expansion.c:18)
+==302344==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302344==    by 0x109699: start_command (minishell.c:52)
+==302344==    by 0x10976A: main (minishell.c:76)
+==302344== 
+==302344== 16 bytes in 1 blocks are still reachable in loss record 16 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10CF53: word_add_back_for_split (outil_split.c:22)
+==302344==    by 0x10CDD5: create_splited_words (split_string.c:56)
+==302344==    by 0x10CE4D: split_space_in_word (split_string.c:69)
+==302344==    by 0x10CEF7: split_space (split_string.c:84)
+==302344==    by 0x10CF1D: split_space (split_string.c:88)
+==302344==    by 0x10CF0D: split_space (split_string.c:87)
+==302344==    by 0x10C335: expander (expansion.c:18)
+==302344==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302344==    by 0x109699: start_command (minishell.c:52)
+==302344==    by 0x10976A: main (minishell.c:76)
+==302344== 
+==302344== 16 bytes in 1 blocks are still reachable in loss record 17 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10CF53: word_add_back_for_split (outil_split.c:22)
+==302344==    by 0x10CDD5: create_splited_words (split_string.c:56)
+==302344==    by 0x10CE4D: split_space_in_word (split_string.c:69)
+==302344==    by 0x10CE70: split_space_in_word (split_string.c:71)
+==302344==    by 0x10CEF7: split_space (split_string.c:84)
+==302344==    by 0x10CF1D: split_space (split_string.c:88)
+==302344==    by 0x10CF0D: split_space (split_string.c:87)
+==302344==    by 0x10C335: expander (expansion.c:18)
+==302344==    by 0x10EE96: exec_pipe (exec_pipe.c:22)
+==302344==    by 0x109699: start_command (minishell.c:52)
+==302344== 
+==302344== 40 bytes in 1 blocks are still reachable in loss record 24 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10AF1D: new_node_command (outil_parser2.c:67)
+==302344==    by 0x10A81F: command (parser_cmd_redir.c:66)
+==302344==    by 0x10A9D3: pipe_cmd (parser_pipe_cmd.c:23)
+==302344==    by 0x10AA81: parser (parser.c:21)
+==302344==    by 0x109652: start_command (minishell.c:45)
+==302344==    by 0x10976A: main (minishell.c:76)
+==302344== 
+==302344== 40 bytes in 1 blocks are still reachable in loss record 25 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10AF1D: new_node_command (outil_parser2.c:67)
+==302344==    by 0x10A81F: command (parser_cmd_redir.c:66)
+==302344==    by 0x10AA2A: pipe_cmd (parser_pipe_cmd.c:29)
+==302344==    by 0x10AA81: parser (parser.c:21)
+==302344==    by 0x109652: start_command (minishell.c:45)
+==302344==    by 0x10976A: main (minishell.c:76)
+==302344== 
+==302344== 64 bytes in 1 blocks are still reachable in loss record 29 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10AEFC: new_node_command (outil_parser2.c:64)
+==302344==    by 0x10A81F: command (parser_cmd_redir.c:66)
+==302344==    by 0x10A9D3: pipe_cmd (parser_pipe_cmd.c:23)
+==302344==    by 0x10AA81: parser (parser.c:21)
+==302344==    by 0x109652: start_command (minishell.c:45)
+==302344==    by 0x10976A: main (minishell.c:76)
+==302344== 
+==302344== 64 bytes in 1 blocks are still reachable in loss record 30 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10AE60: new_node_pipe (outil_parser2.c:41)
+==302344==    by 0x10A9DB: pipe_cmd (parser_pipe_cmd.c:23)
+==302344==    by 0x10AA81: parser (parser.c:21)
+==302344==    by 0x109652: start_command (minishell.c:45)
+==302344==    by 0x10976A: main (minishell.c:76)
+==302344== 
+==302344== 64 bytes in 1 blocks are still reachable in loss record 31 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10AEFC: new_node_command (outil_parser2.c:64)
+==302344==    by 0x10A81F: command (parser_cmd_redir.c:66)
+==302344==    by 0x10AA2A: pipe_cmd (parser_pipe_cmd.c:29)
+==302344==    by 0x10AA81: parser (parser.c:21)
+==302344==    by 0x109652: start_command (minishell.c:45)
+==302344==    by 0x10976A: main (minishell.c:76)
+==302344== 
+==302344== 64 bytes in 1 blocks are still reachable in loss record 32 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10AE60: new_node_pipe (outil_parser2.c:41)
+==302344==    by 0x10AEAE: add_node_pipe (outil_parser2.c:53)
+==302344==    by 0x10AA3C: pipe_cmd (parser_pipe_cmd.c:29)
+==302344==    by 0x10AA81: parser (parser.c:21)
+==302344==    by 0x109652: start_command (minishell.c:45)
+==302344==    by 0x10976A: main (minishell.c:76)
+==302344== 
+==302344== 80 bytes in 1 blocks are still reachable in loss record 35 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x10B28C: init_all (get_env.c:48)
+==302344==    by 0x10B7C3: create_shell (create_shell.c:20)
+==302344==    by 0x1096EA: main (minishell.c:64)
+==302344== 
+==302344== 88 bytes in 1 blocks are still reachable in loss record 36 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x110542: ft_split (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10B252: get_paths (get_env.c:37)
+==302344==    by 0x10B7DA: create_shell (create_shell.c:21)
+==302344==    by 0x1096EA: main (minishell.c:64)
+==302344== 
+==302344== 126 bytes in 10 blocks are still reachable in loss record 40 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x110B54: ft_substr (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x1105D3: ft_split (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10B252: get_paths (get_env.c:37)
+==302344==    by 0x10B7DA: create_shell (create_shell.c:21)
+==302344==    by 0x1096EA: main (minishell.c:64)
+==302344== 
+==302344== 895 bytes in 66 blocks are still reachable in loss record 49 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x110283: ft_strndup (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10B8DD: create_env_name (create_shell.c:48)
+==302344==    by 0x10BAF9: create_env (create_shell2.c:46)
+==302344==    by 0x10B877: create_shell (create_shell.c:35)
+==302344==    by 0x1096EA: main (minishell.c:64)
+==302344== 
+==302344== 1,584 bytes in 66 blocks are still reachable in loss record 60 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x110180: ft_calloc (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10BA2C: env_addback (create_shell2.c:20)
+==302344==    by 0x10BB0E: create_env (create_shell2.c:46)
+==302344==    by 0x10B877: create_shell (create_shell.c:35)
+==302344==    by 0x1096EA: main (minishell.c:64)
+==302344== 
+==302344== 3,120 bytes in 66 blocks are still reachable in loss record 64 of 89
+==302344==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==302344==    by 0x1101F2: ft_strdup (in /mnt/nfs/homes/ahocine/Desktop/42/common_core/ahocine/minishell)
+==302344==    by 0x10B92A: create_env_body (create_shell.c:60)
+==302344==    by 0x10BAD8: create_env (create_shell2.c:46)
+==302344==    by 0x10B877: create_shell (create_shell.c:35)
+==302344==    by 0x1096EA: main (minishell.c:64)
+==302344== 
+==302344== LEAK SUMMARY:
+==302344==    definitely lost: 0 bytes in 0 blocks
+==302344==    indirectly lost: 0 bytes in 0 blocks
+==302344==      possibly lost: 0 bytes in 0 blocks
+==302344==    still reachable: 6,329 bytes in 226 blocks
+==302344==         suppressed: 208,786 bytes in 262 blocks
+==302344== 
+==302344== For lists of detected and suppressed errors, rerun with: -s
+==302344== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==302343== 
+==302343== HEAP SUMMARY:
+==302343==     in use at exit: 208,786 bytes in 262 blocks
+==302343==   total heap usage: 1,411 allocs, 1,149 frees, 335,000 bytes allocated
+==302343== 
+==302343== LEAK SUMMARY:
+==302343==    definitely lost: 0 bytes in 0 blocks
+==302343==    indirectly lost: 0 bytes in 0 blocks
+==302343==      possibly lost: 0 bytes in 0 blocks
+==302343==    still reachable: 0 bytes in 0 blocks
+==302343==         suppressed: 208,786 bytes in 262 blocks
+==302343== 
+==302343== For lists of detected and suppressed errors, rerun with: -s
+==302343== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==302274== 
+==302274== HEAP SUMMARY:
+==302274==     in use at exit: 208,772 bytes in 261 blocks
+==302274==   total heap usage: 1,417 allocs, 1,156 frees, 339,262 bytes allocated
+==302274== 
+==302274== LEAK SUMMARY:
+==302274==    definitely lost: 0 bytes in 0 blocks
+==302274==    indirectly lost: 0 bytes in 0 blocks
+==302274==      possibly lost: 0 bytes in 0 blocks
+==302274==    still reachable: 0 bytes in 0 blocks
+==302274==         suppressed: 208,772 bytes in 261 blocks
+==302274== 
+==302274== For lists of detected and suppressed errors, rerun with: -s
+==302274== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

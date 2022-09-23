@@ -14,7 +14,7 @@
 
 extern t_exit	g_exit;
 
-void	exec_cmd(t_node *node, t_shell *shell)
+void	exec_cmd(t_node *start, t_node *node, t_shell *shell)
 {
 	bool	redir_in;
 	bool	redir_out;
@@ -34,7 +34,11 @@ void	exec_cmd(t_node *node, t_shell *shell)
 	if (node->cmds->is_builtin)
 		exec_builtin(node, shell);
 	else
-		exec_file(node, shell);
+		exec_file(start, node, shell);
 	dup2(shell->fdin, STDIN_FILENO);
 	dup2(shell->fdout, STDOUT_FILENO);
+	close(shell->fdin);
+	close(shell->fdout);
+	free_all(shell);
+	free_node(start);
 }

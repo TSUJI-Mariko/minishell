@@ -16,7 +16,8 @@ extern t_exit	g_exit;
 
 void	exec_no_pipe(t_node *pipe_node, t_shell *shell)
 {
-	exec_cmd(pipe_node->rhs, shell);
+	exec_cmd(pipe_node, pipe_node->rhs, shell);
+	// free(pipe_node);
 }
 
 void	exec_multi_pipes(t_node *pipe_node, t_shell *shell)
@@ -34,7 +35,9 @@ void	exec_multi_pipes(t_node *pipe_node, t_shell *shell)
 			dup2(fd[0], STDIN_FILENO);
 		close(fd[1]);
 		close(fd[0]);
-		exec_cmd(pipe_node->rhs, shell);
+		close(shell->fdin);
+		close(shell->fdout);
+		exec_cmd(pipe_node, pipe_node->rhs, shell);
 		exit(g_exit.exit_status);
 	}
 	else

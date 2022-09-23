@@ -26,6 +26,10 @@ void	exec_pipe(t_node *pipe_node, t_shell *shell)
 	if (pid == 0)
 	{
 		exec_multi_pipes(pipe_node, shell);
+		close(shell->fdin);
+		close(shell->fdout);
+		free_all(shell);
+		free_node(pipe_node);
 		exit(g_exit.exit_status);
 	}
 	sts = 0;

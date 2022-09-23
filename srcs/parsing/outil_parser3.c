@@ -84,7 +84,7 @@ void	syntax_error(t_node *node)
 	g_exit.exit_status = 6;
 	free_node(node);
 }
-
+/*
 void	add_redir_in(t_node *node, t_redir_kind kind, char *str, long len)
 {
 	t_redir	*redir;
@@ -105,4 +105,4 @@ void	add_redir_in(t_node *node, t_redir_kind kind, char *str, long len)
 			now = now->next;
 		now->next = redir;
 	}
-}
+}*/

@@ -99,8 +99,6 @@ typedef struct s_node
 	struct s_node	*lhs;
 	struct s_node	*rhs;
 	struct s_cmd	*cmds;
-	t_redir			*redir_in;
-	t_redir			*redir_out;
 }t_node;
 
 typedef struct s_word
@@ -154,7 +152,6 @@ typedef struct s_comm
 
 typedef struct s_shell
 {
-	int			ret;
 	bool		declare;
 	int			definput;
 	int			defoutput;
@@ -367,8 +364,8 @@ char			*expand_var_heredoc(t_redir *redir, char *str, t_shell *shell);
 void			exec_pipe(t_node *pipe_node, t_shell *shell);
 void			exec_multi_pipes(t_node *pipe_node, t_shell *shell);
 void			exec_no_pipe(t_node *pipe_node, t_shell *shell);
-void			exec_cmd(t_node *node, t_shell *shell);
-void			exec_file(t_node *node, t_shell *shell);
+void			exec_cmd(t_node *start, t_node *node, t_shell *shell);
+void			exec_file(t_node *start, t_node *node, t_shell *shell);
 void			set_exit_status(void);
 bool			check_cmd(t_cmd *cmd);
 bool			is_directory(char *pathname);
