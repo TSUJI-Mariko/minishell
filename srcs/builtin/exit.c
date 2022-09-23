@@ -57,7 +57,7 @@ int	builtin_exit(t_node *start, t_word *word, t_shell *shell, t_node *node)
 
 	(void)start;
 	if (word->next == NULL || word->next->str == NULL)
-		return (ft_putstr_fd("exit\n", 2), free_node(node), free(start), \
+		return (ft_putstr_fd("\e[31mexit\e[0m\n", 2), free_node(node), free(start), \
 		free_all(shell), exit(g_exit.exit_status), 0);
 	if (check_int(&(word->next->str)))
 	{
@@ -72,6 +72,6 @@ int	builtin_exit(t_node *start, t_word *word, t_shell *shell, t_node *node)
 		return (free_node(node), free(start), g_exit.exit_status = 1, 1);
 	}
 	ret = ft_atoi(word->next->str);
-	return (ft_putstr_fd("exit\n", 2), free_node(node), free(start), \
+	return (ft_putstr_fd("\e[31mexit\e[0m\n", 2), free_node(node), free(start), \
 			free_all(shell), exit(ret), 1);
 }

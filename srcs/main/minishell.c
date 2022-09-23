@@ -21,7 +21,7 @@ static char	*ft_readline(char **res)
 
 	path = getcwd(NULL, 0);
 	if (!path)
-		return (readline("\e[33m[minishell]>\e[0m "));
+		return (*res = readline("\e[33m[minishell]>\e[0m "));
 	i = ft_strlen(path) - 1;
 	while (path[i] && path[i] != '/')
 		i--;
@@ -77,7 +77,6 @@ int	main(int argc, char **argv, char **envp)
 		}
 		free(line);
 	}
-	ft_putstr_fd("exit\n", 2);
-	exit_shell(shell, g_exit.exit_status);
-	return (0);
+	ft_putstr_fd("\e[31mexit\e[0m\n", 2);
+	return (exit_shell(shell, g_exit.exit_status), 0);
 }
