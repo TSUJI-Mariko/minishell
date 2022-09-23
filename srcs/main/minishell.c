@@ -21,16 +21,16 @@ static char	*ft_readline(char **res)
 
 	path = getcwd(NULL, 0);
 	if (!path)
-		return (readline("[minishell]> "));
+		return (readline("\e[33m[minishell]>\e[0m "));
 	i = ft_strlen(path) - 1;
 	while (path[i] && path[i] != '/')
 		i--;
 	*res = ft_calloc(sizeof(char), 60);
 	if (!*res)
-		return (free(path), readline("[minishell]> "));
-	ft_strlcat(*res, "[minishell] ", 13 + 1);
-	ft_strlcat(*res, path + i + 1, 13 + ft_strlen(path + i + 1) + 1);
-	ft_strlcat(*res, "> ", 15 + ft_strlen(path + i + 1) + 1);
+		return (free(path), readline("\e[33m[minishell]>\e[0m "));
+	ft_strlcat(*res, "\e[33m[minishell]\e[0m \e[34m", 27 + 1);
+	ft_strlcat(*res, path + i + 1, 27 + ft_strlen(path + i + 1) + 1);
+	ft_strlcat(*res, "\e[0m-> ", 27 + ft_strlen(path + i + 1) + 8 + 1);
 	return (free(path), readline(*res));
 }
 
