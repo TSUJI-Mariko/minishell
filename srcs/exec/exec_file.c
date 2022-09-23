@@ -26,14 +26,15 @@ void	exec_file(t_node *start, t_node *node, t_shell *shl)
 	{
 		signal(SIGQUIT, SIG_DFL);
 		if (!check_cmd(node->cmds))
-			return (free_all(shl), free_node(start), exit(g_exit.exit_status));
+			return (free_all(shl), free_node(node), free(start), exit(g_exit.exit_status));
 		cmd_argv = create_argv(node->cmds->word);
 		cmd_envp = create_envp(shl);
 		cmd = ft_strdup(node->cmds->pathname);
 		close(shl->fdin);
 		close(shl->fdout);
 		free_all(shl);
-		free_node(start);
+		free_node(node);
+		free(start);
 		shl= NULL;
 		return (start = NULL, execve(cmd, cmd_argv, cmd_envp), free(cmd), \
 		free(cmd_argv), free_envp(cmd_envp), exit(fail_exec(node)));

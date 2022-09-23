@@ -336,7 +336,7 @@ int				unset_argument_check(char *str);
 int				unset_option(int res, char *str);
 
 //exit
-int				builtin_exit(t_word *word, t_shell *shell, t_node *node);
+int				builtin_exit(t_node *start, t_word *word, t_shell *shell, t_node *node);
 int				overflow_check(char **str);
 int				check_int(char **str);
 
@@ -372,7 +372,7 @@ bool			is_directory(char *pathname);
 int				fail_exec(t_node *node);
 bool			set_redir_out(t_redir *redir_out);
 bool			set_redir_in(t_redir *redir_in);
-void			exec_builtin(t_node *node, t_shell *shell);
+void			exec_builtin(t_node *start, t_node *node, t_shell *shell);
 void			no_builtin(void);
 void			redir_in_error(void);
 void			redir_out_error(void);

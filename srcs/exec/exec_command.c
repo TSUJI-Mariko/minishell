@@ -32,13 +32,11 @@ void	exec_cmd(t_node *start, t_node *node, t_shell *shell)
 			return (dup2(shell->fdout, STDOUT_FILENO), close(shell->fdout), (void)0);
 	}
 	if (node->cmds->is_builtin)
-		exec_builtin(node, shell);
+		exec_builtin(start, node, shell);
 	else
 		exec_file(start, node, shell);
 	dup2(shell->fdin, STDIN_FILENO);
 	dup2(shell->fdout, STDOUT_FILENO);
 	close(shell->fdin);
 	close(shell->fdout);
-	free_all(shell);
-	free_node(start);
 }

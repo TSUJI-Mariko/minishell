@@ -14,7 +14,7 @@
 
 extern t_exit	g_exit;
 
-void	exec_builtin(t_node *node, t_shell *shell)
+void	exec_builtin(t_node *start, t_node *node, t_shell *shell)
 {
 	if (!ft_strncmp(node->cmds->word->str, "echo", \
 			ft_strlen(node->cmds->word->str)))
@@ -36,7 +36,9 @@ void	exec_builtin(t_node *node, t_shell *shell)
 		g_exit.exit_status = unset(node->cmds->word, shell);
 	else if (!ft_strncmp(node->cmds->word->str, \
 			"exit", ft_strlen(node->cmds->word->str)))
-		builtin_exit(node->cmds->word, shell, node);
+	{
+		builtin_exit(start, node->cmds->word, shell, node);
+	}
 	else
 		no_builtin();
 }
