@@ -20,7 +20,7 @@ t_node	*pipe_cmd(t_token **token)
 
 	if (g_exit.exit_status != 5 && g_exit.exit_status != 6)
 	{
-	node = new_node_pipe(command(token));
+		node = new_node_pipe(command(token));
 		if (g_exit.exit_status == 5 || g_exit.exit_status == 6)
 			return (NULL);
 		while (consume(*token, TOKEN_PIPE, "|"))

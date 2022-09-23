@@ -23,7 +23,7 @@ long	get_word_len_to_space(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!double_quote && !single_quote && str[i] == ' ')
+		if (!double_quote && !single_quote && ft_isspace(str[i]))
 			break ;
 		if (double_quote && str[i] == '"')
 			double_quote = 0;
@@ -48,7 +48,7 @@ t_word	*create_splited_words(char *str)
 	i = 0;
 	while (str[i])
 	{
-		while (str[i] == ' ')
+		while (ft_isspace(str[i]))
 			i++;
 		if (str[i] == '\0')
 			break ;

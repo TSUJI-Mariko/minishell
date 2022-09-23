@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   outil_main.c                                       :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtsuji <mtsuji@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahocine <ahocine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/21 11:37:32 by mtsuji            #+#    #+#             */
-/*   Updated: 2022/09/08 15:41:41 by mtsuji           ###   ########.fr       */
+/*   Created: 2022/09/23 23:37:21 by ahocine           #+#    #+#             */
+/*   Updated: 2022/09/23 23:37:22 by ahocine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "libft.h"
 
-int	only_space(char *str)
+int	ft_isspace(char c)
 {
-	int	i;
-	int	j;
-
-	j = 0;
-	i = 0;
-	while (str[i])
-	{
-		if (!ft_isspace(str[i]))
-			j++;
-		i++;
-	}
-	return (j);
+	return (c == 32 || (c >= 9 && c <= 13));
 }

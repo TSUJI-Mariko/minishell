@@ -40,7 +40,7 @@ t_quote_check	is_quote(char c, t_quote_check quote)
 
 int	is_separator(char c)
 {
-	if (c == ' ' || c == '<' || c == '>')
+	if (ft_isspace(c) || c == '<' || c == '>')
 		return (1);
 	return (0);
 }

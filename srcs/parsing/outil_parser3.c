@@ -87,25 +87,3 @@ void	syntax_error(t_node *node)
 	g_exit.exit_status = 6;
 	free_node(node);
 }
-/*
-void	add_redir_in(t_node *node, t_redir_kind kind, char *str, long len)
-{
-	t_redir	*redir;
-	t_redir	*now;
-
-	redir = ft_calloc(1, sizeof(t_redir));
-	if (redir == NULL)
-		return ;
-	redir->fd = -1;
-	redir->str = ft_strndup(str, len);
-	redir->kind = kind;
-	if (!node->redir_in)
-		node->redir_in = redir;
-	else
-	{
-		now = node->redir_in;
-		while (now->next)
-			now = now->next;
-		now->next = redir;
-	}
-}*/

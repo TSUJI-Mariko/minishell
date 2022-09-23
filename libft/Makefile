@@ -24,6 +24,7 @@ SRCS	=	ft_malloc.c						\
 			ft_isalnum.c					\
 			ft_isascii.c					\
 			ft_isprint.c					\
+			ft_isspace.c					\
 			ft_toupper.c					\
 			ft_tolower.c					\
 			ft_strchr.c						\

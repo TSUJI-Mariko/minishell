@@ -39,7 +39,7 @@ int	pipe_check(char *str)
 	p = 0;
 	while (str[cur])
 	{
-		if (str[cur] != ' ' && str[cur] != '|')
+		if (!ft_isspace(str[cur]) && str[cur] != '|')
 			p = 1;
 		if (str[cur] == '|')
 		{

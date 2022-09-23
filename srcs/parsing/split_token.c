@@ -35,7 +35,7 @@ int	word_end(char *str, int *cur)
 			&& quote != SINGLE && quote != DOUBLE)
 			break ;
 		if (quote == NO && (str[*cur] == '|')
-			&& str[*cur + 1] != ' ' && str[*cur + 1] != '\0')
+			&& !ft_isspace(str[*cur + 1]) && str[*cur + 1] != '\0')
 		{
 			(*cur)++;
 			break ;
@@ -116,7 +116,7 @@ int	split_command_line(t_command *command_line)
 		len = ft_strlen(command_line->whole_str + 1);
 	while (cur <= len && command_line->whole_str[cur])
 	{
-		while (cur <= len && command_line->whole_str[cur] == ' ' )
+		while (cur <= len && ft_isspace(command_line->whole_str[cur]))
 			cur++;
 		start = cur;
 		if (is_redirection(command_line->whole_str[cur])

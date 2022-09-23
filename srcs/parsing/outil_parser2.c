@@ -53,7 +53,7 @@ t_node	*add_node_pipe(t_node *node, t_node *cmd_node)
 	t_node	*new;
 
 	new = new_node_pipe(cmd_node);
-	if (g_exit.exit_status != 6)
+	if (g_exit.exit_status != 6 && g_exit.exit_status != 5)
 		new->lhs = node;
 	return (new);
 }
