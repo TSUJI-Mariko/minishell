@@ -14,16 +14,18 @@
 
 extern t_exit	g_exit;
 
-int	fail_exec(t_node *node)
+int	fail_exec(char *cmd)
 {
 	g_exit.exit_status = 126;
 	if (errno == ENOENT)
 		g_exit.exit_status = 127;
 	ft_putstr_fd("minishell: ", 2);
-	ft_putstr_fd(node->cmds->pathname, 2);
+	ft_putstr_fd(cmd, 2);
+	ft_putstr_fd(": ", 2);
 	ft_putstr_fd(strerror(errno), 2);
 	ft_putstr_fd("\n", 2);
-	return (g_exit.exit_status);
+	
+	return (free(cmd), g_exit.exit_status);
 }
 
 bool	is_directory(char *pathname)

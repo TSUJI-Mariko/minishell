@@ -36,8 +36,8 @@ void	exec_file(t_node *start, t_node *node, t_shell *shl)
 		free_node(node);
 		free(start);
 		shl = NULL ;
-		return (start = NULL, execve(cmd, cmd_argv, cmd_envp), free(cmd), \
-		free(cmd_argv), free_envp(cmd_envp), exit(fail_exec(node)));
+		return (start = NULL, execve(cmd, cmd_argv, cmd_envp), \
+		free_envp(cmd_argv), free_envp(cmd_envp), exit(fail_exec(cmd)));
 	}
 	waitpid(pid, &(g_exit.exit_status), 0);
 	set_exit_status();

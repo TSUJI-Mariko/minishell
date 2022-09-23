@@ -19,19 +19,20 @@ void	word_addback(t_cmd *command, char *str, long len)
 	t_word	*word;
 	t_word	*last;
 
+	if (!command)
+		return ;
 	word = ft_calloc(1, sizeof(t_word));
 	if (word == NULL)
 		return ;
 	word->str = ft_strndup(str, len);
+	word->next = NULL;
 	if (command->word == NULL)
-	{
-	command->word = word;
-		return ;
-	}
+		return (command->word = word, (void)0);
 	last = command->word;
-	while (last->next != NULL)
+	while (last && last->next != NULL)
 		last = last->next;
-	last->next = word;
+	if (last)
+		last->next = word;
 }
 
 void	redir_in_addback(t_cmd *command, \

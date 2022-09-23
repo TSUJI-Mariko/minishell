@@ -367,7 +367,7 @@ void			exec_file(t_node *start, t_node *node, t_shell *shell);
 void			set_exit_status(void);
 bool			check_cmd(t_cmd *cmd);
 bool			is_directory(char *pathname);
-int				fail_exec(t_node *node);
+int				fail_exec(char *cmd);
 bool			set_redir_out(t_redir *redir_out);
 bool			set_redir_in(t_redir *redir_in);
 void			exec_builtin(t_node *start, t_node *node, t_shell *shell);
