@@ -24,7 +24,6 @@ int	fail_exec(char *cmd)
 	ft_putstr_fd(": ", 2);
 	ft_putstr_fd(strerror(errno), 2);
 	ft_putstr_fd("\n", 2);
-	
 	return (free(cmd), g_exit.exit_status);
 }
 
@@ -90,10 +89,7 @@ void	set_exit_status(void)
 	{
 		g_exit.exit_status = 128 + WTERMSIG(g_exit.exit_status);
 		if (g_exit.exit_status == 128 + SIGQUIT)
-		{
-			ft_putstr_fd("Quit (core dumped)\n", 2);
-			return ;
-		}
+			return (ft_putstr_fd("Quit (core dumped)\n", 2), (void)0);
 	}
 	else
 		g_exit.exit_status = WEXITSTATUS(g_exit.exit_status);
