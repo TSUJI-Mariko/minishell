@@ -58,7 +58,6 @@ int	pwd(t_word *word)
 	}
 	ft_memset(buff, 0, PATH_MAX);
 	if (!getcwd(buff, PATH_MAX))
-		perror("pwd");
-	ft_putendl_fd(buff, 1);
-	return (0);
+		return (perror("pwd"), errno);
+	return (ft_putendl_fd(buff, 1), 0);
 }

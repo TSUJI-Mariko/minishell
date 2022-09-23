@@ -21,7 +21,7 @@ static char	*ft_readline(char **res)
 
 	path = getcwd(NULL, 0);
 	if (!path)
-		return (*res = readline("\e[33m[minishell]>\e[0m "));
+		return (readline("\e[33m[minishell]>\e[0m "));
 	i = ft_strlen(path) - 1;
 	while (path[i] && path[i] != '/')
 		i--;
