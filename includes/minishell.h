@@ -296,6 +296,7 @@ void			free_envp(char **envp);
 void			free_env(t_shell *shell);
 void			free_end(t_command *command_line, char *str);
 void			free_for_unset(t_env *env);
+void			free_one_node(t_node *node);
 
 //echo
 int				echo(t_word *word);

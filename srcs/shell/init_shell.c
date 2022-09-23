@@ -53,3 +53,22 @@ void	free_envp_init(t_shell *shell)
 		free(envp[i++]);
 	free(envp);
 }
+
+void	free_one_node(t_node *node)
+{
+	if (!node)
+		return ;
+	if (node->cmds)
+	{
+		if (node->cmds->word)
+			free_word(node->cmds->word);
+		if (node->cmds->redir_in)
+			free_redirection(node->cmds->redir_in);
+		if (node->cmds->redir_out)
+			free_redirection(node->cmds->redir_out);
+		if (node->cmds->pathname)
+			free(node->cmds->pathname);
+		free(node->cmds);
+		node->cmds = NULL;
+	}
+}
