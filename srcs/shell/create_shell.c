@@ -19,8 +19,8 @@ t_shell	*create_shell(char **envp, char **argv)
 	shell = NULL;
 	shell = init_all();
 	shell->envp = get_paths(shell, envp);
-	shell->fdin = dup(0);
-	shell->fdout = dup(1);
+	shell->fdin = dup(STDIN_FILENO);
+	shell->fdout = dup(STDOUT_FILENO);
 	if (shell->fdin == -1)
 		perror("fdin");
 	if (shell->fdout == -1)

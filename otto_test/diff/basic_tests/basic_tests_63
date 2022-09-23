@@ -1,8 +1,0 @@
-diff -r bash_output/basic_tests_63/out minishell_output/basic_tests_63/out
-1d0
-< hallo ma\"ran siemons
-diff -r bash_output/basic_tests_63/status minishell_output/basic_tests_63/status
-1c1
-< 0
----
-> 127

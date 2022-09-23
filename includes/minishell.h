@@ -34,18 +34,13 @@
 # include <readline/history.h>
 # include "../libft/libft.h"
 
-// -->	Gestion echo env "$"
-// ------------------------------------------------------
-// -->	expend une commande -> ne s'execute pas
-// ------------------------------------------------------
-// -->	$SHLVL et $_ ne se mettent pas a jour
-// ------------------------------------------------------
-// -->	gerer env -i
+// exit cree des leaks
 
 typedef struct s_exit
 {
 	int			exit_status;
 	bool		interrupt;
+	bool		redir_interrupt;
 }	t_exit;
 
 extern t_exit	g_exit;
@@ -104,8 +99,6 @@ typedef struct s_node
 	struct s_node	*lhs;
 	struct s_node	*rhs;
 	struct s_cmd	*cmds;
-	t_redir			*redir_in;
-	t_redir			*redir_out;
 }t_node;
 
 typedef struct s_word
@@ -159,7 +152,6 @@ typedef struct s_comm
 
 typedef struct s_shell
 {
-	int			ret;
 	bool		declare;
 	int			definput;
 	int			defoutput;
@@ -281,6 +273,7 @@ void			remove_quote(t_node *node);
 void			pathname_generator(t_node *node, t_shell *shell);
 char			*get_pathname_str(char *str, t_shell *shell);
 t_quote_check	quote_check2(char *str, t_quote_check quote);
+t_quote_check	ft_handle_quote(t_quote_check state, char actual);
 
 //util for expansion
 char			*add_char(char *str, char c);
@@ -343,7 +336,8 @@ int				unset_argument_check(char *str);
 int				unset_option(int res, char *str);
 
 //exit
-int				builtin_exit(t_word *word);
+int				builtin_exit(t_node *start, t_word *word, \
+				t_shell *shell, t_node *node);
 int				overflow_check(char **str);
 int				check_int(char **str);
 
@@ -368,22 +362,22 @@ void			expander_set_heredoc(t_node *node, t_shell *shell);
 char			*expand_var_heredoc(t_redir *redir, char *str, t_shell *shell);
 
 //exec
-void			exec(t_node *node, t_shell *shell);
 void			exec_pipe(t_node *pipe_node, t_shell *shell);
 void			exec_multi_pipes(t_node *pipe_node, t_shell *shell);
 void			exec_no_pipe(t_node *pipe_node, t_shell *shell);
-void			exec_cmd(t_node *node, t_shell *shell);
-void			exec_file(t_node *node, t_shell *shell);
+void			exec_cmd(t_node *start, t_node *node, t_shell *shell);
+void			exec_file(t_node *start, t_node *node, t_shell *shell);
 void			set_exit_status(void);
 bool			check_cmd(t_cmd *cmd);
 bool			is_directory(char *pathname);
 int				fail_exec(t_node *node);
 bool			set_redir_out(t_redir *redir_out);
 bool			set_redir_in(t_redir *redir_in);
-void			exec_builtin(t_node *node, t_shell *shell);
+void			exec_builtin(t_node *start, t_node *node, t_shell *shell);
 void			no_builtin(void);
 void			redir_in_error(void);
 void			redir_out_error(void);
 pid_t			my_fork(void);
 void			printer_redir(char *str);
+void			close_all(int fd_0, int fd_1);
 #endif

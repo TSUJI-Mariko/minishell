@@ -50,11 +50,12 @@ char	**create_argv(t_word *word)
 		now = now->next;
 	}
 	argv = ft_calloc(len + 1, sizeof(char *));
+	if (!argv)
+		return (NULL);
 	i = 0;
 	while (word)
 	{
-		argv[i] = word->str;
-		i++;
+		argv[i++] = strdup(word->str);
 		word = word->next;
 	}
 	return (argv);
@@ -66,7 +67,7 @@ bool	check_cmd(t_cmd *cmd)
 	{
 		ft_putstr_fd("minishell: ", 2);
 		ft_putstr_fd(cmd->word->str, 2);
-		ft_putstr_fd(" command not found\n", 2);
+		ft_putstr_fd(": command not found\n", 2);
 		g_exit.exit_status = 127;
 		return (false);
 	}

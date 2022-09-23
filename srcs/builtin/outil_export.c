@@ -29,8 +29,9 @@ int	check_env(char *str)
 		return (0);
 	else if (ft_strchr(&str[i], '!'))
 	{
-		printf("minishell : export: ");
-		printf("%s : event not found\n", ft_strchr(&str[i], '!'));
+		ft_putstr_fd("minishell: export: ", 2);
+		ft_putstr_fd(ft_strchr(&str[i], '!'), 2);
+		ft_putstr_fd(": event not found\n", 2);
 		return (1);
 	}
 	return (0);
@@ -43,16 +44,20 @@ int	export_option(int res, char *str)
 	i = 0;
 	if (res == 2)
 	{
-		printf("minishell : export: ");
-		printf("`%c%c' : invalid option\n", str[0], str[1]);
+		ft_putstr_fd("minishell: export: `", 2);
+		ft_putchar_fd(str[0], 2);
+		ft_putchar_fd(str[1], 2);
+		ft_putstr_fd("': invalid option\n", 2);
+		ft_putstr_fd("export: usage: export [name[=value]\n", 2);
 		return (2);
 	}
 	else if (res == 3)
 	{
 		while (str[i] != '!')
 			i++;
-		printf("minishell : export: ");
-		printf("%s : event not found\n", &str[i]);
+		ft_putstr_fd("minishell: export: ", 2);
+		ft_putstr_fd(&str[i], 2);
+		ft_putstr_fd(": event not found\n", 2);
 		return (0);
 	}
 	return (0);
@@ -60,6 +65,7 @@ int	export_option(int res, char *str)
 
 void	export_error(char *str)
 {
-	printf("minishell : export: ");
-	printf("`%s' : not a valid identifier\n", str);
+	ft_putstr_fd("minishell: export: `", 2);
+	ft_putstr_fd(str, 2);
+	ft_putstr_fd("': not a valid identifier\n", 2);
 }

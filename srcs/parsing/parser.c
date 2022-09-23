@@ -21,18 +21,12 @@ t_node	*parser(t_token *token)
 	node = pipe_cmd(&token);
 	if (g_exit.exit_status == 5)
 	{
-		printf("minishell: syntax error near unexpected token `newline'\n");
-		g_exit.exit_status = 2;
-		return (NULL);
+		ft_putstr_fd("minishell: syntax error near unexpected \
+token `newline'\n", 2);
+		return (g_exit.exit_status = 2, NULL);
 	}
 	else if (g_exit.exit_status == 6)
-	{
-		g_exit.exit_status = 2;
-		return (NULL);
-	}
-	else
-	{
-		token = skip(token, TOKEN_EOF, NULL);
-		return (node);
-	}
+		return (g_exit.exit_status = 2, NULL);
+	token = skip(token, TOKEN_EOF, NULL);
+	return (node);
 }

@@ -19,7 +19,8 @@ void	parser_error(char *str, long len)
 	char	*str_tmp;
 
 	str_tmp = strndup(str, len);
-	ft_putstr_fd("minishell : syntax error near unexpected token `newline'", 2);
+	ft_putstr_fd("minishell : syntax error near unexpected \
+token `newline'", 2);
 	ft_putchar_fd('\n', 2);
 	free(str_tmp);
 	g_exit.exit_status = 2;
@@ -61,6 +62,8 @@ void	free_node(t_node *node)
 		return ;
 	if (node->kind != COMMAND)
 	{
+		if (node->str)
+			free(node->str);
 		free_node(node->lhs);
 		free_node(node->rhs);
 	}
@@ -71,6 +74,8 @@ void	free_node(t_node *node)
 		free_redirection(node->cmds->redir_out);
 		free(node->cmds->pathname);
 		free(node->cmds);
+		free(node->str);
 	}
 	free(node);
+	node = NULL;
 }

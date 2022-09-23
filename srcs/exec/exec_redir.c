@@ -21,6 +21,8 @@ void	printer_redir(char *str)
 	ft_putstr_fd(": ", 2);
 	ft_putstr_fd(strerror(errno), 2);
 	ft_putstr_fd("\n", 2);
+	g_exit.exit_status = 1;
+	g_exit.redir_interrupt = true;
 }
 
 bool	set_redir_in(t_redir *redir_in)
@@ -34,34 +36,32 @@ bool	set_redir_in(t_redir *redir_in)
 	{
 		fd = open(redir_in->str, O_RDONLY);
 		if (fd < 0)
-		{
-			printer_redir(redir_in->str);
-			g_exit.exit_status = 1;
-			return (false);
-		}
+			return (printer_redir(redir_in->str), false);
 	}
 	else if (redir_in->kind == REDIR_HEREDOC)
 		fd = redir_in->fd;
 	else
-	{
-		redir_in_error();
-		return (false);
-	}
-	dup2(fd, 0);
+		return (redir_in_error(), false);
+	dup2(fd, STDIN_FILENO);
 	close(fd);
-	return (set_redir_in(redir_in->next));
+	if (g_exit.redir_interrupt == false)
+		return (set_redir_in(redir_in->next));
+	else
+		return (false);
 }
 
 void	redir_in_error(void)
 {
 	ft_putstr_fd("error: set_redir_in()", 2);
 	g_exit.exit_status = 1;
+	g_exit.redir_interrupt = true;
 }
 
 void	redir_out_error(void)
 {
 	ft_putstr_fd("error: set_redir_in()", 2);
 	g_exit.exit_status = 1;
+	g_exit.redir_interrupt = true;
 }
 
 bool	set_redir_out(t_redir *redir_out)
@@ -77,18 +77,14 @@ bool	set_redir_out(t_redir *redir_out)
 	else if (redir_out->kind == REDIR_APPEND)
 		oflag = O_WRONLY | O_CREAT | O_APPEND;
 	else
-	{
-		redir_out_error();
-		return (false);
-	}
+		return (redir_out_error(), false);
 	fd = open(redir_out->str, oflag, 0664);
 	if (fd < 0)
-	{
-		printer_redir(redir_out->str);
-		g_exit.exit_status = 1;
-		return (false);
-	}
-	dup2(fd, 1);
+		return (printer_redir(redir_out->str), false);
+	dup2(fd, STDOUT_FILENO);
 	close(fd);
-	return (set_redir_out(redir_out->next));
+	if (g_exit.redir_interrupt == false)
+		return (set_redir_out(redir_out->next));
+	else
+		return (false);
 }

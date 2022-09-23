@@ -39,6 +39,10 @@ void	free_all(t_shell *shell)
 			free_paths(shell);
 		if (shell->env)
 			free_env(shell);
+		if (shell->fdin > 2)
+			close(shell->fdin);
+		if (shell->fdout > 2)
+			close(shell->fdout);
 		free(shell);
 		shell = NULL;
 	}

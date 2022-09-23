@@ -38,8 +38,10 @@ char	*ft_strndup(const char *s1, size_t n)
 	char	*str;
 	size_t	i;
 
+	if (s1 == NULL)
+		return (NULL);
 	str = (char *)malloc((n + 1) * sizeof(char));
-	if (str == NULL)
+	if (str == NULL )
 		return (NULL);
 	i = 0;
 	while (i < n)

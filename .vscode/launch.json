@@ -11,14 +11,14 @@
 		"program": "${workspaceFolder}/minishell",
 		"args": [],
 		"stopAtEntry": false,
-		"cwd": "${fileDirname}",
+		"cwd": "${workspaceFolder}",
 		"environment": [],
 		"externalConsole": false,
 		"MIMode": "gdb",
 		"setupCommands": [
 			{
 				"description": "Enable pretty-printing for gdb",
-				"text": "-enable-pretty-printing",
+				"text": "-gdb-set follow-fork-mode child",
 				"ignoreFailures": true
 			},
 			{

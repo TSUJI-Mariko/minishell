@@ -1,8 +1,0 @@
-diff -r bash_output/basic_tests_48/out minishell_output/basic_tests_48/out
-1d0
-< /123ahocine
-diff -r bash_output/basic_tests_48/status minishell_output/basic_tests_48/status
-1c1
-< 0
----
-> 127

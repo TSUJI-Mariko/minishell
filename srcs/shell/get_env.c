@@ -52,14 +52,18 @@ t_shell	*init_all(void)
 	shell->cmds = NULL;
 	shell->envp = NULL;
 	shell->paths = NULL;
-	shell->ret = 1;
 	shell->env = NULL;
 	return (shell);
 }
 
 void	exit_shell(t_shell *shell, int code)
 {
-	free_all(shell);
+	if (shell)
+	{
+		close(shell->fdin);
+		close(shell->fdout);
+		free_all(shell);
+	}
 	exit(code);
 }
 

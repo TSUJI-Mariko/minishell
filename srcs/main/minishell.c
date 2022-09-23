@@ -21,16 +21,16 @@ static char	*ft_readline(char **res)
 
 	path = getcwd(NULL, 0);
 	if (!path)
-		return (readline("\e[35mminishell$\e[0m> "));
+		return (readline("[minishell]> "));
 	i = ft_strlen(path) - 1;
 	while (path[i] && path[i] != '/')
 		i--;
 	*res = ft_calloc(sizeof(char), 60);
 	if (!*res)
-		return (free(path), readline("\e[35mminishell$\e[0m> "));
-	ft_strlcat(*res, "minishell$> \e[35m", 18);
-	ft_strlcat(*res, path + i + 1, 18 + ft_strlen(path + i + 1) + 1);
-	ft_strlcat(*res, "\e[0m> ", 25 + ft_strlen(path + i + 1) + 1);
+		return (free(path), readline("[minishell]> "));
+	ft_strlcat(*res, "[minishell] ", 13 + 1);
+	ft_strlcat(*res, path + i + 1, 13 + ft_strlen(path + i + 1) + 1);
+	ft_strlcat(*res, "> ", 15 + ft_strlen(path + i + 1) + 1);
 	return (free(path), readline(*res));
 }
 
@@ -41,10 +41,7 @@ void	start_command(char *str, t_shell *shell)
 
 	command_line = lexer(str);
 	if (command_line == NULL)
-	{
-		g_exit.exit_status = 2;
-		return ;
-	}
+		return (g_exit.exit_status = 2, (void)0);
 	node = parser(command_line->first_token);
 	free_lexer(command_line);
 	if (node)
@@ -52,7 +49,7 @@ void	start_command(char *str, t_shell *shell)
 		signal_heredoc();
 		expander_set_heredoc(node, shell);
 		signal_exec();
-		exec(node, shell);
+		exec_pipe(node, shell);
 		free_node(node);
 	}
 }
@@ -63,7 +60,6 @@ int	main(int argc, char **argv, char **envp)
 	char	*line;
 	char	*res;
 
-	rl_outstream = stderr;
 	if (argc)
 		shell = create_shell(envp, argv);
 	while (shell)
@@ -83,4 +79,5 @@ int	main(int argc, char **argv, char **envp)
 	}
 	ft_putstr_fd("exit\n", 2);
 	exit_shell(shell, g_exit.exit_status);
+	return (0);
 }

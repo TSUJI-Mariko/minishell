@@ -14,26 +14,30 @@
 
 extern t_exit	g_exit;
 
-void	exec_cmd(t_node *node, t_shell *shell)
+void	exec_cmd(t_node *start, t_node *node, t_shell *shell)
 {
+	bool	redir_in;
+	bool	redir_out;
+
+	g_exit.redir_interrupt = false;
 	if (g_exit.interrupt == true)
 		return ;
-	if ((!set_redir_in(node->cmds->redir_in)
-			&& (set_redir_out(node->cmds->redir_out)))
-		|| (set_redir_in(node->cmds->redir_in)
-			&& (!set_redir_out(node->cmds->redir_out)))
-		|| (!set_redir_in(node->cmds->redir_in)
-			&& (!set_redir_out(node->cmds->redir_out)))
-		|| node->cmds->word == NULL)
+	redir_in = set_redir_in(node->cmds->redir_in);
+	redir_out = set_redir_out(node->cmds->redir_out);
+	if (!redir_in || !redir_out || node->cmds->word == NULL)
 	{
-		dup2(shell->fdin, 1);
-		dup2(shell->fdout, 0);
-		return ;
+			dup2(shell->fdin, STDIN_FILENO);
+			close(shell->fdin);
+			dup2(shell->fdout, STDOUT_FILENO);
+			close(shell->fdout);
+			return ;
 	}
 	if (node->cmds->is_builtin)
-		exec_builtin(node, shell);
+		exec_builtin(start, node, shell);
 	else
-		exec_file(node, shell);
-	dup2(shell->fdout, 1);
-	dup2(shell->fdin, 0);
+		exec_file(start, node, shell);
+	dup2(shell->fdin, STDIN_FILENO);
+	dup2(shell->fdout, STDOUT_FILENO);
+	//close(shell->fdin);
+	//close(shell->fdout);
 }
