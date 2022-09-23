@@ -44,7 +44,6 @@ int	export_option(int res, char *str)
 	i = 0;
 	if (res == 2)
 	{
-		// '
 		ft_putstr_fd("minishell: export: `", 2);
 		ft_putchar_fd(str[0], 2);
 		ft_putchar_fd(str[1], 2);

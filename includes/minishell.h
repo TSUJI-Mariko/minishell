@@ -336,7 +336,8 @@ int				unset_argument_check(char *str);
 int				unset_option(int res, char *str);
 
 //exit
-int				builtin_exit(t_node *start, t_word *word, t_shell *shell, t_node *node);
+int				builtin_exit(t_node *start, t_word *word, \
+				t_shell *shell, t_node *node);
 int				overflow_check(char **str);
 int				check_int(char **str);
 
@@ -378,4 +379,5 @@ void			redir_in_error(void);
 void			redir_out_error(void);
 pid_t			my_fork(void);
 void			printer_redir(char *str);
+void			close_all(int fd_0, int fd_1);
 #endif

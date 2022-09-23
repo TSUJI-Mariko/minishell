@@ -43,7 +43,7 @@ t_env	*create_env(char **envp)
 	i = 0;
 	while (envp[i])
 	{
-		env = env_addback(env, create_env_name(envp[i]),
+		env = env_addback(env, create_env_name(envp[i]), \
 			create_env_body(envp[i]));
 		i++;
 	}
