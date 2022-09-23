@@ -62,8 +62,6 @@ void	free_node(t_node *node)
 		return ;
 	if (node->kind != COMMAND)
 	{
-		if (node->str)
-			free(node->str);
 		free_node(node->lhs);
 		free_node(node->rhs);
 	}
@@ -74,7 +72,6 @@ void	free_node(t_node *node)
 		free_redirection(node->cmds->redir_out);
 		free(node->cmds->pathname);
 		free(node->cmds);
-		free(node->str);
 	}
 	free(node);
 	node = NULL;

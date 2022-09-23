@@ -43,6 +43,7 @@ void	redir_in_addback(t_cmd *command, \
 	rdr = ft_calloc(1, sizeof(t_redir));
 	if (rdr == NULL)
 		return ;
+	rdr->fd = -1;
 	rdr->kind = kind;
 	rdr->str = ft_strndup(str, len);
 	if (command->redir_in == NULL)
@@ -66,6 +67,7 @@ void	redir_out_addback(t_cmd *command, \
 	if (rdr == NULL)
 		return ;
 	rdr->kind = kind;
+	rdr->fd = -1;
 	rdr->str = ft_strndup(str, len);
 	if (command->redir_out == NULL)
 	{

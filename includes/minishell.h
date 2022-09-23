@@ -93,9 +93,6 @@ typedef struct s_node
 {
 	t_node_kind		kind;
 	struct s_node	*next;
-	int				val;
-	char			*str;
-	int				len;
 	struct s_node	*lhs;
 	struct s_node	*rhs;
 	struct s_cmd	*cmds;

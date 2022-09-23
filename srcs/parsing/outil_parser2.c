@@ -18,6 +18,8 @@ void	free_redirection(t_redir *redirection)
 {
 	if (!redirection)
 		return ;
+	if (redirection->fd >= 0)
+		close(redirection->fd);
 	free_redirection(redirection->next);
 	free(redirection->str);
 	free(redirection);
