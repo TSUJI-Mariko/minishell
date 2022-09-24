@@ -35,18 +35,20 @@ void	word_addback(t_cmd *command, char *str, long len)
 		last->next = word;
 }
 
-void	redir_in_addback(t_cmd *command, \
-				t_redir_kind kind, char *str, int len)
+void	redir_in_addback(t_cmd *command, t_redir_kind kind, \
+	char *str, t_token *token)
 {
 	t_redir	*rdr;
 	t_redir	*last;
 
+	if (token->kind == TOKEN_EOF)
+		return (g_exit.exit_status = 5, (void)0);
 	rdr = ft_calloc(1, sizeof(t_redir));
 	if (rdr == NULL)
 		return ;
 	rdr->fd = -1;
 	rdr->kind = kind;
-	rdr->str = ft_strndup(str, len);
+	rdr->str = ft_strndup(str, token->len);
 	if (command->redir_in == NULL)
 	{
 		command->redir_in = rdr;
@@ -59,17 +61,19 @@ void	redir_in_addback(t_cmd *command, \
 }
 
 void	redir_out_addback(t_cmd *command, \
-				t_redir_kind kind, char *str, int len)
+				t_redir_kind kind, char *str, t_token *token)
 {
 	t_redir	*rdr;
 	t_redir	*last;
 
+	if (token->kind == TOKEN_EOF)
+		return (g_exit.exit_status = 5, (void)0);
 	rdr = ft_calloc(1, sizeof(t_redir));
 	if (rdr == NULL)
 		return ;
 	rdr->kind = kind;
 	rdr->fd = -1;
-	rdr->str = ft_strndup(str, len);
+	rdr->str = ft_strndup(str, token->len);
 	if (command->redir_out == NULL)
 	{
 		command->redir_out = rdr;

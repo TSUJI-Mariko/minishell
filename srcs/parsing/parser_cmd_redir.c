@@ -26,13 +26,13 @@ token `<<'\n", 2);
 	if (consume(*token, TOKEN_OP, "<"))
 	{
 		*token = skip(*token, TOKEN_OP, "<");
-		redir_in_addback(node->cmds, REDIR_IN, (*token)->string, (*token)->len);
+		redir_in_addback(node->cmds, REDIR_IN, (*token)->string, *token);
 	}
 	else if (consume(*token, TOKEN_OP, "<<"))
 	{
 		*token = skip(*token, TOKEN_OP, "<<");
 		redir_in_addback(node->cmds, REDIR_HEREDOC, \
-				(*token)->string, (*token)->len);
+				(*token)->string, *token);
 	}
 }
 
@@ -49,13 +49,13 @@ token `>>'\n", 2);
 	{
 		*token = skip(*token, TOKEN_OP, ">");
 		redir_out_addback(node->cmds, REDIR_OUT, \
-					(*token)->string, (*token)->len);
+					(*token)->string, *token);
 	}
 	else if (consume(*token, TOKEN_OP, ">>"))
 	{
 		*token = skip(*token, TOKEN_OP, ">>");
 		redir_out_addback(node->cmds, REDIR_APPEND, \
-			(*token)->string, (*token)->len);
+			(*token)->string, *token);
 	}
 }
 
@@ -69,7 +69,7 @@ t_node	*command(t_token **token)
 		if (g_exit.exit_status == 5 || g_exit.exit_status == 6)
 		{
 			free_node(node);
-			return (node);
+			return (NULL);
 		}
 		if (consume(*token, TOKEN_ARGUMENT, NULL))
 			word_addback(node->cmds, (*token)->string, (*token)->len);
@@ -82,7 +82,7 @@ t_node	*command(t_token **token)
 			command_error_check(node);
 			return (node);
 		}
-		if (g_exit.exit_status != 6)
+		if (g_exit.exit_status != 6 && g_exit.exit_status != 5)
 			*token = skip(*token, TOKEN_ARGUMENT, NULL);
 	}
 }

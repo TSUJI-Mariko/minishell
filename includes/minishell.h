@@ -126,7 +126,6 @@ typedef struct s_command
 {
 	int					cur;
 	char				*whole_str;
-	char				*command;
 	t_token				*first_token;
 	struct s_command	*next;
 }	t_command;
@@ -246,9 +245,9 @@ void			word_addback(t_cmd *command, char *str, long len);
 void			redir_in(t_token **token, t_node *node);
 void			redir_out(t_token **token, t_node *node);
 void			redir_in_addback(t_cmd *command, t_redir_kind kind, \
-				char *str, int len);
+				char *str, t_token *token);
 void			redir_out_addback(t_cmd *command, t_redir_kind kind, \
-				char *str, int len);
+				char *str, t_token *token);
 
 //expension
 void			expander(t_node *node, t_shell *shell);

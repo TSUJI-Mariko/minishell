@@ -28,24 +28,32 @@ token `newline'", 2);
 
 bool	consume(t_token *token, t_token_kind kind, char *str)
 {
-	if (token->kind != kind)
-		return (false);
-	if (str != NULL && ft_strncmp(token->string, str, token->len))
-		return (false);
+	if (token)
+	{
+		if (token->kind != kind)
+			return (false);
+		if (str != NULL && ft_strncmp(token->string, str, token->len))
+			return (false);
+	}
 	return (true);
 }
 
 bool	consume_redir(t_token *token, t_token_kind kind, char *str)
 {
-	if (token->kind != kind)
-		return (false);
-	if (str != NULL && !ft_strnstr(token->string, str, token->len))
-		return (false);
+	if (token)
+	{
+		if (token->kind != kind)
+			return (false);
+		if (str != NULL && !ft_strnstr(token->string, str, token->len))
+			return (false);
+	}
 	return (true);
 }
 
 t_token	*skip(t_token *token, t_token_kind kind, char *str)
 {
+	if (!token)
+		return (NULL);
 	if (token->kind != kind)
 	{
 		g_exit.exit_status = 5;

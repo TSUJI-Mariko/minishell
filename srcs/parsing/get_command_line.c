@@ -14,7 +14,6 @@
 
 static void	init_command_line(t_command *command_line)
 {
-	command_line->command = NULL;
 	command_line->whole_str = NULL;
 	command_line->first_token = NULL;
 }
