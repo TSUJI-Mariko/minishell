@@ -1,4 +1,6 @@
 # minishell for cursus 42
+evalutated branch : branch_21.9
+
 
 ## 1. :subject
 creation of mini-real bash prompt
