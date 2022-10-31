@@ -2,6 +2,8 @@
 evalutated branch : branch_21.9
 
 
+
+
 ## 1. :subject
 creation of mini-real bash prompt
 
@@ -72,8 +74,4 @@ conditon bash posix.***
 - Ctrl + C
 - Ctrl + \
 
-## 8.Exection (in work)
--
-- 
--
-
+## 8.Execution 
